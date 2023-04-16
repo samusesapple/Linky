@@ -13,7 +13,7 @@
 ### 개발 환경
 ---
 #### 디자인
-* Figma : 
+* Figma : https://www.figma.com/file/q36b0YMWUcHuubdS9bcJ9p/Untitled?node-id=0-1&t=PPE0udKoYKuNCcju-0 
 #### StoryBoard vs Code
 * 100% 코드 (UIKit)
 #### 디자인 패턴
