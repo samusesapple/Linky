@@ -57,11 +57,11 @@ class MainHeaderView: UIStackView {
     // MARK: - Actions
     
     @objc func menuButtonTapped() {
-        
+        print(#function)
     }
     
     @objc func searchButtonTapped() {
-        print("search button tapped")
+        print(#function)
     }
     
     // MARK: - Helpers

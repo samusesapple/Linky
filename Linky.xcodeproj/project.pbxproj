@@ -12,10 +12,12 @@
 		F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */; };
 		F142B0D329EBBDCC00E41F22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F142B0D229EBBDCC00E41F22 /* Assets.xcassets */; };
 		F142B0D629EBBDCC00E41F22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F142B0D429EBBDCC00E41F22 /* LaunchScreen.storyboard */; };
-		F142B0E129EBC1D500E41F22 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E029EBC1D500E41F22 /* MainView.swift */; };
 		F142B0E329EBC21500E41F22 /* MainHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E229EBC21500E41F22 /* MainHeaderView.swift */; };
 		F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E629EBCC3700E41F22 /* CustomTextField.swift */; };
 		F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E829EBCCA400E41F22 /* Extensions.swift */; };
+		F142B0F129EC293200E41F22 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F029EC293200E41F22 /* FileCell.swift */; };
+		F142B0F329EC2B0F00E41F22 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */; };
+		F142B0F529EC2D7900E41F22 /* FileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F429EC2D7900E41F22 /* FileCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +28,12 @@
 		F142B0D229EBBDCC00E41F22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F142B0D529EBBDCC00E41F22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F142B0D729EBBDCC00E41F22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F142B0E029EBC1D500E41F22 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F142B0E229EBC21500E41F22 /* MainHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHeaderView.swift; sourceTree = "<group>"; };
 		F142B0E629EBCC3700E41F22 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F142B0E829EBCCA400E41F22 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F142B0F029EC293200E41F22 /* FileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
+		F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
+		F142B0F429EC2D7900E41F22 /* FileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,8 +71,8 @@
 				F142B0DD29EBBE8300E41F22 /* Models */,
 				F142B0DF29EBBE9700E41F22 /* Views */,
 				F142B0DE29EBBE8D00E41F22 /* ViewModels */,
+				F142B0F629EC3D6F00E41F22 /* Controls */,
 				F142B0E529EBCBA500E41F22 /* Utilis */,
-				F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */,
 				F142B0D229EBBDCC00E41F22 /* Assets.xcassets */,
 				F142B0D429EBBDCC00E41F22 /* LaunchScreen.storyboard */,
 				F142B0D729EBBDCC00E41F22 /* Info.plist */,
@@ -93,6 +97,7 @@
 		F142B0DF29EBBE9700E41F22 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */,
 				F142B0E429EBC21900E41F22 /* MainView */,
 			);
 			path = Views;
@@ -102,7 +107,8 @@
 			isa = PBXGroup;
 			children = (
 				F142B0E229EBC21500E41F22 /* MainHeaderView.swift */,
-				F142B0E029EBC1D500E41F22 /* MainView.swift */,
+				F142B0F029EC293200E41F22 /* FileCell.swift */,
+				F142B0F429EC2D7900E41F22 /* FileCollectionView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -114,6 +120,14 @@
 				F142B0E629EBCC3700E41F22 /* CustomTextField.swift */,
 			);
 			path = Utilis;
+			sourceTree = "<group>";
+		};
+		F142B0F629EC3D6F00E41F22 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,10 +200,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F142B0F529EC2D7900E41F22 /* FileCollectionView.swift in Sources */,
 				F142B0E329EBC21500E41F22 /* MainHeaderView.swift in Sources */,
+				F142B0F129EC293200E41F22 /* FileCell.swift in Sources */,
 				F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */,
+				F142B0F329EC2B0F00E41F22 /* BottomButtonView.swift in Sources */,
 				F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */,
-				F142B0E129EBC1D500E41F22 /* MainView.swift in Sources */,
 				F142B0CA29EBBDCB00E41F22 /* AppDelegate.swift in Sources */,
 				F142B0CC29EBBDCB00E41F22 /* SceneDelegate.swift in Sources */,
 				F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */,
