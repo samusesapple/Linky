@@ -11,17 +11,14 @@ class FileCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-//    private let editButton: UIButton = {
-//       let button = UIButton(type: .system)
-//        button.backgroundColor = UIColor(named: "EditButtonColor")
-//       button.titleLabel?.text = "Edit"
-//       button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-//       button.titleLabel?.textColor = .black
-//        button.clipsToBounds = true
-//        button.layer.cornerRadius = 5
-//       button.setDimensions(height: 28, width: 66)
-//      return button
-//   }()
+    private let editButton: UIButton = {
+       let button = UIButton(type: .system)
+        button.backgroundColor = UIColor(named: "EditButtonColor")
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 5
+       button.setDimensions(height: 28, width: 66)
+      return button
+   }()
     
     private lazy var fileButton: UIButton = {
         let button = UIButton(type: .system)
@@ -69,17 +66,21 @@ class FileCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        contentView.addSubview(editButton)
+        editButton.anchor(top: topAnchor)
+        editButton.centerX(inView: self)
+        
         let stack = UIStackView(arrangedSubviews: [fileButton, fileNameLabel, fileNumberLabel])
         stack.axis = .vertical
         stack.distribution = .fill
         stack.alignment = .center
         stack.spacing = 12
-
+        
         contentView.addSubview(stack)
         fileButtonLabel.centerX(inView: fileButton)
         fileButtonLabel.centerY(inView: fileButton)
         
-        stack.fillSuperview()
+        stack.anchor(top: editButton.bottomAnchor, paddingTop: 25)
     }
     
     required init?(coder: NSCoder) {

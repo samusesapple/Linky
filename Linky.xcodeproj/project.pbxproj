@@ -17,7 +17,6 @@
 		F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E829EBCCA400E41F22 /* Extensions.swift */; };
 		F142B0F129EC293200E41F22 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F029EC293200E41F22 /* FileCell.swift */; };
 		F142B0F329EC2B0F00E41F22 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */; };
-		F142B0F529EC2D7900E41F22 /* FileCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F429EC2D7900E41F22 /* FileCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		F142B0E829EBCCA400E41F22 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F142B0F029EC293200E41F22 /* FileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
 		F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
-		F142B0F429EC2D7900E41F22 /* FileCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +106,6 @@
 			children = (
 				F142B0E229EBC21500E41F22 /* MainHeaderView.swift */,
 				F142B0F029EC293200E41F22 /* FileCell.swift */,
-				F142B0F429EC2D7900E41F22 /* FileCollectionView.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -200,7 +197,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F142B0F529EC2D7900E41F22 /* FileCollectionView.swift in Sources */,
 				F142B0E329EBC21500E41F22 /* MainHeaderView.swift in Sources */,
 				F142B0F129EC293200E41F22 /* FileCell.swift in Sources */,
 				F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */,
