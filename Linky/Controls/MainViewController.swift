@@ -32,6 +32,8 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        bottomView.delegate = self
         configureUI()
 
     }
@@ -55,8 +57,6 @@ class MainViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 150, height: 313)
     }
-    
-
     
 }
 
@@ -93,3 +93,11 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 
+extension MainViewController: BottomButtonViewDelegate {
+    
+    func handleAddButtonAction() {
+        print("Add Button Tapped")
+        present(AddViewController(), animated: true)
+    }
+    
+}

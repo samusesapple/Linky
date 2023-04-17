@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol BottomButtonViewDelegate: AnyObject {
+    func handleAddButtonAction()
+}
+
 class BottomButtonView: UIStackView {
 
-    private let addButton: UIButton = {
+    weak var delegate: BottomButtonViewDelegate?
+    
+    let addButton: UIButton = {
        let button = UIButton()
         button.tintColor = UIColor(named: "MainGreenColor")?.withAlphaComponent(0.3)
         button.backgroundColor = UIColor(named: "MainGreenColor")
@@ -54,7 +60,7 @@ class BottomButtonView: UIStackView {
     // MARK: - Actions
     
     @objc func addButtonTapped() {
-        print("add button tapped")
+        delegate?.handleAddButtonAction()
     }
     
     // MARK: - Helpers

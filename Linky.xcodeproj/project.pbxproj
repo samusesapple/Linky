@@ -17,6 +17,9 @@
 		F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E829EBCCA400E41F22 /* Extensions.swift */; };
 		F142B0F129EC293200E41F22 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F029EC293200E41F22 /* FileCell.swift */; };
 		F142B0F329EC2B0F00E41F22 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */; };
+		F142B0F829ECDF7B00E41F22 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F729ECDF7B00E41F22 /* AddView.swift */; };
+		F142B0FA29ECE13000E41F22 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F929ECE13000E41F22 /* CustomButton.swift */; };
+		F142B0FC29ECE3EA00E41F22 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		F142B0E829EBCCA400E41F22 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F142B0F029EC293200E41F22 /* FileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
 		F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
+		F142B0F729ECDF7B00E41F22 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		F142B0F929ECE13000E41F22 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +101,9 @@
 		F142B0DF29EBBE9700E41F22 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */,
 				F142B0E429EBC21900E41F22 /* MainView */,
+				F142B0F229EC2B0F00E41F22 /* BottomButtonView.swift */,
+				F142B0F729ECDF7B00E41F22 /* AddView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -115,6 +122,7 @@
 			children = (
 				F142B0E829EBCCA400E41F22 /* Extensions.swift */,
 				F142B0E629EBCC3700E41F22 /* CustomTextField.swift */,
+				F142B0F929ECE13000E41F22 /* CustomButton.swift */,
 			);
 			path = Utilis;
 			sourceTree = "<group>";
@@ -123,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */,
+				F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -198,7 +207,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F142B0E329EBC21500E41F22 /* MainHeaderView.swift in Sources */,
+				F142B0FA29ECE13000E41F22 /* CustomButton.swift in Sources */,
 				F142B0F129EC293200E41F22 /* FileCell.swift in Sources */,
+				F142B0FC29ECE3EA00E41F22 /* AddViewController.swift in Sources */,
+				F142B0F829ECDF7B00E41F22 /* AddView.swift in Sources */,
 				F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */,
 				F142B0F329EC2B0F00E41F22 /* BottomButtonView.swift in Sources */,
 				F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */,
