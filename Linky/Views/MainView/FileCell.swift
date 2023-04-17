@@ -7,32 +7,42 @@
 
 import UIKit
 
+protocol FileCellDelegate: AnyObject {
+    func handleFileEdit()
+    func presentFileView()
+}
+
 class FileCell: UICollectionViewCell {
     
     // MARK: - Properties
     
+    weak var delegate: FileCellDelegate?
+    
     private let editButton: UIButton = {
-       let button = UIButton(type: .system)
+        let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "EditButtonColor")
+        button.setTitle("Edit", for: .normal)
+        button.setTitleColor(.darkGray, for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 5
-       button.setDimensions(height: 28, width: 66)
-      return button
-   }()
+        button.setDimensions(height: 28, width: 66)
+        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     private lazy var fileButton: UIButton = {
         let button = UIButton(type: .system)
-        button.contentMode = .scaleAspectFill
         button.backgroundColor = #colorLiteral(red: 0.9309713244, green: 0.9309713244, blue: 0.9309713244, alpha: 1)
         button.setDimensions(height: 190, width: 190)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
         button.addSubview(fileButtonLabel)
+        button.addTarget(self, action: #selector(fileButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private let fileButtonLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 60)
         label.text = "🌴"
         label.setDimensions(height: 60, width: 60)
@@ -40,7 +50,7 @@ class FileCell: UICollectionViewCell {
     }()
     
     private let fileNameLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "개발"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -51,7 +61,7 @@ class FileCell: UICollectionViewCell {
     }()
     
     private let fileNumberLabel: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.text = "링크 5개"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
@@ -62,10 +72,10 @@ class FileCell: UICollectionViewCell {
     }()
     
     // MARK: - Lifecycle
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         contentView.addSubview(editButton)
         editButton.anchor(top: topAnchor)
         editButton.centerX(inView: self)
@@ -85,6 +95,16 @@ class FileCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Actions
+    
+    @objc func editButtonTapped() {
+        delegate?.handleFileEdit()
+    }
+    
+    @objc func fileButtonTapped() {
+        delegate?.presentFileView()
     }
     
     // MARK: - Helper

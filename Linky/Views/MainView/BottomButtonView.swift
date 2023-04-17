@@ -16,32 +16,24 @@ class BottomButtonView: UIStackView {
     weak var delegate: BottomButtonViewDelegate?
     
     let addButton: UIButton = {
-       let button = UIButton()
-        button.tintColor = UIColor(named: "MainGreenColor")?.withAlphaComponent(0.3)
+        let button = UIButton(type: .system)
+        button.tintColor = .white
         button.backgroundColor = UIColor(named: "MainGreenColor")
         button.setDimensions(height: 65, width: 65)
         button.clipsToBounds = false
         button.layer.cornerRadius = 65 / 2
         button.setupShadow(opacity: 0.3, radius: 0.7, offset: CGSize(width: 0.5, height: 1.0), color: .black)
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        
         return button
     }()
-    
-    private let plusButtonImage: UIImageView = {
-        let iv = UIImageView(image: UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate))
-        iv.setDimensions(height: 25, width: 25)
-        iv.tintColor = UIColor(white: 1, alpha: 0.9)
-        return iv
-    }()
-    
+
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         heightAnchor.constraint(equalToConstant: 65).isActive = true
-        addButton.addSubview(plusButtonImage)
-        plusButtonImage.centerX(inView: addButton)
-        plusButtonImage.centerY(inView: addButton)
-        
+
         [UIView(), addButton, UIView()].forEach { view in
             addArrangedSubview(view)
         }

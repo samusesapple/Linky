@@ -11,9 +11,8 @@ class MainHeaderView: UIStackView {
     
     // MARK: - Properties
     
-    private let menuButton: UIButton = {
+    let menuButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "text.justify"), for: .normal)
         button.tintColor = .black
         return button
     }()
@@ -34,10 +33,11 @@ class MainHeaderView: UIStackView {
     
     // MARK: - Lifecycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(icon: UIImage) {
+        super.init(frame: .zero)
         heightAnchor.constraint(equalToConstant: 38).isActive = true
         
+        menuButton.setImage(icon, for: .normal)
         [menuButton, searchStack].forEach { view in
             addArrangedSubview(view)
         }

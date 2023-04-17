@@ -34,7 +34,7 @@ extension AddViewController: AddViewDelegate {
     }
     
     func handleSaveButton() {
-        print(#function)
+        self.dismiss(animated: true)
     }
     
     
