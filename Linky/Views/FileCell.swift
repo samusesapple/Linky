@@ -26,7 +26,6 @@ class FileCell: UICollectionViewCell {
         button.clipsToBounds = true
         button.layer.cornerRadius = 5
         button.setDimensions(height: 28, width: 66)
-        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -35,7 +34,7 @@ class FileCell: UICollectionViewCell {
         button.backgroundColor = #colorLiteral(red: 0.9309713244, green: 0.9309713244, blue: 0.9309713244, alpha: 1)
         button.setDimensions(height: 190, width: 190)
         button.clipsToBounds = true
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = 15
         button.addSubview(fileButtonLabel)
         button.addTarget(self, action: #selector(fileButtonTapped), for: .touchUpInside)
         return button
@@ -76,10 +75,10 @@ class FileCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        contentView.addSubview(editButton)
-        editButton.anchor(top: topAnchor)
-        editButton.centerX(inView: self)
-        
+//        contentView.addSubview(editButton)
+//        editButton.anchor(top: topAnchor)
+//        editButton.centerX(inView: self)
+//
         let stack = UIStackView(arrangedSubviews: [fileButton, fileNameLabel, fileNumberLabel])
         stack.axis = .vertical
         stack.distribution = .fill
@@ -90,7 +89,15 @@ class FileCell: UICollectionViewCell {
         fileButtonLabel.centerX(inView: fileButton)
         fileButtonLabel.centerY(inView: fileButton)
         
-        stack.anchor(top: editButton.bottomAnchor, paddingTop: 25)
+        stack.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 28 + 25)
+        
+        setButtonActions()
+    }
+    
+    override func prepareForReuse() {
+//        contentView.addSubview(editButton)
+//        editButton.anchor(top: topAnchor)
+//        editButton.centerX(inView: self)
     }
     
     required init?(coder: NSCoder) {
@@ -108,5 +115,9 @@ class FileCell: UICollectionViewCell {
     }
     
     // MARK: - Helper
+    
+    func setButtonActions() {
+        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+    }
     
 }

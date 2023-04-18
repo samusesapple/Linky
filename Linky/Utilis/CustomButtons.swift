@@ -44,3 +44,23 @@ class AuthButton: UIButton {
     }
     
 }
+
+class AddLinkButton: UIButton {
+    
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        
+        tintColor = .white
+        backgroundColor = UIColor(named: "MainGreenColor")
+        setDimensions(height: 65, width: 65)
+        clipsToBounds = false
+        layer.cornerRadius = 65 / 2
+        setupShadow(opacity: 0.3, radius: 0.7, offset: CGSize(width: 0.5, height: 1.0), color: .black)
+        setImage(UIImage(systemName: "plus"), for: .normal)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+}

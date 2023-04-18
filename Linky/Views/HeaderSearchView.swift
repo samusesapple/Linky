@@ -7,13 +7,21 @@
 
 import UIKit
 
-class MainHeaderView: UIStackView {
+protocol HeaderSearchViewDelegate: AnyObject {
+    func handleLeftButtonActions()
+    func searchLink()
+}
+
+class HeaderSearchView: UIStackView {
     
     // MARK: - Properties
     
-    let menuButton: UIButton = {
+    weak var delegate: HeaderSearchViewDelegate?
+    
+    private let leftButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .black
+        button.addTarget(self, action: #selector(leftButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -37,8 +45,8 @@ class MainHeaderView: UIStackView {
         super.init(frame: .zero)
         heightAnchor.constraint(equalToConstant: 38).isActive = true
         
-        menuButton.setImage(icon, for: .normal)
-        [menuButton, searchStack].forEach { view in
+        leftButton.setImage(icon, for: .normal)
+        [leftButton, searchStack].forEach { view in
             addArrangedSubview(view)
         }
         
@@ -47,7 +55,6 @@ class MainHeaderView: UIStackView {
         isLayoutMarginsRelativeArrangement = true
         layoutMargins = .init(top: 0, left: 30, bottom: 0, right: 30)
         
-        setActions()
     }
     
     required init(coder: NSCoder) {
@@ -56,18 +63,16 @@ class MainHeaderView: UIStackView {
     
     // MARK: - Actions
     
-    @objc func menuButtonTapped() {
-        print(#function)
+    @objc func leftButtonTapped() {
+        delegate?.handleLeftButtonActions()
     }
     
     @objc func searchButtonTapped() {
-        print(#function)
+        delegate?.searchLink()
     }
     
     // MARK: - Helpers
     
-    func setActions() {
-        menuButton.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
-    }
+
     
 }
