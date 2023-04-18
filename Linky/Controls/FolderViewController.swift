@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FileViewController: UIViewController {
+class FolderViewController: UIViewController {
 
     // MARK: - Properties
     let headerView = HeaderSearchView(icon: UIImage(systemName: "chevron.backward")!)
@@ -34,9 +34,9 @@ class FileViewController: UIViewController {
 }
 
 // MARK: - HeaderSearchViewDelegate
-extension FileViewController: HeaderSearchViewDelegate {
+extension FolderViewController: HeaderSearchViewDelegate {
     func handleLeftButtonActions() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     func searchLink() {

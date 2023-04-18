@@ -19,9 +19,13 @@
 		F142B0F829ECDF7B00E41F22 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F729ECDF7B00E41F22 /* AddView.swift */; };
 		F142B0FA29ECE13000E41F22 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F929ECE13000E41F22 /* CustomButtons.swift */; };
 		F142B0FC29ECE3EA00E41F22 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */; };
-		F142B10129ED05D900E41F22 /* FileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10029ED05D900E41F22 /* FileViewController.swift */; };
+		F142B10129ED05D900E41F22 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10029ED05D900E41F22 /* FolderViewController.swift */; };
 		F142B10329ED0A6200E41F22 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10229ED0A6200E41F22 /* AuthView.swift */; };
 		F142B10529ED0C0C00E41F22 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10429ED0C0C00E41F22 /* AuthViewController.swift */; };
+		F142B10729EE54A900E41F22 /* FileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10629EE54A900E41F22 /* FileCellViewModel.swift */; };
+		F142B10929EE6FA000E41F22 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10829EE6FA000E41F22 /* ContainerViewController.swift */; };
+		F142B10B29EE706000E41F22 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10A29EE706000E41F22 /* MenuViewController.swift */; };
+		F142B10D29EE784F00E41F22 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,9 +43,13 @@
 		F142B0F729ECDF7B00E41F22 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		F142B0F929ECE13000E41F22 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
-		F142B10029ED05D900E41F22 /* FileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileViewController.swift; sourceTree = "<group>"; };
+		F142B10029ED05D900E41F22 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
 		F142B10229ED0A6200E41F22 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		F142B10429ED0C0C00E41F22 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		F142B10629EE54A900E41F22 /* FileCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCellViewModel.swift; sourceTree = "<group>"; };
+		F142B10829EE6FA000E41F22 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		F142B10A29EE706000E41F22 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +106,7 @@
 		F142B0DE29EBBE8D00E41F22 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				F142B10629EE54A900E41F22 /* FileCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -127,11 +136,22 @@
 			isa = PBXGroup;
 			children = (
 				F142B10429ED0C0C00E41F22 /* AuthViewController.swift */,
+				F142B10E29EE7D7C00E41F22 /* Menus */,
 				F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */,
-				F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */,
-				F142B10029ED05D900E41F22 /* FileViewController.swift */,
+				F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */,
+				F142B10029ED05D900E41F22 /* FolderViewController.swift */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		F142B10E29EE7D7C00E41F22 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				F142B10829EE6FA000E41F22 /* ContainerViewController.swift */,
+				F142B10A29EE706000E41F22 /* MenuViewController.swift */,
+				F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */,
+			);
+			path = Menus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,10 +231,14 @@
 				F142B0FC29ECE3EA00E41F22 /* AddViewController.swift in Sources */,
 				F142B0F829ECDF7B00E41F22 /* AddView.swift in Sources */,
 				F142B10529ED0C0C00E41F22 /* AuthViewController.swift in Sources */,
-				F142B10129ED05D900E41F22 /* FileViewController.swift in Sources */,
+				F142B10B29EE706000E41F22 /* MenuViewController.swift in Sources */,
+				F142B10929EE6FA000E41F22 /* ContainerViewController.swift in Sources */,
+				F142B10129ED05D900E41F22 /* FolderViewController.swift in Sources */,
+				F142B10729EE54A900E41F22 /* FileCellViewModel.swift in Sources */,
 				F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */,
 				F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */,
 				F142B0CA29EBBDCB00E41F22 /* AppDelegate.swift in Sources */,
+				F142B10D29EE784F00E41F22 /* PrivacyViewController.swift in Sources */,
 				F142B0CC29EBBDCB00E41F22 /* SceneDelegate.swift in Sources */,
 				F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */,
 			);

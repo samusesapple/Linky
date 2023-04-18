@@ -12,19 +12,6 @@ public struct AnchoredConstraints {
     public var top, leading, bottom, trailing, width, height: NSLayoutConstraint?
 }
 
-extension UIViewController {
-    func configureGradientLayer() {
-        let topColor = #colorLiteral(red: 0.2196078431, green: 0.6784313725, blue: 0.662745098, alpha: 0.5)
-        let bottomColor = #colorLiteral(red: 0.2196078431, green: 0.6784313725, blue: 0.662745098, alpha: 1)
-        
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
-        gradientLayer.locations = [0, 1]
-        view.layer.addSublayer(gradientLayer)
-        gradientLayer.frame = view.frame
-    }
-}
-
 extension UIView {
     
     func anchor(top: NSLayoutYAxisAnchor? = nil,
@@ -114,4 +101,22 @@ extension UIView {
         layer.shadowColor = color.cgColor
     }
     
+    public func addDashedBorder() {
+        let color = UIColor.black.cgColor
+        
+        let shapeLayer:CAShapeLayer = CAShapeLayer()
+        let frameSize = self.frame.size
+        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
+        
+        shapeLayer.bounds = shapeRect
+        shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = color
+        shapeLayer.lineWidth = 1
+        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+        shapeLayer.lineDashPattern = [8,4]
+        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 15).cgPath
+        
+        self.layer.addSublayer(shapeLayer)
+    }
 }

@@ -7,17 +7,23 @@
 
 import UIKit
 
+protocol MainViewControllerDelegate: AnyObject {
+    func didTapMenuButton()
+}
+
 class MainViewController: UIViewController {
     
     
     // MARK: - Properties
+    weak var delegate: MainViewControllerDelegate?
+    
     private let headerView = HeaderSearchView(icon: UIImage(systemName: "text.justify")!)
     private let footerAddButton = AddLinkButton()
     
     private let cellSize = CGSize(width: 190, height: 313)
     private var minItemSpacing: CGFloat = 20
-    let cellCount = 8
-    var previousIndex = 0
+    private let cellCount = 8
+    private var previousIndex = 0
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -42,7 +48,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        navigationController?.isNavigationBarHidden = true
         configureUI()
         setupCollectionView()
         
@@ -57,6 +63,7 @@ class MainViewController: UIViewController {
     // MARK: - Actions
     
     @objc func addButtonTapped() {
+        let addVC = AddViewController()
         present(AddViewController(), animated: true)
     }
     
@@ -102,10 +109,15 @@ extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // collectionView에 사용할 cell dequeue하기
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fileCell", for: indexPath) as! FileCell
+        //        cell.viewModel = FileCellViewModel(isFocused: true, labelText: "🎾", title: "개발", linkCount: 5)
         cell.delegate = self
         cell.contentView.backgroundColor = .white
         if indexPath.row != 0 {
             cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }
+        
+        if indexPath.row == indexPath.count + 1 {
+            cell.viewModel = FileCellViewModel(isFocused: false, isEmpty: true, labelText: "🎾", title: "개발", linkCount: 5)
         }
         
         return cell
@@ -142,7 +154,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         
         // 여태 스크롤한 스크롤뷰의 지점 위치 / spacing 포함된 cell 넓이 -> 해당되는 셀의 index 구하기
         let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludeSpacing
-        print("\(offSet.x) + \(scrollView.contentInset.left) / \(cellWidthIncludeSpacing)")
+        //        print("\(offSet.x) + \(scrollView.contentInset.left) / \(cellWidthIncludeSpacing)")
         
         // index값 반올림하기
         let roundedIndex: CGFloat = round(index)
@@ -173,7 +185,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         }
     }
     
-    func animateZoomForCell(zoomCell: UICollectionViewCell) {
+    private func animateZoomForCell(zoomCell: UICollectionViewCell) {
         UIView.animate(
             withDuration: 0.2,
             delay: 0,
@@ -184,7 +196,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
             completion: nil)
     }
     
-    func animateZoomForCellRemove(zoomCell: UICollectionViewCell) {
+    private func animateZoomForCellRemove(zoomCell: UICollectionViewCell) {
         UIView.animate(
             withDuration: 0.2,
             delay: 0,
@@ -200,7 +212,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - HeaderSearchViewDelegate
 extension MainViewController: HeaderSearchViewDelegate {
     func handleLeftButtonActions() {
-        print(#function)
+        delegate?.didTapMenuButton()
     }
     
     func searchLink() {
@@ -212,15 +224,17 @@ extension MainViewController: HeaderSearchViewDelegate {
 
 // MARK: - FileCellDelegate
 extension MainViewController: FileCellDelegate {
+    
     func handleFileEdit() {
         print(#function)
     }
     
     func presentFileView() {
-        let fileVC = FileViewController()
-        fileVC.modalPresentationStyle = .fullScreen
-        present(fileVC, animated: true)
+        let folderVC = FolderViewController()
+        navigationController?.pushViewController(folderVC, animated: true)
     }
     
-    
+    func addNewFolder() {
+        print(#function)
+    }
 }

@@ -10,11 +10,19 @@ import UIKit
 protocol FileCellDelegate: AnyObject {
     func handleFileEdit()
     func presentFileView()
+    func addNewFolder()
 }
 
 class FileCell: UICollectionViewCell {
     
     // MARK: - Properties
+    
+    var viewModel: FileCellViewModel? {
+        didSet {
+            showEditButtonIfFocused()
+            setEmptyCell()
+        }
+    }
     
     weak var delegate: FileCellDelegate?
     
@@ -26,6 +34,7 @@ class FileCell: UICollectionViewCell {
         button.clipsToBounds = true
         button.layer.cornerRadius = 5
         button.setDimensions(height: 28, width: 66)
+        button.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -33,7 +42,6 @@ class FileCell: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.backgroundColor = #colorLiteral(red: 0.9309713244, green: 0.9309713244, blue: 0.9309713244, alpha: 1)
         button.setDimensions(height: 190, width: 190)
-        button.clipsToBounds = true
         button.layer.cornerRadius = 15
         button.addSubview(fileButtonLabel)
         button.addTarget(self, action: #selector(fileButtonTapped), for: .touchUpInside)
@@ -74,11 +82,7 @@ class FileCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-//        contentView.addSubview(editButton)
-//        editButton.anchor(top: topAnchor)
-//        editButton.centerX(inView: self)
-//
+        
         let stack = UIStackView(arrangedSubviews: [fileButton, fileNameLabel, fileNumberLabel])
         stack.axis = .vertical
         stack.distribution = .fill
@@ -90,15 +94,8 @@ class FileCell: UICollectionViewCell {
         fileButtonLabel.centerY(inView: fileButton)
         
         stack.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 28 + 25)
-        
-        setButtonActions()
     }
     
-    override func prepareForReuse() {
-//        contentView.addSubview(editButton)
-//        editButton.anchor(top: topAnchor)
-//        editButton.centerX(inView: self)
-    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -111,13 +108,34 @@ class FileCell: UICollectionViewCell {
     }
     
     @objc func fileButtonTapped() {
-        delegate?.presentFileView()
+        if fileButtonLabel.text != " +"
+        { delegate?.presentFileView() }
+        else { delegate?.addNewFolder() }
     }
     
     // MARK: - Helper
     
-    func setButtonActions() {
-        editButton.addTarget(self, action: #selector(editButtonTapped), for: .touchUpInside)
+    private func showEditButtonIfFocused() {
+        guard viewModel?.isFocused == true else { return }
+
+        contentView.addSubview(editButton)
+        editButton.anchor(top: topAnchor)
+        editButton.centerX(inView: self)
+        needsUpdateConstraints()
+
+    }
+    
+    private func setEmptyCell() {
+        guard viewModel?.isEmpty == true else { return }
+        fileButton.backgroundColor = .clear
+        fileButtonLabel.font = UIFont.systemFont(ofSize: 60, weight: .ultraLight)
+        fileButtonLabel.text = " +"
+        fileNameLabel.text = ""
+        fileNumberLabel.text = ""
+        DispatchQueue.main.async { [weak self] in
+            self?.fileButton.addDashedBorder()
+        }
     }
     
 }
+
