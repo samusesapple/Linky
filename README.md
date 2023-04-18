@@ -32,4 +32,8 @@
 ### 문제 및 해결과정
 ---
 #### 1. Focus 된 FileCell에민 edit버튼 표시하는 법?
+* 첫번째 아이디어 <br>
+![image](https://user-images.githubusercontent.com/126672733/232680947-539d2f4e-7712-4ea9-81ab-0e63b1d09b3f.png)
 * 일단 처음 구현해보는 Carousel Effect에 대한 높은 이해도가 필요하다 생각한다. 관련 레퍼런스를 참고하여 구현해도, 100프로 자신있게 이해했다고 말할 수 없는 부분이기에 Carousel Effect에 관한 자료를 더 찾아볼 것이다.
+
+
