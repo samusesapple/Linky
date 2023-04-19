@@ -25,7 +25,7 @@
 #### 디자인 패턴
 * MVVM 패턴
 #### 사용 기술 및 오픈소스 라이브러리
-* CoreData
+* Database: Realm 
 <br>
 <br>
 
