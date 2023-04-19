@@ -31,9 +31,21 @@
 
 ### 문제 및 해결과정
 ---
-#### 1. Focus 된 FileCell에민 edit버튼 표시하는 법?
-* 첫번째 아이디어 <br>
-![image](https://user-images.githubusercontent.com/126672733/232680947-539d2f4e-7712-4ea9-81ab-0e63b1d09b3f.png)
-* 일단 처음 구현해보는 Carousel Effect에 대한 높은 이해도가 필요하다 생각한다. 관련 레퍼런스를 참고하여 구현해도, 100프로 자신있게 이해했다고 말할 수 없는 부분이기에 Carousel Effect에 관한 자료를 더 찾아볼 것이다.
+#### 1. CollectionView - 데이터를 reload하면, 다른 셀까지 빈 셀의 UI가 반영 되는 문제
+* 문제상황 : <br> 
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-19 at 18 44 10](https://user-images.githubusercontent.com/126672733/233036933-b520ec05-0ca3-4ccd-a80a-f15712706c46.gif) <br>
+<br>
+
+1. MainVC - collectionView
+<img width="550" alt="image" src="https://user-images.githubusercontent.com/126672733/233037646-8f2ccf21-9e0d-43a2-9a69-d49f71085cf8.png"> 
+<br>
+
+2. Cell VC <br> 
+<img width="353" alt="image" src="https://user-images.githubusercontent.com/126672733/233037382-fd7bbaa2-62b2-4e03-b0fc-0296f868c11a.png">
+<img width="608" alt="image" src="https://user-images.githubusercontent.com/126672733/233037128-51b23585-feef-4ad5-8d99-4010708fa73b.png">
+
+
+
+
 
 
