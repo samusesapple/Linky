@@ -27,7 +27,13 @@ class AddView: UIView {
         return label
     }()
     
-    private let folderButton = CustomButton(height: 50, color: UIColor(named: "EditButtonColor")!, titleColor: .darkGray, enabled: true)
+    private let folderButton: UIButton = {
+        let button = CustomButton(type: .system)
+        button.backgroundColor = UIColor(named: "EditButtonColor")
+        button.titleLabel?.textColor = .darkGray
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return button
+    }()
     
     private let linkInputTextField = CustomTextFieldStack(placeholder: "링크를 입력해주세요", width: 272)
     
@@ -42,8 +48,18 @@ class AddView: UIView {
         return tv
     }()
     
-    private let backButton = CustomButton(height: 45, color: (UIColor(named: "MainGreenColor")?.withAlphaComponent(0.5))!, titleColor: .black, enabled: true)
-    private let saveButton = CustomButton(height: 45, color: UIColor(named: "MainGreenColor")!, titleColor: .white, enabled: true)
+    private let backButton: UIButton = {
+        let button = CustomButton(type: .system)
+        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        button.backgroundColor = UIColor(named: "MainGreenColor")?.withAlphaComponent(0.5)
+        return button
+    }()
+    private let saveButton: UIButton = {
+        let button = CustomButton(type: .system)
+        button.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        button.titleLabel?.textColor = .white
+        return button
+    }()
     
     
     // MARK: - Lifecycle

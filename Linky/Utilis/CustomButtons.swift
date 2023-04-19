@@ -9,17 +9,24 @@ import UIKit
 
 class CustomButton: UIButton {
 
-    init(height: CGFloat, color: UIColor, titleColor: UIColor, enabled: Bool) {
-
+    override init(frame: CGRect) {
         super.init(frame: .zero)
-        backgroundColor = color
-        setupShadow(opacity: 0.2, radius: 0.3, offset: CGSize(width: 1.0, height: 1.0), color: .black)
+        
+        backgroundColor = UIColor(named: "MainGreenColor")
         layer.cornerRadius = 7
-        heightAnchor.constraint(equalToConstant: height).isActive = true
-        setTitleColor(titleColor, for: .normal)
-        titleLabel?.font = UIFont.systemFont(ofSize: 16)
-        isEnabled = enabled
+        setTitleColor(.black, for: .normal)
+        isEnabled = true
     }
+    
+    //    init(height: CGFloat, color: UIColor, titleColor: UIColor, enabled: Bool) {
+//        super.init(frame: .zero)
+//        backgroundColor = color
+//        layer.cornerRadius = 7
+//        heightAnchor.constraint(equalToConstant: height).isActive = true
+//        setTitleColor(titleColor, for: .normal)
+//        titleLabel?.font = UIFont.systemFont(ofSize: 16)
+//        isEnabled = enabled
+//    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -45,25 +52,25 @@ class AuthButton: UIButton {
     
 }
 
-class AddLinksButton: UIButton {
-    
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        
-        tintColor = .white
-        backgroundColor = UIColor(named: "MainGreenColor")
-        setDimensions(height: 65, width: 65)
-        clipsToBounds = false
-        layer.cornerRadius = 65 / 2
-        setupShadow(opacity: 0.3, radius: 0.7, offset: CGSize(width: 0.5, height: 1.0), color: .black)
-        setImage(UIImage(systemName: "plus"), for: .normal)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
+//class AddLinksButton: UIButton {
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: .zero)
+//
+//        tintColor = .white
+//        backgroundColor = UIColor(named: "MainGreenColor")
+//        setDimensions(height: 65, width: 65)
+//        clipsToBounds = false
+//        layer.cornerRadius = 65 / 2
+//        setupShadow(opacity: 0.3, radius: 0.7, offset: CGSize(width: 0.5, height: 1.0), color: .black)
+//        setImage(UIImage(systemName: "plus"), for: .normal)
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//}
 
 class AddLinkButton: UIButton {
     

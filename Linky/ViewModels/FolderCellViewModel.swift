@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FileCellViewModel {
+struct FolderCellViewModel {
     var isFocused: Bool = false
     var isEmpty: Bool = false
     

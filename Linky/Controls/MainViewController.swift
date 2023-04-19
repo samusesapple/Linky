@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     
     private let cellSize = CGSize(width: 190, height: 313)
     private var minItemSpacing: CGFloat = 20
-    private let cellCount = 8
+    private var cellCount = 8
     private var previousIndex = 0
     
     private lazy var collectionView: UICollectionView = {
@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
         // collectionView의 delegate, dataSource 세팅, cell 등록
         cv.delegate = self
         cv.dataSource = self
-        cv.register(FileCell.self, forCellWithReuseIdentifier: "fileCell")
+        cv.register(FolderCell.self, forCellWithReuseIdentifier: "folderCell")
         return cv
     }()
     
@@ -103,12 +103,12 @@ class MainViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension MainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return cellCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // collectionView에 사용할 cell dequeue하기
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fileCell", for: indexPath) as! FileCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "folderCell", for: indexPath) as! FolderCell
         //        cell.viewModel = FileCellViewModel(isFocused: true, labelText: "🎾", title: "개발", linkCount: 5)
         cell.delegate = self
         cell.contentView.backgroundColor = .white
@@ -116,8 +116,10 @@ extension MainViewController: UICollectionViewDataSource {
             cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         }
         
-        if indexPath.row == indexPath.count + 1 {
-            cell.viewModel = FileCellViewModel(isFocused: false, isEmpty: true, labelText: "🎾", title: "개발", linkCount: 5)
+        if indexPath.row == cellCount - 1 {
+            print("indexPath row: \(indexPath.row)")
+            print("indexPath count: \(indexPath.count)")
+            cell.viewModel = FolderCellViewModel(isFocused: false, isEmpty: true, labelText: "", title: "", linkCount: 5)
         }
         
         return cell
@@ -154,7 +156,6 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         
         // 여태 스크롤한 스크롤뷰의 지점 위치 / spacing 포함된 cell 넓이 -> 해당되는 셀의 index 구하기
         let index = (offSet.x + scrollView.contentInset.left) / cellWidthIncludeSpacing
-        //        print("\(offSet.x) + \(scrollView.contentInset.left) / \(cellWidthIncludeSpacing)")
         
         // index값 반올림하기
         let roundedIndex: CGFloat = round(index)
@@ -223,7 +224,7 @@ extension MainViewController: HeaderSearchViewDelegate {
 }
 
 // MARK: - FileCellDelegate
-extension MainViewController: FileCellDelegate {
+extension MainViewController: FolderCellDelegate {
     
     func handleFileEdit() {
         print(#function)
@@ -236,5 +237,6 @@ extension MainViewController: FileCellDelegate {
     
     func addNewFolder() {
         print(#function)
+        // present add folder view
     }
 }

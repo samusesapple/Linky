@@ -26,7 +26,7 @@ class HeaderSearchView: UIStackView {
     }()
     
     private var searchStack: UIStackView = {
-        let searchTextField = CustomTextFieldStack(placeholder: "전체 범위에서 찾기", width: 215)
+        let searchTextField = CustomTextFieldStack(placeholder: "링크 찾기", width: 215)
         let searchButton = UIButton(type: .system)
         searchButton.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchButton.tintColor = UIColor.black

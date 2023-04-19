@@ -14,6 +14,8 @@ final class ContainerViewController: UIViewController {
         case closed
     }
     
+    // MARK: - Properties
+    
     private var menuState: MenuState = .closed
     
     private let mainVC = MainViewController()
@@ -21,12 +23,18 @@ final class ContainerViewController: UIViewController {
     private var navVC: UINavigationController?
     private lazy var privacyVC = PrivacyViewController()
     
+    
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         addChildVC()
     }
     
+    
+    
+    // MARK: - Helpers
     
     private func addChildVC() {
         addChild(menuVC)
@@ -45,6 +53,7 @@ final class ContainerViewController: UIViewController {
     
 }
 
+// MARK: - MainViewControllerDelegate
 extension ContainerViewController: MainViewControllerDelegate {
     func didTapMenuButton() {
         toggleMenu(completion: nil)
@@ -54,7 +63,7 @@ extension ContainerViewController: MainViewControllerDelegate {
         switch menuState {
         case .closed:
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
-                self.navVC?.view.frame.origin.x = self.mainVC.view.anchorPoint.x + 290
+                self.navVC?.view.frame.origin.x = self.mainVC.view.bounds.size.width - 90
             } completion: { [weak self] done in
                 if done {
                     self?.menuState = .opened
@@ -77,6 +86,7 @@ extension ContainerViewController: MainViewControllerDelegate {
     
 }
 
+// MARK: - MenuViewControllerDelegate
 extension ContainerViewController: MenuViewControllerDelegate {
     func didSelected(menuItem: MenuViewController.MenuOptions) {
         toggleMenu { [weak self] in 

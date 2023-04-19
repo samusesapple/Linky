@@ -7,24 +7,24 @@
 
 import UIKit
 
-protocol FileCellDelegate: AnyObject {
+protocol FolderCellDelegate: AnyObject {
     func handleFileEdit()
     func presentFileView()
     func addNewFolder()
 }
 
-class FileCell: UICollectionViewCell {
+class FolderCell: UICollectionViewCell {
     
     // MARK: - Properties
     
-    var viewModel: FileCellViewModel? {
+    var viewModel: FolderCellViewModel? {
         didSet {
             showEditButtonIfFocused()
             setEmptyCell()
         }
     }
     
-    weak var delegate: FileCellDelegate?
+    weak var delegate: FolderCellDelegate?
     
     private let editButton: UIButton = {
         let button = UIButton(type: .system)
@@ -129,6 +129,7 @@ class FileCell: UICollectionViewCell {
         guard viewModel?.isEmpty == true else { return }
         fileButton.backgroundColor = .clear
         fileButtonLabel.font = UIFont.systemFont(ofSize: 60, weight: .ultraLight)
+        fileButtonLabel.textColor = .gray
         fileButtonLabel.text = " +"
         fileNameLabel.text = ""
         fileNumberLabel.text = ""

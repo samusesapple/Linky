@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13C95717BB2D3D08E18A1D21 /* Pods_Linky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D685BD170EC29B4230F78D8A /* Pods_Linky.framework */; };
+		F12A8BCB29EE98B30047F0A7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BCA29EE98B30047F0A7 /* Data.swift */; };
+		F12A8BD129EEA2590047F0A7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BD029EEA2590047F0A7 /* NetworkManager.swift */; };
 		F142B0CA29EBBDCB00E41F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */; };
 		F142B0CC29EBBDCB00E41F22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */; };
 		F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */; };
@@ -15,20 +18,25 @@
 		F142B0E329EBC21500E41F22 /* HeaderSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E229EBC21500E41F22 /* HeaderSearchView.swift */; };
 		F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E629EBCC3700E41F22 /* CustomTextField.swift */; };
 		F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E829EBCCA400E41F22 /* Extensions.swift */; };
-		F142B0F129EC293200E41F22 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F029EC293200E41F22 /* FileCell.swift */; };
+		F142B0F129EC293200E41F22 /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F029EC293200E41F22 /* FolderCell.swift */; };
 		F142B0F829ECDF7B00E41F22 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F729ECDF7B00E41F22 /* AddView.swift */; };
 		F142B0FA29ECE13000E41F22 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F929ECE13000E41F22 /* CustomButtons.swift */; };
 		F142B0FC29ECE3EA00E41F22 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */; };
 		F142B10129ED05D900E41F22 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10029ED05D900E41F22 /* FolderViewController.swift */; };
 		F142B10329ED0A6200E41F22 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10229ED0A6200E41F22 /* AuthView.swift */; };
 		F142B10529ED0C0C00E41F22 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10429ED0C0C00E41F22 /* AuthViewController.swift */; };
-		F142B10729EE54A900E41F22 /* FileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10629EE54A900E41F22 /* FileCellViewModel.swift */; };
+		F142B10729EE54A900E41F22 /* FolderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10629EE54A900E41F22 /* FolderCellViewModel.swift */; };
 		F142B10929EE6FA000E41F22 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10829EE6FA000E41F22 /* ContainerViewController.swift */; };
 		F142B10B29EE706000E41F22 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10A29EE706000E41F22 /* MenuViewController.swift */; };
 		F142B10D29EE784F00E41F22 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B7663156D071499EE94F56A2 /* Pods-Linky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Linky.release.xcconfig"; path = "Target Support Files/Pods-Linky/Pods-Linky.release.xcconfig"; sourceTree = "<group>"; };
+		BAAE7613A0A96D810E02468B /* Pods-Linky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Linky.debug.xcconfig"; path = "Target Support Files/Pods-Linky/Pods-Linky.debug.xcconfig"; sourceTree = "<group>"; };
+		D685BD170EC29B4230F78D8A /* Pods_Linky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Linky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F12A8BCA29EE98B30047F0A7 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		F12A8BD029EEA2590047F0A7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F142B0C629EBBDCB00E41F22 /* Linky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,14 +47,14 @@
 		F142B0E229EBC21500E41F22 /* HeaderSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSearchView.swift; sourceTree = "<group>"; };
 		F142B0E629EBCC3700E41F22 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F142B0E829EBCCA400E41F22 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		F142B0F029EC293200E41F22 /* FileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
+		F142B0F029EC293200E41F22 /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
 		F142B0F729ECDF7B00E41F22 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		F142B0F929ECE13000E41F22 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		F142B0FB29ECE3EA00E41F22 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		F142B10029ED05D900E41F22 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
 		F142B10229ED0A6200E41F22 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		F142B10429ED0C0C00E41F22 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		F142B10629EE54A900E41F22 /* FileCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCellViewModel.swift; sourceTree = "<group>"; };
+		F142B10629EE54A900E41F22 /* FolderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCellViewModel.swift; sourceTree = "<group>"; };
 		F142B10829EE6FA000E41F22 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		F142B10A29EE706000E41F22 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
@@ -57,17 +65,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13C95717BB2D3D08E18A1D21 /* Pods_Linky.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4047F1F75552B5B6DCE695D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D685BD170EC29B4230F78D8A /* Pods_Linky.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3DB1E6F55D97D359A59584C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BAAE7613A0A96D810E02468B /* Pods-Linky.debug.xcconfig */,
+				B7663156D071499EE94F56A2 /* Pods-Linky.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F12A8BCF29EEA2480047F0A7 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F12A8BD029EEA2590047F0A7 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		F142B0BD29EBBDCB00E41F22 = {
 			isa = PBXGroup;
 			children = (
 				F142B0C829EBBDCB00E41F22 /* Linky */,
 				F142B0C729EBBDCB00E41F22 /* Products */,
+				A3DB1E6F55D97D359A59584C /* Pods */,
+				4047F1F75552B5B6DCE695D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +120,7 @@
 			children = (
 				F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */,
 				F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */,
+				F12A8BCF29EEA2480047F0A7 /* Network */,
 				F142B0DD29EBBE8300E41F22 /* Models */,
 				F142B0DF29EBBE9700E41F22 /* Views */,
 				F142B0DE29EBBE8D00E41F22 /* ViewModels */,
@@ -99,6 +136,7 @@
 		F142B0DD29EBBE8300E41F22 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F12A8BCA29EE98B30047F0A7 /* Data.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -106,7 +144,7 @@
 		F142B0DE29EBBE8D00E41F22 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				F142B10629EE54A900E41F22 /* FileCellViewModel.swift */,
+				F142B10629EE54A900E41F22 /* FolderCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -116,7 +154,7 @@
 			children = (
 				F142B10229ED0A6200E41F22 /* AuthView.swift */,
 				F142B0E229EBC21500E41F22 /* HeaderSearchView.swift */,
-				F142B0F029EC293200E41F22 /* FileCell.swift */,
+				F142B0F029EC293200E41F22 /* FolderCell.swift */,
 				F142B0F729ECDF7B00E41F22 /* AddView.swift */,
 			);
 			path = Views;
@@ -161,9 +199,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F142B0DA29EBBDCC00E41F22 /* Build configuration list for PBXNativeTarget "Linky" */;
 			buildPhases = (
+				FC11A475550A698FEBFB7F4B /* [CP] Check Pods Manifest.lock */,
 				F142B0C229EBBDCB00E41F22 /* Sources */,
 				F142B0C329EBBDCB00E41F22 /* Frameworks */,
 				F142B0C429EBBDCB00E41F22 /* Resources */,
+				B7A9E2F053C7F9EDE4E52425 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -219,6 +259,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B7A9E2F053C7F9EDE4E52425 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Linky/Pods-Linky-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Linky/Pods-Linky-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Linky/Pods-Linky-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC11A475550A698FEBFB7F4B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Linky-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F142B0C229EBBDCB00E41F22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -227,19 +309,21 @@
 				F142B10329ED0A6200E41F22 /* AuthView.swift in Sources */,
 				F142B0E329EBC21500E41F22 /* HeaderSearchView.swift in Sources */,
 				F142B0FA29ECE13000E41F22 /* CustomButtons.swift in Sources */,
-				F142B0F129EC293200E41F22 /* FileCell.swift in Sources */,
+				F142B0F129EC293200E41F22 /* FolderCell.swift in Sources */,
 				F142B0FC29ECE3EA00E41F22 /* AddViewController.swift in Sources */,
 				F142B0F829ECDF7B00E41F22 /* AddView.swift in Sources */,
 				F142B10529ED0C0C00E41F22 /* AuthViewController.swift in Sources */,
+				F12A8BCB29EE98B30047F0A7 /* Data.swift in Sources */,
 				F142B10B29EE706000E41F22 /* MenuViewController.swift in Sources */,
 				F142B10929EE6FA000E41F22 /* ContainerViewController.swift in Sources */,
 				F142B10129ED05D900E41F22 /* FolderViewController.swift in Sources */,
-				F142B10729EE54A900E41F22 /* FileCellViewModel.swift in Sources */,
+				F142B10729EE54A900E41F22 /* FolderCellViewModel.swift in Sources */,
 				F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */,
 				F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */,
 				F142B0CA29EBBDCB00E41F22 /* AppDelegate.swift in Sources */,
 				F142B10D29EE784F00E41F22 /* PrivacyViewController.swift in Sources */,
 				F142B0CC29EBBDCB00E41F22 /* SceneDelegate.swift in Sources */,
+				F12A8BD129EEA2590047F0A7 /* NetworkManager.swift in Sources */,
 				F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,6 +458,7 @@
 		};
 		F142B0DB29EBBDCC00E41F22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BAAE7613A0A96D810E02468B /* Pods-Linky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -404,6 +489,7 @@
 		};
 		F142B0DC29EBBDCC00E41F22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7663156D071499EE94F56A2 /* Pods-Linky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
