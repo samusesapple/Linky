@@ -23,6 +23,7 @@ struct AddLinkViewModel {
         NetworkManager.shared.createLink(newLink: link)
     }
     
+    
 }
 
 

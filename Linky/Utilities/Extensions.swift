@@ -133,13 +133,13 @@ extension UIViewController {
     }
 }
 
-extension UITableViewCell {
+extension UICollectionViewCell {
     func shake() {
         let shakeAnimation = CABasicAnimation(keyPath: "transform.rotation")
         shakeAnimation.duration = 0.05
         shakeAnimation.repeatCount = 2
         shakeAnimation.autoreverses = true
-        let startAngle: Float = (-2) * 3.14159/180
+        let startAngle: Float = (-2) * 1.14159/180
         let stopAngle = -startAngle
         shakeAnimation.fromValue = NSNumber(value: startAngle as Float)
         shakeAnimation.toValue = NSNumber(value: 3 * stopAngle as Float)

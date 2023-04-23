@@ -101,8 +101,7 @@ class FolderCell: UICollectionViewCell {
     @objc func longPressed(sender: UILongPressGestureRecognizer) {
         guard fileButton.backgroundColor != UIColor.clear else { return }
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-        
-        guard let folderID = viewModel?.folder?.folderID else { return }
+        guard (viewModel?.folder?.folderID) != nil else { return }
         delegate?.presentAlertView(cell: self)
     }
     

@@ -17,8 +17,6 @@ class FolderViewController: UIViewController {
     private var viewModel = FolderViewViewModel()
     weak var delegate: FolderViewControllerDelegate?
     
-    private let headerView = HeaderSearchView(icon: UIImage(systemName: "chevron.backward")!)
-    
     private let alignmentButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("과거순 ▲", for: .normal)
@@ -42,6 +40,10 @@ class FolderViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    convenience init() {
+        self.init()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -50,11 +52,15 @@ class FolderViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        view.addSubview(headerView)
-        headerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 20)
+        navigationController?.navigationBar.tintColor = .darkGray
+        let searchController = UISearchController(searchResultsController: SearchResultViewController())
+        self.navigationItem.searchController = searchController
+        self.navigationItem.searchController?.searchBar.placeholder = "링크 찾기"
+        searchController.searchResultsUpdater = self
+        
         
         view.addSubview(tableView)
-        tableView.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 25, paddingBottom: 25, paddingRight: 25)
+        tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 25, paddingBottom: 25, paddingRight: 25)
 
         view.addSubview(alignmentButton)
         alignmentButton.anchor(bottom: tableView.topAnchor, right: tableView.rightAnchor, paddingBottom: 13)
@@ -64,17 +70,16 @@ class FolderViewController: UIViewController {
         footerAddButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 22)
         
         setTableView()
-        configureUIWithData()
         setSwipeActions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        headerView.delegate = self
+        
     }
     
     // MARK: - Actions
     @objc func alignmentButtonTapped() {
-        guard let link = viewModel.link else { return }
+        guard let link = viewModel.links else { return }
         if alignmentButton.titleLabel?.text == "최신순 ▼" {
             viewModel.sortLinkCurrentLast(link: link)
             alignmentButton.setTitle("과거순 ▲", for: .normal)
@@ -124,14 +129,6 @@ class FolderViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func configureUIWithData() {
-        let stack = headerView.subviews[1] as! UIStackView
-        let searchTextField = stack.arrangedSubviews[0] as! CustomTextFieldStack
-        let tf = searchTextField.subviews[0] as! UITextField
-        
-        tf.placeholder = "'\(viewModel.folderIcon!) \(viewModel.folderTitle ?? "")' 에서 찾기"
-    }
-    
     private func setSwipeActions() {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
         swipeRight.direction = .right
@@ -143,7 +140,7 @@ class FolderViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension FolderViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.link?.count ?? 0
+        return viewModel.links?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -158,7 +155,7 @@ extension FolderViewController: UITableViewDataSource {
         cell.contentView.clipsToBounds = true
         cell.contentView.layer.cornerRadius = 10
 
-        cell.viewModel = LinkCellViewModel(link: (viewModel.link?[indexPath.row])!)
+        cell.viewModel = LinkCellViewModel(link: (viewModel.links?[indexPath.row])!)
         return cell
     }
     
@@ -171,25 +168,10 @@ extension FolderViewController: UITableViewDelegate {
         let addVC = AddLinkViewController()
         addVC.delegate = self
         addVC.viewModel.folderTitle = viewModel.folderTitle
-        addVC.viewModel.linkData = viewModel.link?[indexPath.row]
+        addVC.viewModel.linkData = viewModel.links?[indexPath.row]
         present(addVC, animated: true)
         
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-}
-
-
-
-// MARK: - HeaderSearchViewDelegate
-extension FolderViewController: HeaderSearchViewDelegate {
-    func handleLeftButtonActions() {
-        navigationController?.popViewController(animated: true)
-        delegate?.needsToUpdate()
-    }
-    
-    func searchLink() {
-        print("FolderVC - search button tapped")
     }
     
 }
@@ -202,6 +184,17 @@ extension FolderViewController: AddLinkViewControllerDelegate {
         } else { controller.viewModel.createLink(link: link) }
         
         tableView.reloadData()
+    }
+    
+}
+
+// MARK: - UISearchResultsUpdating
+extension FolderViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text?.lowercased() else { return }
+        let resultVC = searchController.searchResultsController as! SearchResultViewController
+        resultVC.viewModel.getLinks(in: viewModel.folder!.folderID, with: text)
     }
     
 }

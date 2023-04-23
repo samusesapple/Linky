@@ -19,7 +19,6 @@ class MainViewController: UIViewController {
     
     weak var delegate: MainViewControllerDelegate?
     
-    let headerView = HeaderSearchView(icon: UIImage(systemName: "text.justify")!)
     private let footerAddButton = AddLinkButton(type: .system)
     
     private let cellSize = CGSize(width: 190, height: 313)
@@ -50,7 +49,15 @@ class MainViewController: UIViewController {
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         view.backgroundColor = .white
-        navigationController?.isNavigationBarHidden = true
+        
+        // set navigationBar
+        let searchController = UISearchController(searchResultsController: SearchResultViewController())
+        self.navigationItem.searchController = searchController
+        self.navigationItem.searchController?.searchBar.placeholder = "링크 찾기"
+        navigationItem.title = ""
+        navigationController?.navigationBar.tintColor = .darkGray
+        searchController.searchResultsUpdater = self
+        
         configureUI()
         setupCollectionView()
         
@@ -59,7 +66,7 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        headerView.delegate = self
+        //        headerView.delegate = self
     }
     
     // MARK: - Actions
@@ -69,6 +76,9 @@ class MainViewController: UIViewController {
         present(addVC, animated: true)
     }
     
+    @objc func menuButtonTapped() {
+        
+    }
     
     // MARK: - Helpers
     func setDefaultMenu() {
@@ -80,9 +90,6 @@ class MainViewController: UIViewController {
     }
     
     func configureUI() {
-        view.addSubview(headerView)
-        headerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 20)
-        
         view.addSubview(footerAddButton)
         footerAddButton.centerX(inView: view)
         footerAddButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 22)
@@ -90,9 +97,9 @@ class MainViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 150, height: 313)
+        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 130, height: 313)
         collectionView.centerX(inView: view)
-
+        
     }
     
     func setupCollectionView() {
@@ -144,7 +151,7 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegate {
     // 셀 선택되면 실행되는 함수
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("folder cell selected")
+        
     }
 }
 
@@ -223,37 +230,39 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
     
 }
 
-// MARK: - HeaderSearchViewDelegate
-extension MainViewController: HeaderSearchViewDelegate {
-    func handleLeftButtonActions() {
-        delegate?.didTapMenuButton()
-    }
-    
-    func searchLink() {
-        print(#function)
-    }
-    
-    
-}
+
 
 // MARK: - FileCellDelegate
 extension MainViewController: FolderCellDelegate {
     func presentAlertView(cell: FolderCell) {
+        cell.shake()
         let alert = UIAlertController(title: "폴더 삭제시, 해당되는 링크 또한 삭제됩니다.", message: nil, preferredStyle: .actionSheet)
         let delete = UIAlertAction(title: "폴더 삭제", style: .destructive) { [weak self] action in
             guard let folderID = cell.viewModel?.folder?.folderID else { return }
             self?.viewModel.deleteFolder(folderID: folderID)
             DispatchQueue.main.async { [weak self] in
                 self?.resetCollectionView()
+                cell.stopShaking()
             }
         }
         
         let cancel = UIAlertAction(title: "취소", style: .cancel) { action in
+            cell.stopShaking()
         }
         
         alert.addAction(delete)
         alert.addAction(cancel)
-        self.present(alert, animated: true, completion: nil)
+        
+        if self.presentedViewController == nil {
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+            self.dismiss(animated: false) {
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+        }
+        
     }
     
     func presentFolderView(folder: Folder) {
@@ -295,5 +304,15 @@ extension MainViewController: FolderViewControllerDelegate {
         print(#function)
         resetCollectionView()
     }
+    
+}
 
+extension MainViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text?.lowercased() else { return }
+        let resultVC = searchController.searchResultsController as! SearchResultViewController
+        resultVC.viewModel.getLinks(with: text)
+    }
+    
 }

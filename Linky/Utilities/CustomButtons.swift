@@ -24,24 +24,6 @@ class CustomButton: UIButton {
 
 }
 
-class AuthButton: UIButton {
-
-    override init(frame: CGRect) {
-        super.init(frame: .zero)
-        
-        backgroundColor = UIColor(named: "MainGreenColor")?.withAlphaComponent(0.8)
-        layer.cornerRadius = 15
-        heightAnchor.constraint(equalToConstant: 45).isActive = true
-        setTitleColor(.white, for: .normal)
-        isEnabled = false
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
 class AddLinkButton: UIButton {
     
     override init(frame: CGRect) {
