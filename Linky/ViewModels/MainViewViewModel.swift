@@ -14,10 +14,6 @@ struct MainViewViewModel {
         self.folderArray = NetworkManager.shared.getFolders()
     }
     
-    func createNewLink(link: Link) {
-        NetworkManager.shared.createLink(newLink: link)
-    }
-    
     mutating func createNewFolder(folder: Folder) {
         NetworkManager.shared.createFolder(newFolder: folder)
         self.folderArray.append(folder)

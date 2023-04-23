@@ -41,6 +41,12 @@ final class NetworkManager {
         return folderArray
     }
     
+//    func getFolderTitle(with folderID: String) -> String {
+//        folderArray = realm.objects(Folder.self).map { $0 as Folder }
+//        let folder = 
+//        return folder?.title ?? "!!"
+//    }
+    
     func getLinks() -> [Link] {
         linkArray = realm.objects(Link.self).map { $0 as Link }
         return linkArray

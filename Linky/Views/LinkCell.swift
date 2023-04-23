@@ -100,11 +100,8 @@ class LinkCell: UITableViewCell {
     // MARK: - Helpers
     
     func configureUI() {
-//
-//        let image = UIImageView()
-//        image.kf.setImage(with: viewModel.linkURL)
+        // 메타데이터 받아서 그 안의 이미지 캐싱하여 업로드 필요
         
-//        imageButton.setImage(image.image, for: .normal)
         linkTitleLabel.text = viewModel.title
         linkDescriptionLabel.text = viewModel.linkURLString
     }

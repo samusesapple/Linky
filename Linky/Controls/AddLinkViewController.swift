@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddLinkViewControllerDelegate: AnyObject {
-    func updateLink(link: Link)
+    func updateLink(controller: AddLinkViewController, link: Link)
 }
 
 class AddLinkViewController: UIViewController {
@@ -35,27 +35,55 @@ class AddLinkViewController: UIViewController {
         let button = CustomButton(type: .system)
         button.backgroundColor = UIColor(named: "EditButtonColor")
         button.titleLabel?.textColor = .darkGray
-        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        button.setDimensions(height: 50, width: 272)
         return button
     }()
     
-    private let linkInputTextField = CustomTextFieldStack(placeholder: "링크를 입력해주세요.", width: 272)
+    private let linkShareButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "link"), for: .normal)
+        button.setDimensions(height: 23, width: 23)
+        button.tintColor = UIColor(named: "MainGreenColor")
+        return button
+    }()
     
     private let memoTextField: UITextField = {
-        let tv = UITextField()
+        let tv = CustomTextField(placeholder: "(선택) 표시할 제목을 입력해주세요.")
         let space = UIView()
         space.setDimensions(height: 38, width: 13)
         tv.leftView = space
-        tv.leftViewMode = .always
         tv.setDimensions(height: 50, width: 272)
         tv.layer.borderWidth = 1
         tv.layer.borderColor = UIColor.gray.cgColor
         tv.clipsToBounds = true
-        tv.layer.cornerRadius = 10
-        tv.placeholder = "(선택) 메모를 입력해주세요."
-        tv.clearButtonMode = .whileEditing
-        tv.font = UIFont.systemFont(ofSize: 16)
         return tv
+    }()
+    
+    private let linkInputTextView: UIView = {
+        let view = UIView()
+        view.setDimensions(height: 120, width: 272)
+        view.layer.borderColor = UIColor.gray.cgColor
+        view.layer.borderWidth = 1
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 15
+        view.backgroundColor = .clear
+        
+       let tv = UITextView()
+        tv.textColor = .black
+        tv.font = UIFont.systemFont(ofSize: 16)
+        tv.textAlignment = .left
+        tv.backgroundColor = .clear
+        tv.autocapitalizationType = .none
+        tv.autocorrectionType = .no
+        tv.spellCheckingType = .no
+        tv.text = "복사한 링크를 입력해주세요."
+        tv.clearsOnInsertion = true
+        view.addSubview(tv)
+        tv.setDimensions(height: 102, width: 272 - 24)
+        tv.centerX(inView: view)
+        tv.centerY(inView: view)
+        tv.isEditable = true
+        return view
     }()
     
     private let backButton: UIButton = {
@@ -84,20 +112,27 @@ class AddLinkViewController: UIViewController {
         view.addSubview(viewTitleLabel)
         viewTitleLabel.anchor(top: view.topAnchor, paddingTop: 30)
         viewTitleLabel.centerX(inView: view)
-        
-        let textField = linkInputTextField.subviews[0] as! UITextField
-        textField.delegate = self
+        // set Delegate
+        let linkTextView = linkInputTextView.subviews[0] as! UITextView
+        linkTextView.delegate = self
+        memoTextField.delegate = self
         
         folderButton.setTitle("기본 폴더", for: .normal)
-        memoTextField.delegate = self
-        let viewStack = UIStackView(arrangedSubviews: [folderButton, linkInputTextField, memoTextField])
+        view.addSubview(folderButton)
+        folderButton.anchor(top: viewTitleLabel.bottomAnchor, paddingTop: 40)
+        folderButton.centerX(inView: view)
+        
+        let viewStack = UIStackView(arrangedSubviews: [linkInputTextView, memoTextField])
         viewStack.axis = .vertical
-        viewStack.spacing = 60
+        viewStack.spacing = 30
         viewStack.distribution = .equalSpacing
         
         view.addSubview(viewStack)
-        viewStack.anchor(top: viewTitleLabel.bottomAnchor, paddingTop: 45)
+        viewStack.anchor(top: folderButton.bottomAnchor, paddingTop: 65)
         viewStack.centerX(inView: view)
+        
+        view.addSubview(linkShareButton)
+        linkShareButton.anchor(bottom: viewStack.topAnchor, right: viewStack.rightAnchor, paddingBottom: 7)
         
         backButton.setTitle("취소", for: .normal)
         saveButton.setTitle("저장", for: .normal)
@@ -126,37 +161,42 @@ class AddLinkViewController: UIViewController {
     }
     
     @objc func saveButtonTapped() {
-        let linkField = linkInputTextField.subviews[0] as! UITextField
+        guard let linkTextView = linkInputTextView.subviews[0] as? UITextView else { return }
+        guard linkTextView.text.count > 17 else { return }
         let folderID = viewModel.folderArray.filter { $0.title == folderButton.titleLabel?.text }.first?.folderID
         let linkData = Link()
         linkData.date = Date()
         linkData.folderID = folderID
         linkData.memo = memoTextField.text
-        linkData.urlString = linkField.text
-        
-        delegate?.updateLink(link: linkData)
+        linkData.urlString = linkTextView.text
+        delegate?.updateLink(controller: self, link: linkData)
         self.dismiss(animated: true)
+    }
+    
+    @objc func linkShareButtonTapped() {
+        let linkTextView = linkInputTextView.subviews[0] as! UITextView
+        UIPasteboard.general.string = linkTextView.text
     }
     
     // MARK: - Helpers
     func configureUI() {
         guard let data = viewModel.linkData else { return }
-        let linkField = linkInputTextField.subviews[0] as! UITextField
         viewTitleLabel.text = "링크 수정"
-        linkField.isEnabled = false
-        linkField.text = data.urlString
+        guard let linkTextView = linkInputTextView.subviews[0] as? UITextView else { return }
+        linkTextView.isEditable = false
+        linkTextView.text = data.urlString
         memoTextField.text = data.memo
-        
-        
-        guard let title = viewModel.folderTitle else { return }
-        folderButton.setTitle(title, for: .normal)
-        print(#function)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.folderButton.setTitle(self?.viewModel.folderTitle, for: .normal)
+        }
     }
     
     func setButtonActions() {
         folderButton.addTarget(self, action: #selector(folderButtonTapped), for: .touchUpInside)
         backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        linkShareButton.addTarget(self, action: #selector(linkShareButtonTapped), for: .touchUpInside)
     }
     
     func setFolderPicker() {
@@ -164,7 +204,7 @@ class AddLinkViewController: UIViewController {
         view.addSubview(folderPicker)
         folderPicker.delegate = self
         folderPicker.dataSource = self
-        folderPicker.anchor(top: folderButton.bottomAnchor, bottom: linkInputTextField.topAnchor, width: folderButton.frame.width, height: 100)
+        folderPicker.anchor(top: memoTextField.bottomAnchor, width: folderButton.frame.width, height: 120)
         folderPicker.centerX(inView: view)
     }
     
@@ -177,13 +217,12 @@ extension AddLinkViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30
+        return 35
     }
 
 }
 // MARK: - UIPickerViewDelegate
 extension AddLinkViewController: UIPickerViewDelegate {
-    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         viewModel.folderNameArray.count
     }
@@ -198,9 +237,41 @@ extension AddLinkViewController: UIPickerViewDelegate {
     }
 }
 
+// MARK: - UITextFieldDelegate
 extension AddLinkViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+}
+
+// MARK: - UITextViewDelegate
+extension AddLinkViewController: UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == "복사한 링크를 입력해주세요." {
+            textView.text = nil
+            textView.textColor = .lightGray
+        } else {
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.text = "복사한 링크를 입력해주세요."
+            textView.textColor = .lightGray
+        } else {
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text?.count == 1 {
+            if textView.text?.first == " " {
+                textView.text = ""
+                return
+            }
+        }
+        textView.textColor = .black
     }
 }

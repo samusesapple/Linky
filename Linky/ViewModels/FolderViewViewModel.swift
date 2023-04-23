@@ -14,7 +14,6 @@ struct FolderViewViewModel {
     var folderIcon: String?
     var folderTitle: String?
     var tableViewLink: [Link]?
-    
     var link: [Link]?
     
     init(folder: Folder) {
@@ -25,9 +24,11 @@ struct FolderViewViewModel {
     }
     
     init() { }
+
     
-    func updateLink(link: Link) {
+    mutating func updateLink(link: Link) {
         NetworkManager.shared.updateLinkData(to: link)
+        self.link = NetworkManager.shared.getLinks(with: folderID!)
     }
     
     mutating func sortLinkCurrentLast(link: [Link]) {

@@ -113,7 +113,7 @@ class AddFolderAlertController: UIViewController {
         folder.title = titleTextField.text
         
         delegate?.createNewFolder(newFolder: folder)
-        
+
         self.dismiss(animated: true)
     }
     
@@ -181,6 +181,14 @@ extension AddFolderAlertController: UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidChange(_ textField: UITextView) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+    }
     
     
 }

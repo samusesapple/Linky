@@ -20,7 +20,7 @@ class MainViewController: UIViewController {
     weak var delegate: MainViewControllerDelegate?
     
     let headerView = HeaderSearchView(icon: UIImage(systemName: "text.justify")!)
-    private let footerAddButton = AddLinkButton()
+    private let footerAddButton = AddLinkButton(type: .system)
     
     private let cellSize = CGSize(width: 190, height: 313)
     private var minItemSpacing: CGFloat = 20
@@ -54,7 +54,7 @@ class MainViewController: UIViewController {
         configureUI()
         setupCollectionView()
         
-        footerAddButton.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        footerAddButton.addTarget(self, action: #selector(addLinkButtonTapped), for: .touchUpInside)
         setDefaultMenu()
     }
     
@@ -63,7 +63,7 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc func addButtonTapped() {
+    @objc func addLinkButtonTapped() {
         let addVC = AddLinkViewController()
         addVC.delegate = self
         present(addVC, animated: true)
@@ -283,8 +283,8 @@ extension MainViewController: AddFolderAlertControllerDelegate {
 
 // MARK: - AddLinkDelegate
 extension MainViewController: AddLinkViewControllerDelegate {
-    func updateLink(link: Link) {
-        viewModel.createNewLink(link: link)
+    func updateLink(controller: AddLinkViewController, link: Link) {
+        controller.viewModel.createLink(link: link)
         resetCollectionView()
     }
     
@@ -295,5 +295,5 @@ extension MainViewController: FolderViewControllerDelegate {
         print(#function)
         resetCollectionView()
     }
-    
+
 }

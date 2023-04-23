@@ -30,7 +30,11 @@ class FolderViewController: UIViewController {
     }()
     
     private lazy var tableView = UITableView()
-    private let footerAddButton = AddLinkButton()
+    private let footerAddButton: UIButton = {
+        let button = AddLinkButton(type: .system)
+        button.addTarget(self, action: #selector(addLinkButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: - Lifecycle
     init(folder: Folder) {
@@ -83,6 +87,12 @@ class FolderViewController: UIViewController {
             alignmentButton.setTitle("최신순 ▼", for: .normal)
         }
         tableView.reloadData()
+    }
+    
+    @objc func addLinkButtonTapped() {
+        let addVC = AddLinkViewController()
+        addVC.delegate = self
+        present(addVC, animated: true)
     }
     
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
@@ -158,10 +168,9 @@ extension FolderViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension FolderViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let cell = tableView.cellForRow(at: indexPath) as! LinkCell
         let addVC = AddLinkViewController()
         addVC.delegate = self
-        addVC.viewModel.folderTitle = viewModel.folder?.title
+        addVC.viewModel.folderTitle = viewModel.folderTitle
         addVC.viewModel.linkData = viewModel.link?[indexPath.row]
         present(addVC, animated: true)
         
@@ -187,8 +196,11 @@ extension FolderViewController: HeaderSearchViewDelegate {
 
 // MARK: - AddLinkViewControllerDelegate
 extension FolderViewController: AddLinkViewControllerDelegate {
-    func updateLink(link: Link) {
-        viewModel.updateLink(link: link)
+    func updateLink(controller: AddLinkViewController, link: Link) {
+        if link.urlString == controller.viewModel.linkData?.urlString {
+            viewModel.updateLink(link: link)
+        } else { controller.viewModel.createLink(link: link) }
+        
         tableView.reloadData()
     }
     

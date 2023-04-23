@@ -133,7 +133,7 @@
 				F142B0DF29EBBE9700E41F22 /* Views */,
 				F142B0DE29EBBE8D00E41F22 /* ViewModels */,
 				F142B0F629EC3D6F00E41F22 /* Controls */,
-				F142B0E529EBCBA500E41F22 /* Utilis */,
+				F142B0E529EBCBA500E41F22 /* Utilities */,
 				F142B0D229EBBDCC00E41F22 /* Assets.xcassets */,
 				F142B0D429EBBDCC00E41F22 /* LaunchScreen.storyboard */,
 				F142B0D729EBBDCC00E41F22 /* Info.plist */,
@@ -171,14 +171,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F142B0E529EBCBA500E41F22 /* Utilis */ = {
+		F142B0E529EBCBA500E41F22 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 				F142B0E829EBCCA400E41F22 /* Extensions.swift */,
 				F142B0E629EBCC3700E41F22 /* CustomTextField.swift */,
 				F142B0F929ECE13000E41F22 /* CustomButtons.swift */,
 			);
-			path = Utilis;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		F142B0F629EC3D6F00E41F22 /* Controls */ = {

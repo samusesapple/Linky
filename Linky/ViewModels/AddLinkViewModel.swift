@@ -18,6 +18,11 @@ struct AddLinkViewModel {
     var folderNameArray: [String] {
         return folderArray.map { $0.title! }
     }
+    
+    func createLink(link: Link) {
+        NetworkManager.shared.createLink(newLink: link)
+    }
+    
 }
 
 
