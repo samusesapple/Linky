@@ -9,11 +9,9 @@ import Foundation
 
 struct FolderViewViewModel {
     
-    var folder: Folder?
     var folderID: String?
     var folderIcon: String?
     var folderTitle: String?
-    var tableViewLink: [Link]?
     var links: [Link]?
     
     init(folder: Folder) {
@@ -53,6 +51,7 @@ struct FolderViewViewModel {
     
     mutating func getLinks(in folder: String, with text: String) {
        let result = NetworkManager.shared.getLinks().filter{ ($0.urlString?.contains(text) ?? $0.memo?.contains(text)) ?? false }
-        self.links = result.filter { $0.folderID == folderID }
+        self.links = result.filter { $0.folderID == folder }
+        print(folder)
     }
 }

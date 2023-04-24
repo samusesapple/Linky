@@ -53,8 +53,7 @@ class MainViewController: UIViewController {
         // set navigationBar
         let searchController = UISearchController(searchResultsController: SearchResultViewController())
         self.navigationItem.searchController = searchController
-        self.navigationItem.searchController?.searchBar.placeholder = "링크 찾기"
-        navigationItem.title = ""
+        self.navigationItem.searchController?.searchBar.placeholder = "전체에서 링크 찾기"
         navigationController?.navigationBar.tintColor = .darkGray
         searchController.searchResultsUpdater = self
         
@@ -97,9 +96,8 @@ class MainViewController: UIViewController {
         view.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 130, height: 313)
-        collectionView.centerX(inView: view)
-        
+        collectionView.setDimensions(height: 313, width: view.frame.width)
+        collectionView.centerInSuperview()        
     }
     
     func setupCollectionView() {

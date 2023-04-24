@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         let mainVC = UINavigationController(rootViewController: MainViewController())
-        _ = UINavigationController(rootViewController: FolderViewController())
+        _ = UINavigationController(rootViewController: FolderViewController(folder: Folder()))
         
         window.rootViewController = mainVC 
         window.makeKeyAndVisible()

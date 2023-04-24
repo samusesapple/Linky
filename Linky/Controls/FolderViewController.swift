@@ -39,10 +39,7 @@ class FolderViewController: UIViewController {
         self.viewModel = FolderViewViewModel(folder: folder)
         super.init(nibName: nil, bundle: nil)
     }
-    
-    convenience init() {
-        self.init()
-    }
+
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -52,10 +49,24 @@ class FolderViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         
+        guard let icon = viewModel.folderIcon else { return }
+        guard let title = viewModel.folderTitle else { return }
+        
+//        let searchBar = UISearchBar()
+//        self.navigationItem.title = "\(icon)"
+//        navigationItem.titleView?.tintColor = .black
+//        navigationItem.titleView = searchBar
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+        
+//        navigationItem.searchController?.searchResultsUpdater = self
         navigationController?.navigationBar.tintColor = .darkGray
+        navigationItem.hidesSearchBarWhenScrolling = false
         let searchController = UISearchController(searchResultsController: SearchResultViewController())
+        searchController.searchBar.layer.cornerRadius = 50
         self.navigationItem.searchController = searchController
-        self.navigationItem.searchController?.searchBar.placeholder = "링크 찾기"
+        
+        self.navigationItem.searchController?.searchBar.placeholder = "'\(icon) \(title)'에서 찾기"
+        searchController.hideKeyboardWhenTappedAround()
         searchController.searchResultsUpdater = self
         
         
@@ -70,12 +81,14 @@ class FolderViewController: UIViewController {
         footerAddButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 22)
         
         setTableView()
-        setSwipeActions()
+      //  setSwipeActions()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+//    override func viewWillLayoutSubviews() {
+//        DispatchQueue.main.async {
+//            view.set
+//        }
+//    }
     
     // MARK: - Actions
     @objc func alignmentButtonTapped() {
@@ -99,23 +112,23 @@ class FolderViewController: UIViewController {
         addVC.delegate = self
         present(addVC, animated: true)
     }
-    
-    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case .right:
-                self.navigationController?.popViewController(animated: true)
-            case .down:
-                print("Swiped down")
-            case .left:
-                print("Swiped left")
-            case .up:
-                print("Swiped up")
-            default:
-                break
-            }
-        }
-    }
+    // 네비게이션바 쓰면 필요없음
+//    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+//            switch swipeGesture.direction {
+//            case .right:
+//                self.navigationController?.popViewController(animated: true)
+//            case .down:
+//                print("Swiped down")
+//            case .left:
+//                print("Swiped left")
+//            case .up:
+//                print("Swiped up")
+//            default:
+//                break
+//            }
+//        }
+//    }
     
     // MARK: - Helpers
     
@@ -129,11 +142,11 @@ class FolderViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    private func setSwipeActions() {
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
-        swipeRight.direction = .right
-            self.view.addGestureRecognizer(swipeRight)
-    }
+//    private func setSwipeActions() {
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
+//        swipeRight.direction = .right
+//            self.view.addGestureRecognizer(swipeRight)
+//    }
     
 }
 
@@ -194,7 +207,8 @@ extension FolderViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text?.lowercased() else { return }
         let resultVC = searchController.searchResultsController as! SearchResultViewController
-        resultVC.viewModel.getLinks(in: viewModel.folder!.folderID, with: text)
+        guard let folderID = viewModel.folderID else { return }
+        resultVC.viewModel.getLinks(in: folderID, with: text)
     }
     
 }

@@ -151,8 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				F18C7F1E29EFA502003E85B0 /* MainViewViewModel.swift */,
-				F18C7F2229F0CB13003E85B0 /* AddLinkViewModel.swift */,
 				F18C7F2029EFC310003E85B0 /* FolderViewViewModel.swift */,
+				F18C7F2229F0CB13003E85B0 /* AddLinkViewModel.swift */,
 				F11EFE4629F126110036A479 /* LinkCellViewModel.swift */,
 			);
 			path = ViewModels;
@@ -183,10 +183,10 @@
 			children = (
 				F142B10E29EE7D7C00E41F22 /* Menus */,
 				F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */,
+				F142B10029ED05D900E41F22 /* FolderViewController.swift */,
 				F1E99B5E29F5310F004503E1 /* SearchViewController.swift */,
 				F142B0FB29ECE3EA00E41F22 /* AddLinkViewController.swift */,
 				F15EC8E129EF77D60076BCD2 /* AddFolderAlertViewController.swift */,
-				F142B10029ED05D900E41F22 /* FolderViewController.swift */,
 				F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */,
 			);
 			path = Controls;

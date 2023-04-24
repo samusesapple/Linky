@@ -46,6 +46,7 @@ class SearchResultViewController: UISearchController {
         linkCountLabel.centerX(inView: view)
         
         view.backgroundColor = .white
+        
     }
     
     // MARK: - Helpers
