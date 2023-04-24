@@ -26,6 +26,7 @@ struct FolderViewViewModel {
     
     mutating func updateLink(link: Link) {
         NetworkManager.shared.updateLinkData(to: link)
+        
         self.links = NetworkManager.shared.getLinks(with: folderID!)
     }
     
