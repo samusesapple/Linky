@@ -22,12 +22,10 @@ struct FolderViewViewModel {
     }
     
     init() { }
-
     
-    mutating func updateLink(link: Link) {
-        NetworkManager.shared.updateLinkData(to: link)
-        
-        self.links = NetworkManager.shared.getLinks(with: folderID!)
+    mutating func setLinks() {
+        guard let folderID = folderID else { return }
+        self.links = NetworkManager.shared.getLinks(with: folderID)
     }
     
     mutating func sortLinkCurrentLast(link: [Link]) {
@@ -53,6 +51,5 @@ struct FolderViewViewModel {
     mutating func getLinks(in folder: String, with text: String) {
        let result = NetworkManager.shared.getLinks().filter{ ($0.urlString?.contains(text) ?? $0.memo?.contains(text)) ?? false }
         self.links = result.filter { $0.folderID == folder }
-        print(folder)
     }
 }

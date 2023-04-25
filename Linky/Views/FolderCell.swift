@@ -94,7 +94,8 @@ class FolderCell: UICollectionViewCell {
     
     @objc func fileButtonTapped() {
         if fileButtonLabel.text != " +"
-        { delegate?.presentFolderView(folder: viewModel!.folder!) }
+        {   guard let folder = viewModel?.folder else { return }
+            delegate?.presentFolderView(folder: folder) }
         else { delegate?.addNewFolder() }
     }
     

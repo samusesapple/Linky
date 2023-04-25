@@ -89,7 +89,7 @@ extension SearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let addVC = AddLinkViewController()
         addVC.delegate = self
-        addVC.viewModel.folderTitle = viewModel.folderTitle
+        print(viewModel.folderTitle)
         addVC.viewModel.linkData = viewModel.links?[indexPath.row]
         present(addVC, animated: true)
         
@@ -100,11 +100,7 @@ extension SearchResultViewController: UITableViewDelegate {
 
 // MARK: - AddLinkViewControllerDelegate
 extension SearchResultViewController: AddLinkViewControllerDelegate {
-    func updateLink(controller: AddLinkViewController, link: Link) {
-        if link.urlString == controller.viewModel.linkData?.urlString {
-            viewModel.updateLink(link: link)
-        } else { controller.viewModel.createLink(link: link) }
-        
+    func updateLink(link: Link) {
         tableView.reloadData()
     }
     

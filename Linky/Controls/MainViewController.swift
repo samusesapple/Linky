@@ -64,10 +64,6 @@ class MainViewController: UIViewController {
         setDefaultMenu()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        //        headerView.delegate = self
-    }
-    
     // MARK: - Actions
     @objc func addLinkButtonTapped() {
         let addVC = AddLinkViewController()
@@ -120,7 +116,7 @@ class MainViewController: UIViewController {
 }
 
 // MARK: - UICollectionViewDataSource
-extension MainViewController: UICollectionViewDataSource {
+extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.folderArray.count + 1
     }
@@ -143,14 +139,6 @@ extension MainViewController: UICollectionViewDataSource {
         return cell
     }
     
-}
-
-// MARK: - UICollectionViewDelegate
-extension MainViewController: UICollectionViewDelegate {
-    // 셀 선택되면 실행되는 함수
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -290,8 +278,7 @@ extension MainViewController: AddFolderAlertControllerDelegate {
 
 // MARK: - AddLinkDelegate
 extension MainViewController: AddLinkViewControllerDelegate {
-    func updateLink(controller: AddLinkViewController, link: Link) {
-        controller.viewModel.createLink(link: link)
+    func updateLink(link: Link) {
         resetCollectionView()
     }
     

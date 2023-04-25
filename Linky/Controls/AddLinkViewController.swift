@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddLinkViewControllerDelegate: AnyObject {
-    func updateLink(controller: AddLinkViewController, link: Link)
+    func updateLink(link: Link)
 }
 
 class AddLinkViewController: UIViewController {
@@ -164,17 +164,20 @@ class AddLinkViewController: UIViewController {
         guard let linkTextView = linkInputTextView.subviews[0] as? UITextView else { return }
         // 간혹 업데이트 안되고 새로 생성되는 버그 개선 필요
         guard linkTextView.text.count > 17 else { return }
-        // 바탕화면에서 접근한 경우, folderViewVM의 updateLink fatal error 발생 -> 바탕화면에서 접근하면 folderView의 folderID 초기화 안되어있음
+
         let folderID = viewModel.folderArray.filter { $0.title == folderButton.titleLabel?.text }.first?.folderID
         let linkData = Link()
         linkData.date = Date()
         linkData.folderID = folderID
         linkData.memo = memoTextField.text
         linkData.urlString = linkTextView.text
-        delegate?.updateLink(controller: self, link: linkData)
-        print(delegate)
-        print(linkData)
-        // 전체화면에서 링크 들어갔을때, 완료버튼 누르면 앱 꺼지는 버그 개선 필요
+        
+        if linkData.urlString == viewModel.linkData?.urlString {
+            viewModel.updateLink(link: linkData)
+        } else { viewModel.createLink(link: linkData) }
+        
+        delegate?.updateLink(link: linkData)
+        
         self.dismiss(animated: true)
     }
     

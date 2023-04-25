@@ -33,8 +33,7 @@ struct FolderCellViewModel {
     let title: String?
     
     init(folder: Folder) {
-        self.isEmpty = folder.folderID.isEmpty
-        
+        self.isEmpty = false
         self.folder = folder
         self.icon = folder.icon
         self.title = folder.title

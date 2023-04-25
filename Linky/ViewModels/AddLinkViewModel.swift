@@ -23,6 +23,9 @@ struct AddLinkViewModel {
         NetworkManager.shared.createLink(newLink: link)
     }
     
+    func updateLink(link: Link) {
+        NetworkManager.shared.updateLinkData(to: link)
+    }
     
 }
 

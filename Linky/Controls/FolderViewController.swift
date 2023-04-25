@@ -81,14 +81,8 @@ class FolderViewController: UIViewController {
         footerAddButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 22)
         
         setTableView()
-      //  setSwipeActions()
     }
     
-//    override func viewWillLayoutSubviews() {
-//        DispatchQueue.main.async {
-//            view.set
-//        }
-//    }
     
     // MARK: - Actions
     @objc func alignmentButtonTapped() {
@@ -112,23 +106,6 @@ class FolderViewController: UIViewController {
         addVC.delegate = self
         present(addVC, animated: true)
     }
-    // 네비게이션바 쓰면 필요없음
-//    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-//        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-//            switch swipeGesture.direction {
-//            case .right:
-//                self.navigationController?.popViewController(animated: true)
-//            case .down:
-//                print("Swiped down")
-//            case .left:
-//                print("Swiped left")
-//            case .up:
-//                print("Swiped up")
-//            default:
-//                break
-//            }
-//        }
-//    }
     
     // MARK: - Helpers
     
@@ -141,12 +118,6 @@ class FolderViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
-//    private func setSwipeActions() {
-//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(respondToSwipeGesture))
-//        swipeRight.direction = .right
-//            self.view.addGestureRecognizer(swipeRight)
-//    }
     
 }
 
@@ -191,12 +162,12 @@ extension FolderViewController: UITableViewDelegate {
 
 // MARK: - AddLinkViewControllerDelegate
 extension FolderViewController: AddLinkViewControllerDelegate {
-    func updateLink(controller: AddLinkViewController, link: Link) {
-        if link.urlString == controller.viewModel.linkData?.urlString {
-            viewModel.updateLink(link: link)
-        } else { controller.viewModel.createLink(link: link) }
-        
+    func updateLink(link: Link) {
+        // 링크가 업데이트되면, viewModel의 링크 배열 또한 업데이트 되어야함
+        guard let folderID = link.folderID else { return }
+        viewModel.setLinks()
         tableView.reloadData()
+        delegate?.needsToUpdate()
     }
     
 }
