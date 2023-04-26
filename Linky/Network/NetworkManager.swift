@@ -73,7 +73,15 @@ final class NetworkManager {
             realm.delete(folder)
             realm.delete(file)
         }
-        print("\(folderID) 삭제 완료")
+        print("폴더 삭제 완료")
+    }
+    
+    func deleteLink(with date: Date) {
+        let file = realm.objects(Link.self).filter { $0.date == date }
+        try! realm.write{
+            realm.delete(file)
+        }
+        print("링크 삭제 완료")
     }
     
 }

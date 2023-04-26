@@ -107,18 +107,13 @@ class LinkCell: UITableViewCell {
     // MARK: - Helpers
     
     func configureUI() {
-        // 메타데이터 받아서 그 안의 이미지 캐싱하여 업로드 필요
         linkTitleLabel.text = viewModel.title
         linkDescriptionLabel.text = viewModel.linkURLString
-
-
-        MetadataNetworkManager.shared.getMetaDataImage(urlString: viewModel.linkURLString!) { [weak self] linkView in
-            self?.imageButton.addSubview(linkView)
-            linkView.centerInSuperview()
-            linkView.setDimensions(height: (self?.imageButton.frame.height)!, width: (self?.imageButton.frame.width)!)
-        }
         
-//        self.delegate?.needToResetTableView()
+        // 메타데이터 받아서 그 안의 이미지 캐싱하여 업로드 필요
+        guard let urlString = viewModel.linkURLString else { return }
+        viewModel.setMetadataOnlyImage(urlString: urlString, sender: imageButton)
+        
     }
     
 

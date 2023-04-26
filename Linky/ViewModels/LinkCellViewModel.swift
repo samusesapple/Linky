@@ -23,12 +23,10 @@ struct LinkCellViewModel {
         return URL(string: linkURLString!)!
     }
     
-//    func getLinkImage() -> LPLinkView? {
-//        guard let urlString = linkURLString else { return nil }
-//        return MetadataNetworkManager.shared.fetchMetadataImage(with: urlString)
-//    }
+    func setMetadataOnlyImage(urlString: String, sender: UIButton) {
+        MetadataNetworkManager.shared.getMetaDataOnlyImage(urlString: urlString) { image in
+            sender.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+    }
     
-//    var linkView: LPLinkMetadata {
-//        
-//    }
 }

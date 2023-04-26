@@ -112,6 +112,7 @@ class FolderViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -137,6 +138,19 @@ extension FolderViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.beginUpdates()
+            viewModel.remove(index: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+            delegate?.needsToUpdate()
+        }
+    }
     
 }
 
@@ -152,13 +166,14 @@ extension FolderViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    
 }
 
 // MARK: - AddLinkViewControllerDelegate
 extension FolderViewController: AddLinkViewControllerDelegate {
     func updateLink(link: Link) {
         // 링크가 업데이트되면, viewModel의 링크 배열 또한 업데이트 되어야함
-        guard let folderID = link.folderID else { return }
+        guard link.folderID != nil else { return }
         viewModel.setLinks()
         tableView.reloadData()
         delegate?.needsToUpdate()
@@ -168,7 +183,6 @@ extension FolderViewController: AddLinkViewControllerDelegate {
 
 // MARK: - UISearchResultsUpdating
 extension FolderViewController: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text?.lowercased() else { return }
         let resultVC = searchController.searchResultsController as! SearchResultViewController
@@ -184,7 +198,6 @@ extension FolderViewController: LinkCellDelegate {
     }
     
     func needToShowToast(message: String) {
-        print(#function)
         view.makeToast(message, duration: 0.7,
                                point: CGPoint(x: 187, y: 200),
                                title: nil,

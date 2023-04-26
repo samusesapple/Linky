@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13C95717BB2D3D08E18A1D21 /* Pods_Linky.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D685BD170EC29B4230F78D8A /* Pods_Linky.framework */; };
+		F11014D129F8E53B003E3E49 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11014D029F8E53B003E3E49 /* ImageCacheManager.swift */; };
 		F11EFE4529F113E20036A479 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EFE4429F113E20036A479 /* LinkCell.swift */; };
 		F11EFE4729F126110036A479 /* LinkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EFE4629F126110036A479 /* LinkCellViewModel.swift */; };
 		F12A8BCB29EE98B30047F0A7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BCA29EE98B30047F0A7 /* Data.swift */; };
@@ -23,7 +24,6 @@
 		F142B0FA29ECE13000E41F22 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F929ECE13000E41F22 /* CustomButtons.swift */; };
 		F142B0FC29ECE3EA00E41F22 /* AddLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0FB29ECE3EA00E41F22 /* AddLinkViewController.swift */; };
 		F142B10129ED05D900E41F22 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10029ED05D900E41F22 /* FolderViewController.swift */; };
-		F142B10D29EE784F00E41F22 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */; };
 		F14B22DE29F77F2300CDBE98 /* MetadataNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B22DD29F77F2300CDBE98 /* MetadataNetworkManager.swift */; };
 		F15EC8E229EF77D60076BCD2 /* AddFolderAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15EC8E129EF77D60076BCD2 /* AddFolderAlertViewController.swift */; };
 		F18C7F1F29EFA502003E85B0 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18C7F1E29EFA502003E85B0 /* MainViewViewModel.swift */; };
@@ -36,6 +36,7 @@
 		B7663156D071499EE94F56A2 /* Pods-Linky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Linky.release.xcconfig"; path = "Target Support Files/Pods-Linky/Pods-Linky.release.xcconfig"; sourceTree = "<group>"; };
 		BAAE7613A0A96D810E02468B /* Pods-Linky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Linky.debug.xcconfig"; path = "Target Support Files/Pods-Linky/Pods-Linky.debug.xcconfig"; sourceTree = "<group>"; };
 		D685BD170EC29B4230F78D8A /* Pods_Linky.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Linky.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F11014D029F8E53B003E3E49 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		F11EFE4429F113E20036A479 /* LinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
 		F11EFE4629F126110036A479 /* LinkCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCellViewModel.swift; sourceTree = "<group>"; };
 		F12A8BCA29EE98B30047F0A7 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		F142B0F929ECE13000E41F22 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		F142B0FB29ECE3EA00E41F22 /* AddLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkViewController.swift; sourceTree = "<group>"; };
 		F142B10029ED05D900E41F22 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
-		F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		F14B22DD29F77F2300CDBE98 /* MetadataNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataNetworkManager.swift; sourceTree = "<group>"; };
 		F15EC8E129EF77D60076BCD2 /* AddFolderAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderAlertViewController.swift; sourceTree = "<group>"; };
 		F18C7F1E29EFA502003E85B0 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
@@ -96,6 +96,7 @@
 			children = (
 				F12A8BD029EEA2590047F0A7 /* NetworkManager.swift */,
 				F14B22DD29F77F2300CDBE98 /* MetadataNetworkManager.swift */,
+				F11014D029F8E53B003E3E49 /* ImageCacheManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -182,7 +183,6 @@
 				F1E99B5E29F5310F004503E1 /* SearchViewController.swift */,
 				F142B0FB29ECE3EA00E41F22 /* AddLinkViewController.swift */,
 				F15EC8E129EF77D60076BCD2 /* AddFolderAlertViewController.swift */,
-				F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -309,6 +309,7 @@
 				F142B0FC29ECE3EA00E41F22 /* AddLinkViewController.swift in Sources */,
 				F11EFE4529F113E20036A479 /* LinkCell.swift in Sources */,
 				F12A8BCB29EE98B30047F0A7 /* Data.swift in Sources */,
+				F11014D129F8E53B003E3E49 /* ImageCacheManager.swift in Sources */,
 				F15EC8E229EF77D60076BCD2 /* AddFolderAlertViewController.swift in Sources */,
 				F1E99B5F29F5310F004503E1 /* SearchViewController.swift in Sources */,
 				F14B22DE29F77F2300CDBE98 /* MetadataNetworkManager.swift in Sources */,
@@ -316,7 +317,6 @@
 				F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */,
 				F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */,
 				F142B0CA29EBBDCB00E41F22 /* AppDelegate.swift in Sources */,
-				F142B10D29EE784F00E41F22 /* PrivacyViewController.swift in Sources */,
 				F142B0CC29EBBDCB00E41F22 /* SceneDelegate.swift in Sources */,
 				F12A8BD129EEA2590047F0A7 /* NetworkManager.swift in Sources */,
 				F18C7F2329F0CB13003E85B0 /* AddLinkViewModel.swift in Sources */,

@@ -15,6 +15,7 @@ struct FolderViewViewModel {
     var folderTitle: String?
     var links: [Link]?
     
+    
     init(folder: Folder) {
         folderID = folder.folderID
         folderIcon = folder.icon
@@ -23,6 +24,12 @@ struct FolderViewViewModel {
     }
     
     init() { }
+    
+    mutating func remove(index: Int) {
+        guard let link = links else { return }
+        NetworkManager.shared.deleteLink(with: link[index].date)
+        links?.remove(at: index)
+    }
     
     mutating func setLinks() {
         guard let folderID = folderID else { return }

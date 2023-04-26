@@ -15,6 +15,7 @@ protocol MainViewControllerDelegate: AnyObject {
 class MainViewController: UIViewController {
     
     // MARK: - Properties
+    
     private var viewModel = MainViewViewModel()
     
     weak var delegate: MainViewControllerDelegate?
@@ -76,6 +77,7 @@ class MainViewController: UIViewController {
     @objc func menuButtonTapped() {
         
     }
+    
     
     // MARK: - Helpers
     func setDefaultMenu() {
@@ -248,7 +250,6 @@ extension MainViewController: FolderCellDelegate {
             self.dismiss(animated: false) {
                 self.present(alert, animated: true, completion: nil)
             }
-            
         }
         
     }
@@ -294,6 +295,7 @@ extension MainViewController: FolderViewControllerDelegate {
     
 }
 
+// MARK: - UISearchResultsUpdating
 extension MainViewController: UISearchResultsUpdating, SearchResultViewControllerDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {

@@ -117,7 +117,7 @@ class AddLinkViewController: UIViewController {
         linkTextView.delegate = self
         memoTextField.delegate = self
         
-        folderButton.setTitle("기본 폴더", for: .normal)
+        folderButton.setTitle(viewModel.folderNameArray[0], for: .normal)
         view.addSubview(folderButton)
         folderButton.anchor(top: viewTitleLabel.bottomAnchor, paddingTop: 40)
         folderButton.centerX(inView: view)
@@ -177,7 +177,6 @@ class AddLinkViewController: UIViewController {
         } else { viewModel.createLink(link: linkData) }
         
         delegate?.updateLink(link: linkData)
-        
         self.dismiss(animated: true)
     }
     
