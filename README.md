@@ -52,6 +52,21 @@
 * 문제상황 : 단순 url을 통해 받아오는 이미지가 아닌, 해당 http 문서의 header에 있는 메타데이터를 가져와야하는 상황. URLSession을 통한 네트워킹은 익숙하지만 메타데이터를 긁어온 적은 없기에 새로운 배움이 될 것 같다.
 <br>
 
+* 해결과정 : 메타데이터 가져오는 법을 구글링 하여, 애플에서 제공하는 LinkPresentation이라는 프레임워크를 알게 되었다. 공식 문서를 살펴보니, 사용법도 잘 나와있었다.
+<img width="762" alt="image" src="https://user-images.githubusercontent.com/126672733/234455161-a99856bf-4385-4366-b3a7-c4f1b84a7cc6.png">
+
+
+<img width="680" alt="image" src="https://user-images.githubusercontent.com/126672733/234460147-d8e89d80-628e-4fd0-ad8e-bb3c3b9a238c.png">
+
+1. LinkPresentation 프레임워크를 import 한, MetadataNetworkManager 라는 네트워킹 객체를 싱글톤으로 만들었다. <br>
+2. ViewModel로부터 받을 url이 유효한지 확인 후, 유효한 url이라면 startFetchingMetadata(for: )에 해당 url을 사용하여 메타데이터를 얻어온다. <br>
+3. 에러 유무를 확인 후, 에러가 있다면 함수를 종료 / 에러 없는 경우 LPLinkView에 해당 메타데이터를 바인딩 하고 completion() 파라미터에 linkView를 전달시켰다. <br>
+4. 네트워킹 작업이 다 끝나면 UI를 그리는 작업을 할 예정이기 때문에, completion 블럭이 스텍 프레임을 벗어나도록 @escaping 키워드를 붙여주고 DispatchQueue 중 main 큐에 async하게 작동하도록 했다. <br> 
+
+ 번외) 살펴보니, 헤더의 타이틀 부분만 빼올 수도 있어서 유저가 제목을 지정하지 않는 경우 임시 제목을 지정해서 저장해주는 로직을 추가 구현했다. (매번 제목 지정하지 않으면 해당 링크가 어떤 것에 대한 링크인지 찾기 어려워지므로 유저 인터페이스 관점에서도 편리성에 좋을거라 판단했다..! + 하단코드 참고)
+ <img width="681" alt="image" src="https://user-images.githubusercontent.com/126672733/234455951-8b4d9d8b-a581-4b79-9e80-0a3c55059957.png">
+
+
 
 
 
