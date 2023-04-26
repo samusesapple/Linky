@@ -36,7 +36,7 @@
 ---
 #### 1. CollectionView - 데이터를 reload하면, 다른 셀까지 빈 셀의 UI가 반영 되는 문제
 * 문제상황 : <br> 
-![Simulator Screen Recording - iPhone 14 Pro - 2023-04-19 at 18 44 10](https://user-images.githubusercontent.com/126672733/233036933-b520ec05-0ca3-4ccd-a80a-f15712706c46.gif) <br>
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-19 at 18 44 10](https://user-images.githubusercontent.com/126672733/233036933-b520ec05-0ca3-4ccd-a80a-f15712706c46.gif)! <br>
 <br>
 
 1. MainVC - collectionView
@@ -51,6 +51,35 @@
 #### 2. LinkCell - Cell의 imageButton에 해당되는 링크의 미리보기 이미지를 세팅하는 방법
 * 문제상황 : 단순 url을 통해 받아오는 이미지가 아닌, 해당 http 문서의 header에 있는 메타데이터를 가져와야하는 상황. URLSession을 통한 네트워킹은 익숙하지만 메타데이터를 긁어온 적은 없기에 새로운 배움이 될 것 같다.
 <br>
+
+* 해결과정 : 메타데이터 가져오는 법을 구글링 하여, 애플에서 제공하는 LinkPresentation이라는 프레임워크를 알게 되었다. 공식 문서를 살펴보니, 사용법도 잘 나와있었다.
+<img width="762" alt="image" src="https://user-images.githubusercontent.com/126672733/234455161-a99856bf-4385-4366-b3a7-c4f1b84a7cc6.png">
+
+
+<img width="680" alt="image" src="https://user-images.githubusercontent.com/126672733/234460147-d8e89d80-628e-4fd0-ad8e-bb3c3b9a238c.png">
+
+1. LinkPresentation 프레임워크를 import 한, MetadataNetworkManager 라는 네트워킹 객체를 싱글톤으로 만들었다. <br>
+2. ViewModel로부터 받을 url이 유효한지 확인 후, 유효한 url이라면 startFetchingMetadata(for: )에 해당 url을 사용하여 메타데이터를 얻어온다. <br>
+3. 에러 유무를 확인 후, 에러가 있다면 함수를 종료 / 에러 없는 경우 LPLinkView에 해당 메타데이터를 바인딩 하고 completion() 파라미터에 linkView를 전달시켰다. <br>
+4. 네트워킹 작업이 다 끝나면 UI를 그리는 작업을 할 예정이기 때문에, completion 블럭이 스텍 프레임을 벗어나도록 @escaping 키워드를 붙여주고 DispatchQueue 중 main 큐에 async하게 작동하도록 했다. <br> 
+
+-> 해당 코드로 작동하니, 이미지만 표시하고 싶은 나의 니즈와는 맞지 않게 공유 시트에 띄우면 좋을 것 같은 리치한 url 메타데이터를 가져오게 되었다. 이미지만 가져오고, 한번 로딩 된 이미지는 캐싱하는 코드로 수정해보았다. 
+
+* 해결 : 
+<img width="773" alt="image" src="https://user-images.githubusercontent.com/126672733/234474003-dbf506f5-fdde-4034-bb0c-b25f013aa377.png">
+ 1. url을 캐싱키로 만들기 <br>
+ 2. 키에 해당하는 값이 있으면 (캐싱된 이미지가 있으면) completion블럭에 해당 이미지 보내기 <br>
+ 3. 키에 대한 값이 없는 경우 (캐싱된 이미지 없는 경우), 메타데이터의 imageProvider를 통해 UIImage메타타입으로 이미지 불러오기. <br>
+ 4. 불러온 image는 NSItemProviderReading? 타입이므로, image를 UIImage 타입으로 타입캐스팅 하기 <br>
+ 5. UIImage가 된 Image를 캐싱하기 + completion블럭에 image 전달해주기 <br>
+<br>
+
+![Simulator Screen Recording - iPhone 14 - 2023-04-26 at 14 34 49](https://user-images.githubusercontent.com/126672733/234479160-7743ace4-f35a-415c-9b1a-baf37773a5f6.gif) <br>
+
+ 번외) 살펴보니, 헤더의 타이틀 부분만 빼올 수도 있어서 유저가 제목을 지정하지 않는 경우 임시 제목을 지정해서 저장해주는 로직을 추가 구현했다. (매번 제목 지정하지 않으면 해당 링크가 어떤 것에 대한 링크인지 찾기 어려워지므로 유저 인터페이스 관점에서도 편리성에 좋을거라 판단했다..! + 하단코드 참고)
+ <img width="681" alt="image" src="https://user-images.githubusercontent.com/126672733/234455951-8b4d9d8b-a581-4b79-9e80-0a3c55059957.png">
+
+
 
 
 
