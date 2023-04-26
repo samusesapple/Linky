@@ -36,7 +36,7 @@
 ---
 #### 1. CollectionView - 데이터를 reload하면, 다른 셀까지 빈 셀의 UI가 반영 되는 문제
 * 문제상황 : <br> 
-![Simulator Screen Recording - iPhone 14 Pro - 2023-04-19 at 18 44 10](https://user-images.githubusercontent.com/126672733/233036933-b520ec05-0ca3-4ccd-a80a-f15712706c46.gif) <br>
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-19 at 18 44 10](https://user-images.githubusercontent.com/126672733/233036933-b520ec05-0ca3-4ccd-a80a-f15712706c46.gif)! <br>
 <br>
 
 1. MainVC - collectionView
@@ -74,8 +74,11 @@
  5. UIImage가 된 Image를 캐싱하기 + completion블럭에 image 전달해주기 <br>
 <br>
 
+![Simulator Screen Recording - iPhone 14 - 2023-04-26 at 14 34 49](https://user-images.githubusercontent.com/126672733/234479160-7743ace4-f35a-415c-9b1a-baf37773a5f6.gif) <br>
+
  번외) 살펴보니, 헤더의 타이틀 부분만 빼올 수도 있어서 유저가 제목을 지정하지 않는 경우 임시 제목을 지정해서 저장해주는 로직을 추가 구현했다. (매번 제목 지정하지 않으면 해당 링크가 어떤 것에 대한 링크인지 찾기 어려워지므로 유저 인터페이스 관점에서도 편리성에 좋을거라 판단했다..! + 하단코드 참고)
  <img width="681" alt="image" src="https://user-images.githubusercontent.com/126672733/234455951-8b4d9d8b-a581-4b79-9e80-0a3c55059957.png">
+
 
 
 
