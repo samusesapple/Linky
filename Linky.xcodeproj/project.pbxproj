@@ -17,16 +17,14 @@
 		F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */; };
 		F142B0D329EBBDCC00E41F22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F142B0D229EBBDCC00E41F22 /* Assets.xcassets */; };
 		F142B0D629EBBDCC00E41F22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F142B0D429EBBDCC00E41F22 /* LaunchScreen.storyboard */; };
-		F142B0E329EBC21500E41F22 /* HeaderSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E229EBC21500E41F22 /* HeaderSearchView.swift */; };
 		F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E629EBCC3700E41F22 /* CustomTextField.swift */; };
 		F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0E829EBCCA400E41F22 /* Extensions.swift */; };
 		F142B0F129EC293200E41F22 /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F029EC293200E41F22 /* FolderCell.swift */; };
 		F142B0FA29ECE13000E41F22 /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0F929ECE13000E41F22 /* CustomButtons.swift */; };
 		F142B0FC29ECE3EA00E41F22 /* AddLinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0FB29ECE3EA00E41F22 /* AddLinkViewController.swift */; };
 		F142B10129ED05D900E41F22 /* FolderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10029ED05D900E41F22 /* FolderViewController.swift */; };
-		F142B10929EE6FA000E41F22 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10829EE6FA000E41F22 /* ContainerViewController.swift */; };
-		F142B10B29EE706000E41F22 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10A29EE706000E41F22 /* MenuViewController.swift */; };
 		F142B10D29EE784F00E41F22 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */; };
+		F14B22DE29F77F2300CDBE98 /* MetadataNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14B22DD29F77F2300CDBE98 /* MetadataNetworkManager.swift */; };
 		F15EC8E229EF77D60076BCD2 /* AddFolderAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15EC8E129EF77D60076BCD2 /* AddFolderAlertViewController.swift */; };
 		F18C7F1F29EFA502003E85B0 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18C7F1E29EFA502003E85B0 /* MainViewViewModel.swift */; };
 		F18C7F2129EFC310003E85B0 /* FolderViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18C7F2029EFC310003E85B0 /* FolderViewViewModel.swift */; };
@@ -49,16 +47,14 @@
 		F142B0D229EBBDCC00E41F22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F142B0D529EBBDCC00E41F22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F142B0D729EBBDCC00E41F22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F142B0E229EBC21500E41F22 /* HeaderSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSearchView.swift; sourceTree = "<group>"; };
 		F142B0E629EBCC3700E41F22 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		F142B0E829EBCCA400E41F22 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F142B0F029EC293200E41F22 /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
 		F142B0F929ECE13000E41F22 /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		F142B0FB29ECE3EA00E41F22 /* AddLinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkViewController.swift; sourceTree = "<group>"; };
 		F142B10029ED05D900E41F22 /* FolderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewController.swift; sourceTree = "<group>"; };
-		F142B10829EE6FA000E41F22 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		F142B10A29EE706000E41F22 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
+		F14B22DD29F77F2300CDBE98 /* MetadataNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataNetworkManager.swift; sourceTree = "<group>"; };
 		F15EC8E129EF77D60076BCD2 /* AddFolderAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFolderAlertViewController.swift; sourceTree = "<group>"; };
 		F18C7F1E29EFA502003E85B0 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		F18C7F2029EFC310003E85B0 /* FolderViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewViewModel.swift; sourceTree = "<group>"; };
@@ -99,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				F12A8BD029EEA2590047F0A7 /* NetworkManager.swift */,
+				F14B22DD29F77F2300CDBE98 /* MetadataNetworkManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -161,7 +158,6 @@
 		F142B0DF29EBBE9700E41F22 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F142B0E229EBC21500E41F22 /* HeaderSearchView.swift */,
 				F142B0F029EC293200E41F22 /* FolderCell.swift */,
 				F11EFE4429F113E20036A479 /* LinkCell.swift */,
 			);
@@ -181,7 +177,6 @@
 		F142B0F629EC3D6F00E41F22 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				F142B10E29EE7D7C00E41F22 /* Menus */,
 				F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */,
 				F142B10029ED05D900E41F22 /* FolderViewController.swift */,
 				F1E99B5E29F5310F004503E1 /* SearchViewController.swift */,
@@ -190,15 +185,6 @@
 				F142B10C29EE784F00E41F22 /* PrivacyViewController.swift */,
 			);
 			path = Controls;
-			sourceTree = "<group>";
-		};
-		F142B10E29EE7D7C00E41F22 /* Menus */ = {
-			isa = PBXGroup;
-			children = (
-				F142B10829EE6FA000E41F22 /* ContainerViewController.swift */,
-				F142B10A29EE706000E41F22 /* MenuViewController.swift */,
-			);
-			path = Menus;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,17 +303,15 @@
 			files = (
 				F18C7F2129EFC310003E85B0 /* FolderViewViewModel.swift in Sources */,
 				F11EFE4729F126110036A479 /* LinkCellViewModel.swift in Sources */,
-				F142B0E329EBC21500E41F22 /* HeaderSearchView.swift in Sources */,
 				F18C7F1F29EFA502003E85B0 /* MainViewViewModel.swift in Sources */,
 				F142B0FA29ECE13000E41F22 /* CustomButtons.swift in Sources */,
 				F142B0F129EC293200E41F22 /* FolderCell.swift in Sources */,
 				F142B0FC29ECE3EA00E41F22 /* AddLinkViewController.swift in Sources */,
 				F11EFE4529F113E20036A479 /* LinkCell.swift in Sources */,
 				F12A8BCB29EE98B30047F0A7 /* Data.swift in Sources */,
-				F142B10B29EE706000E41F22 /* MenuViewController.swift in Sources */,
-				F142B10929EE6FA000E41F22 /* ContainerViewController.swift in Sources */,
 				F15EC8E229EF77D60076BCD2 /* AddFolderAlertViewController.swift in Sources */,
 				F1E99B5F29F5310F004503E1 /* SearchViewController.swift in Sources */,
+				F14B22DE29F77F2300CDBE98 /* MetadataNetworkManager.swift in Sources */,
 				F142B10129ED05D900E41F22 /* FolderViewController.swift in Sources */,
 				F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */,
 				F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */,

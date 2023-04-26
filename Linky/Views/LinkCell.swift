@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import LinkPresentation
+
+protocol LinkCellDelegate: AnyObject {
+    func needToResetTableView()
+    func needToShowToast(message: String)
+}
 
 class LinkCell: UITableViewCell {
     
@@ -16,12 +22,14 @@ class LinkCell: UITableViewCell {
         }
     }
     
+    weak var delegate: LinkCellDelegate?
+    
     private let imageButton: UIButton = {
         let imageView = UIImageView(image: UIImage(systemName: "cursorarrow.click.2")?.withRenderingMode(.alwaysTemplate))
         imageView.setDimensions(height: 25, width: 25)
         imageView.tintColor = .systemGray2
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "LinkyLabelImage")?.withRenderingMode(.alwaysOriginal), for: .normal)
+//        button.setImage(UIImage(named: "LinkyLabelImage")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.imageView?.contentMode = .scaleAspectFill
         
         button.clipsToBounds = true
@@ -44,7 +52,6 @@ class LinkCell: UITableViewCell {
     
     private let linkDescriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "lkjsdlfkjlkkjsldkfjlksjlkdflkdslkjasdfssfadasdfsfadsddsdsddsfdsfsdfsdfsdfsdsfsdfsdfsdfsfsddf"
         label.font = UIFont.systemFont(ofSize: 13, weight: .light)
         label.textColor = .darkGray
         label.numberOfLines = 1
@@ -92,7 +99,7 @@ class LinkCell: UITableViewCell {
         if let url = URL(string: (viewModel.linkURLString)!) {
             UIApplication.shared.open(url)
         } else {
-            print("url is not correct")
+            delegate?.needToShowToast(message: "존재하지 않는 URL 입니다.")
         }
     }
     
@@ -101,12 +108,20 @@ class LinkCell: UITableViewCell {
     
     func configureUI() {
         // 메타데이터 받아서 그 안의 이미지 캐싱하여 업로드 필요
-        
         linkTitleLabel.text = viewModel.title
         linkDescriptionLabel.text = viewModel.linkURLString
+
+
+        MetadataNetworkManager.shared.getMetaDataImage(urlString: viewModel.linkURLString!) { [weak self] linkView in
+            self?.imageButton.addSubview(linkView)
+            linkView.centerInSuperview()
+            linkView.setDimensions(height: (self?.imageButton.frame.height)!, width: (self?.imageButton.frame.width)!)
+        }
+        
+//        self.delegate?.needToResetTableView()
     }
     
-    
+
     
 }
 

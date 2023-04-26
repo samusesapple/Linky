@@ -52,13 +52,6 @@ class FolderViewController: UIViewController {
         guard let icon = viewModel.folderIcon else { return }
         guard let title = viewModel.folderTitle else { return }
         
-//        let searchBar = UISearchBar()
-//        self.navigationItem.title = "\(icon)"
-//        navigationItem.titleView?.tintColor = .black
-//        navigationItem.titleView = searchBar
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-        
-//        navigationItem.searchController?.searchResultsUpdater = self
         navigationController?.navigationBar.tintColor = .darkGray
         navigationItem.hidesSearchBarWhenScrolling = false
         let searchController = UISearchController(searchResultsController: SearchResultViewController())
@@ -140,6 +133,7 @@ extension FolderViewController: UITableViewDataSource {
         cell.contentView.layer.cornerRadius = 10
 
         cell.viewModel = LinkCellViewModel(link: (viewModel.links?[indexPath.row])!)
+        cell.delegate = self
         return cell
     }
     
@@ -181,5 +175,22 @@ extension FolderViewController: UISearchResultsUpdating {
         guard let folderID = viewModel.folderID else { return }
         resultVC.viewModel.getLinks(in: folderID, with: text)
     }
+    
+}
+
+extension FolderViewController: LinkCellDelegate {
+    func needToResetTableView() {
+        tableView.reloadData()
+    }
+    
+    func needToShowToast(message: String) {
+        print(#function)
+        view.makeToast(message, duration: 0.7,
+                               point: CGPoint(x: 187, y: 200),
+                               title: nil,
+                               image: nil,
+                       style: .init(), completion: nil)
+    }
+    
     
 }

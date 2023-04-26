@@ -51,4 +51,5 @@ struct FolderCellViewModel {
         return "링크 \(links.count)개"
     }
     
+    
 }

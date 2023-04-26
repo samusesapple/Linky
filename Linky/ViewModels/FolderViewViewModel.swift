@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Toast_Swift
 
 struct FolderViewViewModel {
     
@@ -44,7 +45,7 @@ struct FolderViewViewModel {
     }
     
     mutating func getLinks(with text: String) {
-       let result = NetworkManager.shared.getLinks().filter{ ($0.urlString?.contains(text) ?? $0.memo?.contains(text)) ?? false }
+       let result = NetworkManager.shared.getLinks().filter{ ($0.memo?.contains(text) ?? $0.urlString?.contains(text)) ?? false }
         self.links = result
     }
     

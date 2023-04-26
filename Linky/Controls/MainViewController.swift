@@ -51,7 +51,9 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         
         // set navigationBar
-        let searchController = UISearchController(searchResultsController: SearchResultViewController())
+        let searchVC = SearchResultViewController()
+        let searchController = UISearchController(searchResultsController: searchVC)
+        searchVC.customDelegate = self
         self.navigationItem.searchController = searchController
         self.navigationItem.searchController?.searchBar.placeholder = "전체에서 링크 찾기"
         navigationController?.navigationBar.tintColor = .darkGray
@@ -292,7 +294,7 @@ extension MainViewController: FolderViewControllerDelegate {
     
 }
 
-extension MainViewController: UISearchResultsUpdating {
+extension MainViewController: UISearchResultsUpdating, SearchResultViewControllerDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text?.lowercased() else { return }

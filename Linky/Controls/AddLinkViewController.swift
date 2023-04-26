@@ -184,6 +184,11 @@ class AddLinkViewController: UIViewController {
     @objc func linkShareButtonTapped() {
         let linkTextView = linkInputTextView.subviews[0] as! UITextView
         UIPasteboard.general.string = linkTextView.text
+        view.makeToast("링크 복사 완료", duration: 0.7,
+                               point: CGPoint(x: 187, y: 200),
+                               title: nil,
+                               image: nil,
+                       style: .init(), completion: nil)
     }
     
     // MARK: - Helpers
@@ -197,6 +202,9 @@ class AddLinkViewController: UIViewController {
 
         DispatchQueue.main.async { [weak self] in
             self?.folderButton.setTitle(self?.viewModel.folderTitle, for: .normal)
+            if self?.viewModel.folderTitle == nil {
+                self?.viewModel.folderTitle = self?.viewModel.getFolderTitle(with: (self?.viewModel.linkData)!)
+            }
         }
     }
     

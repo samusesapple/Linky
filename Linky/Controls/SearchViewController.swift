@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SearchResultViewControllerDelegate: AnyObject {
+    func resetCollectionView()
+}
+
 class SearchResultViewController: UISearchController {
     
     var viewModel = FolderViewViewModel() {
@@ -14,6 +18,9 @@ class SearchResultViewController: UISearchController {
             configureUIWithData()
         }
     }
+    
+    weak var customDelegate: SearchResultViewControllerDelegate?
+    
     private lazy var tableView = UITableView()
     
     private var linkCountLabel: UILabel = {
@@ -46,7 +53,10 @@ class SearchResultViewController: UISearchController {
         linkCountLabel.centerX(inView: view)
         
         view.backgroundColor = .white
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        customDelegate?.resetCollectionView()
     }
     
     // MARK: - Helpers
@@ -89,7 +99,6 @@ extension SearchResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let addVC = AddLinkViewController()
         addVC.delegate = self
-        print(viewModel.folderTitle)
         addVC.viewModel.linkData = viewModel.links?[indexPath.row]
         present(addVC, animated: true)
         

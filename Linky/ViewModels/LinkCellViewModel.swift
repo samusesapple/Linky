@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LinkPresentation
 
 struct LinkCellViewModel {
     var linkURLString: String?
@@ -21,4 +22,13 @@ struct LinkCellViewModel {
     var linkURL: URL {
         return URL(string: linkURLString!)!
     }
+    
+//    func getLinkImage() -> LPLinkView? {
+//        guard let urlString = linkURLString else { return nil }
+//        return MetadataNetworkManager.shared.fetchMetadataImage(with: urlString)
+//    }
+    
+//    var linkView: LPLinkMetadata {
+//        
+//    }
 }

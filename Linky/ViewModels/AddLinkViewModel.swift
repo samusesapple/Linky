@@ -20,13 +20,27 @@ struct AddLinkViewModel {
     }
     
     func createLink(link: Link) {
-        NetworkManager.shared.createLink(newLink: link)
+        guard let url = link.urlString else { return }
+        guard let memo = link.memo else { return }
+        if memo.count > 0 {
+            // 제목 정하지 않으면, 자동으로 링크에 대한 제목 만들기
+            NetworkManager.shared.createLink(newLink: link)
+        } else {
+            MetadataNetworkManager.shared.getMetaDataTitle(urlString: url) { data in
+                link.memo = data
+                NetworkManager.shared.createLink(newLink: link)
+            }
+        }
     }
     
     func updateLink(link: Link) {
         NetworkManager.shared.updateLinkData(to: link)
     }
     
+    func getFolderTitle(with link: Link) -> String {
+        let folder = NetworkManager.shared.getFolders().filter { $0.folderID == link.folderID }.first
+        return folder?.title ?? ""
+    }
 }
 
 

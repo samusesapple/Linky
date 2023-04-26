@@ -37,41 +37,6 @@ final class CustomTextField: UITextField {
     
 }
 
-
-final class CustomTextFieldStack: UIStackView {
-    
-    private var placeholder: String
-    private var lineWidth: Double
-    
-    
-    init(placeholder: String, width: Double) {
-        self.placeholder = placeholder
-        self.lineWidth = width
-        super.init(frame: .zero)
-        heightAnchor.constraint(equalToConstant: 38).isActive = true
-        
-        let textField = CustomTextField(placeholder: placeholder)
-        let textFieldBottomLine = UIView()
-        
-        textFieldBottomLine.setDimensions(height: 2, width: lineWidth)
-        textFieldBottomLine.backgroundColor = UIColor(named: "MainGreenColor")
-        textFieldBottomLine.clipsToBounds = true
-        textFieldBottomLine.layer.cornerRadius = 3
-        
-        [textField, textFieldBottomLine].forEach { view in
-            addArrangedSubview(view)
-        }
-        axis = .vertical
-        spacing = 3
-        distribution = .fill
-    }
-    
-    required init(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-}
-
 final class EmojiTextField: UITextField {
 
     override var textInputContextIdentifier: String? { "" } // return non-nil to show the Emoji
