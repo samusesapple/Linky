@@ -117,6 +117,7 @@ class MainViewController: UIViewController {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
+    
 }
 
 // MARK: - UICollectionViewDataSource
@@ -130,15 +131,17 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "folderCell", for: indexPath) as! FolderCell
         cell.delegate = self
         
+        cell.contentView.backgroundColor = .white
+        if indexPath.row != 0 {
+            cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        }
+        
         if viewModel.folderArray.count > indexPath.row { cell.viewModel = FolderCellViewModel(folder: viewModel.folderArray[indexPath.item])
         } else if indexPath.item == viewModel.folderArray.count {
             cell.viewModel = FolderCellViewModel()
         }
         
-        cell.contentView.backgroundColor = .white
-        if indexPath.row != 0 {
-            cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
-        }
+
         
         return cell
     }
@@ -248,7 +251,6 @@ extension MainViewController: FolderCellDelegate {
             }
         }
         
-    }
     
     func presentFolderView(folder: Folder) {
         let folderVC = FolderViewController(folder: folder)

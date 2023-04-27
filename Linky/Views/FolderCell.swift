@@ -19,13 +19,10 @@ class FolderCell: UICollectionViewCell {
     
     var viewModel: FolderCellViewModel? {
         didSet {
-            configureUI()
-            setEmptyCell()        }
+            viewModel?.isEmpty == true ? setEmptyCell() : configureUI()
+        }
     }
-    
     weak var delegate: FolderCellDelegate?
-
-    private let deleteButton = UIButton(type: .system)
     
     private lazy var fileButton: UIButton = {
         let button = UIButton(type: .system)
@@ -90,6 +87,11 @@ class FolderCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        fileButton.layer.borderWidth = 0
+    }
+    
     // MARK: - Actions
     
     @objc func fileButtonTapped() {
@@ -121,7 +123,7 @@ class FolderCell: UICollectionViewCell {
     }
     
     private func setEmptyCell() {
-        guard viewModel?.folder == nil else { return }
+        guard viewModel?.isEmpty == true else { return }
         fileButton.backgroundColor = .clear
         fileButtonLabel.font = UIFont.systemFont(ofSize: 60, weight: .ultraLight)
         fileButtonLabel.textColor = .gray

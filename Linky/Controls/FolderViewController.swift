@@ -62,7 +62,6 @@ class FolderViewController: UIViewController {
         searchController.hideKeyboardWhenTappedAround()
         searchController.searchResultsUpdater = self
         
-        
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 25, paddingBottom: 25, paddingRight: 25)
 

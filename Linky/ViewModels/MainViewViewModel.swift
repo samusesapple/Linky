@@ -26,7 +26,7 @@ struct MainViewViewModel {
 }
 
 struct FolderCellViewModel {
-    var isEmpty: Bool = false
+    var isEmpty: Bool? = false
     
     let folder: Folder?
     let icon: String?
@@ -41,8 +41,8 @@ struct FolderCellViewModel {
     
     init() {
         self.isEmpty = true
-        self.icon = ""
-        self.title = ""
+        self.icon = nil
+        self.title = nil
         self.folder = nil
     }
     

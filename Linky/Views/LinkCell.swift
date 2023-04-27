@@ -82,16 +82,15 @@ class LinkCell: UITableViewCell {
     }
     
     
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5))
+        }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageButton.setImage(nil, for: .normal)
     }
     
     // MARK: - Actions
