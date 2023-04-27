@@ -51,13 +51,33 @@ struct FolderViewViewModel {
         self.links = linkArray
     }
     
+    // MARK: - Search Results
     mutating func getLinks(with text: String) {
-       let result = NetworkManager.shared.getLinks().filter{ ($0.memo?.contains(text) ?? $0.urlString?.contains(text)) ?? false }
-        self.links = result
+        let memoResult = NetworkManager.shared.getLinks().filter { link in
+            guard let memo = link.memo?.lowercased() else { return false }
+            return memo.contains(text)
+        }
+        
+        let urlResult = NetworkManager.shared.getLinks().filter { link in
+            guard let url = link.urlString?.lowercased() else { return false }
+            return url.contains(text)
+        }
+        
+        self.links = memoResult + urlResult
     }
     
     mutating func getLinks(in folder: String, with text: String) {
-       let result = NetworkManager.shared.getLinks().filter{ ($0.urlString?.contains(text) ?? $0.memo?.contains(text)) ?? false }
+        let memoResult = NetworkManager.shared.getLinks().filter { link in
+            guard let memo = link.memo?.lowercased() else { return false }
+            return memo.contains(text)
+        }
+        
+        let urlResult = NetworkManager.shared.getLinks().filter { link in
+            guard let url = link.urlString?.lowercased() else { return false }
+            return url.contains(text)
+        }
+        let result = memoResult + urlResult
+        
         self.links = result.filter { $0.folderID == folder }
     }
 }
