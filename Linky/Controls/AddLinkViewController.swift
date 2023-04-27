@@ -183,11 +183,12 @@ class AddLinkViewController: UIViewController {
     @objc func linkShareButtonTapped() {
         let linkTextView = linkInputTextView.subviews[0] as! UITextView
         UIPasteboard.general.string = linkTextView.text
-        view.makeToast("링크 복사 완료", duration: 0.7,
+        view.makeToast("링크 복사 완료", duration: 1.5,
                                point: CGPoint(x: 187, y: 200),
                                title: nil,
                                image: nil,
                        style: .init(), completion: nil)
+        presentShareSheet()
     }
     
     // MARK: - Helpers
@@ -223,6 +224,15 @@ class AddLinkViewController: UIViewController {
         folderPicker.centerX(inView: view)
     }
     
+    func presentShareSheet() {
+        let item = URL(string: viewModel.linkURL!)
+        let itemsToShare = [item]
+        let shareSheet = UIActivityViewController(activityItems: itemsToShare as [Any], applicationActivities: nil)
+        shareSheet.popoverPresentationController?.sourceView = self.view
+        shareSheet.excludedActivityTypes = [.copyToPasteboard]
+        
+        self.present(shareSheet, animated: true)
+    }
 }
 
 // MARK: - UIPickerViewDataSource

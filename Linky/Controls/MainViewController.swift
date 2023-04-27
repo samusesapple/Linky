@@ -245,10 +245,6 @@ extension MainViewController: FolderCellDelegate {
         
         if self.presentedViewController == nil {
             self.present(alert, animated: true, completion: nil)
-        }
-        else {
-            self.dismiss(animated: false) {
-                self.present(alert, animated: true, completion: nil)
             }
         }
         
