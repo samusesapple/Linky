@@ -130,17 +130,16 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         // collectionView에 사용할 cell dequeue하기
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "folderCell", for: indexPath) as! FolderCell
         cell.delegate = self
-        
         cell.contentView.backgroundColor = .white
         if indexPath.row != 0 {
             cell.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         }
         
         if viewModel.folderArray.count > indexPath.row { cell.viewModel = FolderCellViewModel(folder: viewModel.folderArray[indexPath.item])
+            cell.fileButton.layer.borderWidth = 0
         } else if indexPath.item == viewModel.folderArray.count {
             cell.viewModel = FolderCellViewModel()
         }
-        
 
         
         return cell

@@ -24,7 +24,7 @@ class FolderCell: UICollectionViewCell {
     }
     weak var delegate: FolderCellDelegate?
     
-    private lazy var fileButton: UIButton = {
+    lazy var fileButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = #colorLiteral(red: 0.9309713244, green: 0.9309713244, blue: 0.9309713244, alpha: 1)
         button.setDimensions(height: 190, width: 190)
@@ -89,7 +89,9 @@ class FolderCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        fileButton.layer.borderWidth = 0
+        if fileButton.layer.sublayers!.count > 2 {
+            fileButton.layer.sublayers?.last?.removeFromSuperlayer()
+        }
     }
     
     // MARK: - Actions
@@ -116,7 +118,6 @@ class FolderCell: UICollectionViewCell {
         fileButtonLabel.text = viewModel?.icon
         fileNameLabel.text = viewModel?.title
         fileButton.backgroundColor = #colorLiteral(red: 0.9309713244, green: 0.9309713244, blue: 0.9309713244, alpha: 1)
-        fileButton.layer.borderWidth = 0
         guard let links = viewModel?.linkCountString else { return }
         fileNumberLabel.text = links
  
