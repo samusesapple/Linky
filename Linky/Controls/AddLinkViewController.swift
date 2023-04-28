@@ -181,13 +181,6 @@ class AddLinkViewController: UIViewController {
     }
     
     @objc func linkShareButtonTapped() {
-        let linkTextView = linkInputTextView.subviews[0] as! UITextView
-        UIPasteboard.general.string = linkTextView.text
-        view.makeToast("링크 복사 완료", duration: 1.5,
-                               point: CGPoint(x: 187, y: 200),
-                               title: nil,
-                               image: nil,
-                       style: .init(), completion: nil)
         presentShareSheet()
     }
     
@@ -225,14 +218,34 @@ class AddLinkViewController: UIViewController {
     }
     
     func presentShareSheet() {
-        let item = URL(string: viewModel.linkURL!)
+        guard let urlString = viewModel.linkURL else {
+            makeToast(message: "공유할 링크가 존재하지 않습니다.")
+            return }
+        guard let item = URL(string: urlString) else {
+            makeToast(message: "잘못된 URL 주소 입니다.")
+            return }
         let itemsToShare = [item]
         let shareSheet = UIActivityViewController(activityItems: itemsToShare as [Any], applicationActivities: nil)
         shareSheet.popoverPresentationController?.sourceView = self.view
         shareSheet.excludedActivityTypes = [.copyToPasteboard]
+        let linkTextView = linkInputTextView.subviews[0] as! UITextView
+        UIPasteboard.general.string = linkTextView.text
         
-        self.present(shareSheet, animated: true)
+        self.present(shareSheet, animated: true) { [weak self] in
+            let linkTextView = self?.linkInputTextView.subviews[0] as! UITextView
+            UIPasteboard.general.string = linkTextView.text
+            self?.makeToast(message: "링크가 복사되었습니다.")
+        }
     }
+    
+    func makeToast(message: String) {
+        view.makeToast(message, duration: 1.5,
+                               point: CGPoint(x: 187, y: 200),
+                               title: nil,
+                               image: nil,
+                       style: .init(), completion: nil)
+    }
+    
 }
 
 // MARK: - UIPickerViewDataSource
