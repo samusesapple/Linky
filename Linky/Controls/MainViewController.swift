@@ -66,6 +66,7 @@ class MainViewController: UIViewController {
         footerAddButton.addTarget(self, action: #selector(addLinkButtonTapped), for: .touchUpInside)
         setDefaultMenu()
     }
+
     
     // MARK: - Actions
     @objc func addLinkButtonTapped() {

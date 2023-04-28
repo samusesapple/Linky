@@ -11,17 +11,17 @@ struct MainViewViewModel {
     var folderArray: [Folder] = []
     
     init() {
-        self.folderArray = NetworkManager.shared.getFolders()
+        self.folderArray = RealmNetworkManager.shared.getFolders()
     }
     
     mutating func createNewFolder(folder: Folder) {
-        NetworkManager.shared.createFolder(newFolder: folder)
+        RealmNetworkManager.shared.createFolder(newFolder: folder)
         self.folderArray.append(folder)
     }
     
     mutating func deleteFolder(folderID: String) {
-        NetworkManager.shared.deleteFolder(with: folderID)
-        self.folderArray = NetworkManager.shared.getFolders()
+        RealmNetworkManager.shared.deleteFolder(with: folderID)
+        self.folderArray = RealmNetworkManager.shared.getFolders()
     }
 }
 
@@ -47,7 +47,7 @@ struct FolderCellViewModel {
     }
     
     var linkCountString: String {
-        let links = NetworkManager.shared.getLinks(with: folder?.folderID ?? "ID없음")
+        let links = RealmNetworkManager.shared.getLinks(with: folder?.folderID ?? "ID없음")
         return "링크 \(links.count)개"
     }
     

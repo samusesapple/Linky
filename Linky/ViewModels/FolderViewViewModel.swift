@@ -20,20 +20,20 @@ struct FolderViewViewModel {
         folderID = folder.folderID
         folderIcon = folder.icon
         folderTitle = folder.title
-        links = NetworkManager.shared.getLinks(with: folderID!)
+        links = RealmNetworkManager.shared.getLinks(with: folderID!)
     }
     
     init() { }
     
     mutating func remove(index: Int) {
         guard let link = links else { return }
-        NetworkManager.shared.deleteLink(with: link[index].date)
+        RealmNetworkManager.shared.deleteLink(with: link[index].date)
         links?.remove(at: index)
     }
     
     mutating func setLinks() {
         guard let folderID = folderID else { return }
-        self.links = NetworkManager.shared.getLinks(with: folderID)
+        self.links = RealmNetworkManager.shared.getLinks(with: folderID)
     }
     
     mutating func sortLinkCurrentLast(link: [Link]) {
@@ -53,12 +53,12 @@ struct FolderViewViewModel {
     
     // MARK: - Search Results
     mutating func getLinks(with text: String) {
-        let memoResult = NetworkManager.shared.getLinks().filter { link in
+        let memoResult = RealmNetworkManager.shared.getLinks().filter { link in
             guard let memo = link.memo?.lowercased() else { return false }
             return memo.contains(text)
         }
         
-        let urlResult = NetworkManager.shared.getLinks().filter { link in
+        let urlResult = RealmNetworkManager.shared.getLinks().filter { link in
             guard let url = link.urlString?.lowercased() else { return false }
             return url.contains(text)
         }
@@ -67,12 +67,12 @@ struct FolderViewViewModel {
     }
     
     mutating func getLinks(in folder: String, with text: String) {
-        let memoResult = NetworkManager.shared.getLinks().filter { link in
+        let memoResult = RealmNetworkManager.shared.getLinks().filter { link in
             guard let memo = link.memo?.lowercased() else { return false }
             return memo.contains(text)
         }
         
-        let urlResult = NetworkManager.shared.getLinks().filter { link in
+        let urlResult = RealmNetworkManager.shared.getLinks().filter { link in
             guard let url = link.urlString?.lowercased() else { return false }
             return url.contains(text)
         }

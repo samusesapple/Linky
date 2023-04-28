@@ -11,8 +11,8 @@
 		F11014D129F8E53B003E3E49 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11014D029F8E53B003E3E49 /* ImageCacheManager.swift */; };
 		F11EFE4529F113E20036A479 /* LinkCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EFE4429F113E20036A479 /* LinkCell.swift */; };
 		F11EFE4729F126110036A479 /* LinkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EFE4629F126110036A479 /* LinkCellViewModel.swift */; };
-		F12A8BCB29EE98B30047F0A7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BCA29EE98B30047F0A7 /* Data.swift */; };
-		F12A8BD129EEA2590047F0A7 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BD029EEA2590047F0A7 /* NetworkManager.swift */; };
+		F12A8BCB29EE98B30047F0A7 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BCA29EE98B30047F0A7 /* RealmData.swift */; };
+		F12A8BD129EEA2590047F0A7 /* RealmNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BD029EEA2590047F0A7 /* RealmNetworkManager.swift */; };
 		F142B0CA29EBBDCB00E41F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */; };
 		F142B0CC29EBBDCB00E41F22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */; };
 		F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */; };
@@ -29,8 +29,39 @@
 		F18C7F1F29EFA502003E85B0 /* MainViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18C7F1E29EFA502003E85B0 /* MainViewViewModel.swift */; };
 		F18C7F2129EFC310003E85B0 /* FolderViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18C7F2029EFC310003E85B0 /* FolderViewViewModel.swift */; };
 		F18C7F2329F0CB13003E85B0 /* AddLinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18C7F2229F0CB13003E85B0 /* AddLinkViewModel.swift */; };
+		F19DCC3B29FB82C300F7E3C8 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19DCC3A29FB82C300F7E3C8 /* ShareViewController.swift */; };
+		F19DCC3E29FB82C300F7E3C8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F19DCC3C29FB82C300F7E3C8 /* MainInterface.storyboard */; };
+		F19DCC4229FB82C300F7E3C8 /* ShareExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F19DCC3829FB82C300F7E3C8 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F19DCC4829FB830C00F7E3C8 /* SharedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19DCC4729FB830C00F7E3C8 /* SharedUserDefaults.swift */; };
+		F19DCC5529FBBA5500F7E3C8 /* UserDefaultsFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19DCC5429FBBA5500F7E3C8 /* UserDefaultsFileManager.swift */; };
+		F19DCC5629FBBA5500F7E3C8 /* UserDefaultsFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19DCC5429FBBA5500F7E3C8 /* UserDefaultsFileManager.swift */; };
+		F19DCC5729FBBE9600F7E3C8 /* SharedUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19DCC4729FB830C00F7E3C8 /* SharedUserDefaults.swift */; };
 		F1E99B5F29F5310F004503E1 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E99B5E29F5310F004503E1 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F19DCC4029FB82C300F7E3C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F142B0BE29EBBDCB00E41F22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F19DCC3729FB82C300F7E3C8;
+			remoteInfo = ShareExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F19DCC4629FB82C300F7E3C8 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F19DCC4229FB82C300F7E3C8 /* ShareExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B7663156D071499EE94F56A2 /* Pods-Linky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Linky.release.xcconfig"; path = "Target Support Files/Pods-Linky/Pods-Linky.release.xcconfig"; sourceTree = "<group>"; };
@@ -39,8 +70,8 @@
 		F11014D029F8E53B003E3E49 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		F11EFE4429F113E20036A479 /* LinkCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCell.swift; sourceTree = "<group>"; };
 		F11EFE4629F126110036A479 /* LinkCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCellViewModel.swift; sourceTree = "<group>"; };
-		F12A8BCA29EE98B30047F0A7 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		F12A8BD029EEA2590047F0A7 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F12A8BCA29EE98B30047F0A7 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
+		F12A8BD029EEA2590047F0A7 /* RealmNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNetworkManager.swift; sourceTree = "<group>"; };
 		F142B0C629EBBDCB00E41F22 /* Linky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +90,14 @@
 		F18C7F1E29EFA502003E85B0 /* MainViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewModel.swift; sourceTree = "<group>"; };
 		F18C7F2029EFC310003E85B0 /* FolderViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderViewViewModel.swift; sourceTree = "<group>"; };
 		F18C7F2229F0CB13003E85B0 /* AddLinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkViewModel.swift; sourceTree = "<group>"; };
+		F19DCC3829FB82C300F7E3C8 /* ShareExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ShareExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F19DCC3A29FB82C300F7E3C8 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		F19DCC3D29FB82C300F7E3C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		F19DCC3F29FB82C300F7E3C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F19DCC4729FB830C00F7E3C8 /* SharedUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedUserDefaults.swift; sourceTree = "<group>"; };
+		F19DCC4C29FB851100F7E3C8 /* LinkyDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkyDebug.entitlements; sourceTree = "<group>"; };
+		F19DCC4D29FB857300F7E3C8 /* ShareExtensionDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtensionDebug.entitlements; sourceTree = "<group>"; };
+		F19DCC5429FBBA5500F7E3C8 /* UserDefaultsFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsFileManager.swift; sourceTree = "<group>"; };
 		F1E99B5E29F5310F004503E1 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +107,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				13C95717BB2D3D08E18A1D21 /* Pods_Linky.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F19DCC3529FB82C300F7E3C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,9 +140,10 @@
 		F12A8BCF29EEA2480047F0A7 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				F12A8BD029EEA2590047F0A7 /* NetworkManager.swift */,
+				F12A8BD029EEA2590047F0A7 /* RealmNetworkManager.swift */,
 				F14B22DD29F77F2300CDBE98 /* MetadataNetworkManager.swift */,
 				F11014D029F8E53B003E3E49 /* ImageCacheManager.swift */,
+				F19DCC5429FBBA5500F7E3C8 /* UserDefaultsFileManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -105,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				F142B0C829EBBDCB00E41F22 /* Linky */,
+				F19DCC3929FB82C300F7E3C8 /* ShareExtension */,
 				F142B0C729EBBDCB00E41F22 /* Products */,
 				A3DB1E6F55D97D359A59584C /* Pods */,
 				4047F1F75552B5B6DCE695D4 /* Frameworks */,
@@ -115,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				F142B0C629EBBDCB00E41F22 /* Linky.app */,
+				F19DCC3829FB82C300F7E3C8 /* ShareExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +171,7 @@
 		F142B0C829EBBDCB00E41F22 /* Linky */ = {
 			isa = PBXGroup;
 			children = (
+				F19DCC4C29FB851100F7E3C8 /* LinkyDebug.entitlements */,
 				F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */,
 				F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */,
 				F12A8BCF29EEA2480047F0A7 /* Network */,
@@ -140,7 +190,8 @@
 		F142B0DD29EBBE8300E41F22 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F12A8BCA29EE98B30047F0A7 /* Data.swift */,
+				F12A8BCA29EE98B30047F0A7 /* RealmData.swift */,
+				F19DCC4729FB830C00F7E3C8 /* SharedUserDefaults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,6 +238,17 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		F19DCC3929FB82C300F7E3C8 /* ShareExtension */ = {
+			isa = PBXGroup;
+			children = (
+				F19DCC4D29FB857300F7E3C8 /* ShareExtensionDebug.entitlements */,
+				F19DCC3A29FB82C300F7E3C8 /* ShareViewController.swift */,
+				F19DCC3C29FB82C300F7E3C8 /* MainInterface.storyboard */,
+				F19DCC3F29FB82C300F7E3C8 /* Info.plist */,
+			);
+			path = ShareExtension;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,15 +261,34 @@
 				F142B0C329EBBDCB00E41F22 /* Frameworks */,
 				F142B0C429EBBDCB00E41F22 /* Resources */,
 				B7A9E2F053C7F9EDE4E52425 /* [CP] Embed Pods Frameworks */,
+				F19DCC4629FB82C300F7E3C8 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F19DCC4129FB82C300F7E3C8 /* PBXTargetDependency */,
 			);
 			name = Linky;
 			productName = Linky;
 			productReference = F142B0C629EBBDCB00E41F22 /* Linky.app */;
 			productType = "com.apple.product-type.application";
+		};
+		F19DCC3729FB82C300F7E3C8 /* ShareExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F19DCC4329FB82C300F7E3C8 /* Build configuration list for PBXNativeTarget "ShareExtension" */;
+			buildPhases = (
+				F19DCC3429FB82C300F7E3C8 /* Sources */,
+				F19DCC3529FB82C300F7E3C8 /* Frameworks */,
+				F19DCC3629FB82C300F7E3C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShareExtension;
+			productName = ShareExtension;
+			productReference = F19DCC3829FB82C300F7E3C8 /* ShareExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -220,6 +301,9 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					F142B0C529EBBDCB00E41F22 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					F19DCC3729FB82C300F7E3C8 = {
 						CreatedOnToolsVersion = 14.3;
 					};
 				};
@@ -238,6 +322,7 @@
 			projectRoot = "";
 			targets = (
 				F142B0C529EBBDCB00E41F22 /* Linky */,
+				F19DCC3729FB82C300F7E3C8 /* ShareExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -249,6 +334,14 @@
 			files = (
 				F142B0D629EBBDCC00E41F22 /* LaunchScreen.storyboard in Resources */,
 				F142B0D329EBBDCC00E41F22 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F19DCC3629FB82C300F7E3C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F19DCC3E29FB82C300F7E3C8 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,23 +401,43 @@
 				F142B0F129EC293200E41F22 /* FolderCell.swift in Sources */,
 				F142B0FC29ECE3EA00E41F22 /* AddLinkViewController.swift in Sources */,
 				F11EFE4529F113E20036A479 /* LinkCell.swift in Sources */,
-				F12A8BCB29EE98B30047F0A7 /* Data.swift in Sources */,
+				F12A8BCB29EE98B30047F0A7 /* RealmData.swift in Sources */,
 				F11014D129F8E53B003E3E49 /* ImageCacheManager.swift in Sources */,
+				F19DCC5529FBBA5500F7E3C8 /* UserDefaultsFileManager.swift in Sources */,
 				F15EC8E229EF77D60076BCD2 /* AddFolderAlertViewController.swift in Sources */,
 				F1E99B5F29F5310F004503E1 /* SearchViewController.swift in Sources */,
 				F14B22DE29F77F2300CDBE98 /* MetadataNetworkManager.swift in Sources */,
 				F142B10129ED05D900E41F22 /* FolderViewController.swift in Sources */,
+				F19DCC4829FB830C00F7E3C8 /* SharedUserDefaults.swift in Sources */,
 				F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */,
 				F142B0E729EBCC3700E41F22 /* CustomTextField.swift in Sources */,
 				F142B0CA29EBBDCB00E41F22 /* AppDelegate.swift in Sources */,
 				F142B0CC29EBBDCB00E41F22 /* SceneDelegate.swift in Sources */,
-				F12A8BD129EEA2590047F0A7 /* NetworkManager.swift in Sources */,
+				F12A8BD129EEA2590047F0A7 /* RealmNetworkManager.swift in Sources */,
 				F18C7F2329F0CB13003E85B0 /* AddLinkViewModel.swift in Sources */,
 				F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F19DCC3429FB82C300F7E3C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F19DCC3B29FB82C300F7E3C8 /* ShareViewController.swift in Sources */,
+				F19DCC5729FBBE9600F7E3C8 /* SharedUserDefaults.swift in Sources */,
+				F19DCC5629FBBA5500F7E3C8 /* UserDefaultsFileManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F19DCC4129FB82C300F7E3C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F19DCC3729FB82C300F7E3C8 /* ShareExtension */;
+			targetProxy = F19DCC4029FB82C300F7E3C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		F142B0D429EBBDCC00E41F22 /* LaunchScreen.storyboard */ = {
@@ -333,6 +446,14 @@
 				F142B0D529EBBDCC00E41F22 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F19DCC3C29FB82C300F7E3C8 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F19DCC3D29FB82C300F7E3C8 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -388,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -442,7 +563,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -456,8 +577,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BAAE7613A0A96D810E02468B /* Pods-Linky.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Linky/LinkyDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY9QH7G8BB;
@@ -467,6 +590,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -488,6 +612,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7663156D071499EE94F56A2 /* Pods-Linky.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -499,6 +624,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -510,6 +636,57 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F19DCC4429FB82C300F7E3C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtensionDebug.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JY9QH7G8BB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samSung.Linky.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F19DCC4529FB82C300F7E3C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = JY9QH7G8BB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ShareExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ShareExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.samSung.Linky.ShareExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -533,6 +710,15 @@
 			buildConfigurations = (
 				F142B0DB29EBBDCC00E41F22 /* Debug */,
 				F142B0DC29EBBDCC00E41F22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F19DCC4329FB82C300F7E3C8 /* Build configuration list for PBXNativeTarget "ShareExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F19DCC4429FB82C300F7E3C8 /* Debug */,
+				F19DCC4529FB82C300F7E3C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

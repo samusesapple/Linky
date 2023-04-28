@@ -8,10 +8,10 @@
 import Foundation
 import RealmSwift
 
-final class NetworkManager {
+final class RealmNetworkManager {
     private let realm = try! Realm()
     
-    static let shared = NetworkManager()
+    static let shared = RealmNetworkManager()
     private init() {}
     
     private var folderArray: [Folder] = []

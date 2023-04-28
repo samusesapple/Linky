@@ -8,7 +8,7 @@
 import Foundation
 
 struct AddLinkViewModel {
-    var folderArray: [Folder] = NetworkManager.shared.getFolders()
+    var folderArray: [Folder] = RealmNetworkManager.shared.getFolders()
     var linkData: Link?
     var folderTitle: String?
     
@@ -24,21 +24,21 @@ struct AddLinkViewModel {
         guard let memo = link.memo else { return }
         if memo.count > 0 {
             // 제목 정하지 않으면, 자동으로 링크에 대한 제목 만들기
-            NetworkManager.shared.createLink(newLink: link)
+            RealmNetworkManager.shared.createLink(newLink: link)
         } else {
             MetadataNetworkManager.shared.getMetaDataTitle(urlString: url) { data in
                 link.memo = data
-                NetworkManager.shared.createLink(newLink: link)
+                RealmNetworkManager.shared.createLink(newLink: link)
             }
         }
     }
     
     func updateLink(link: Link) {
-        NetworkManager.shared.updateLinkData(to: link)
+        RealmNetworkManager.shared.updateLinkData(to: link)
     }
     
     func getFolderTitle(with link: Link) -> String {
-        let folder = NetworkManager.shared.getFolders().filter { $0.folderID == link.folderID }.first
+        let folder = RealmNetworkManager.shared.getFolders().filter { $0.folderID == link.folderID }.first
         return folder?.title ?? ""
     }
 }
