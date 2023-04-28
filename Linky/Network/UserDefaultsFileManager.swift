@@ -11,7 +11,7 @@ class UserDefaultsFileManager {
     
     static let shared = UserDefaults(suiteName: SharedUserDefaults.suiteName)
     
-    private init() { }
+    private init() {}
 
     
 }
