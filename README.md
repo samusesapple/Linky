@@ -25,7 +25,7 @@
 #### 디자인 패턴
 * MVVM 패턴
 #### 사용 기술 및 오픈소스 라이브러리
-* Database: Realm
+* Database: Realm, UserDefaults
 * Toast-Swift
 * LinkPresentation
 
@@ -89,6 +89,24 @@
 
  번외) 살펴보니, 헤더의 타이틀 부분만 빼올 수도 있어서 유저가 제목을 지정하지 않는 경우 임시 제목을 지정해서 저장해주는 로직을 추가 구현했다. (매번 제목 지정하지 않으면 해당 링크가 어떤 것에 대한 링크인지 찾기 어려워지므로 유저 인터페이스 관점에서도 편리성에 좋을거라 판단했다..! + 하단코드 참고)
  <img width="681" alt="image" src="https://user-images.githubusercontent.com/126672733/234455951-8b4d9d8b-a581-4b79-9e80-0a3c55059957.png">
+<br>
+
+#### 3. Share Extension 구현을 통한 외부 share sheet를 통해 앱에 링크 저장하기
+* 문제상황: Share Extension에는 Realm이 존재하지 않으므로, 외부 링크를 받아서 Realm에 해당 링크를 전달하는 로직 구현 필요 
+<br>
+
+* 해결 과정: Share Extension에 대해 구글링하여 관련 레퍼런스를 참고한 결과, UserDefaults에 저장을 한 후, 저장된 데이터를 Realm에 넘겨주는 방식으로 데이터를 저장하기로 했다. 
+1. Extension과 기존 앱이 연동될 수 있도록 app group을 생성했으며, share sheet에서 받은 링크의 url을 저장할 키와 유저가 지정한 제목을 저장할 키, 총 2가지 키를 만들었다. <br>
+<img width="453" alt="image" src="https://user-images.githubusercontent.com/126672733/235100308-7c4a2cd9-23ff-4ca9-8f75-6a4cd63c6f52.png"> <br>
+
+2. ShareVC의 didSelectPost() 함수 안에 String타입으로 변환된 url과, contentText를 UserDefaults에 저장하는 로직을 구현하여, post 버튼이 눌리면 해당 데이터를 우선 UserDefaults에 저장하도록 했다.
+<img width="1023" alt="image" src="https://user-images.githubusercontent.com/126672733/235104597-423793c8-fbe2-4ed3-85af-85206cff0791.png">
+
+3. UserDefaults에 저장된 URL을 Realm 데이터베이스에 옮겨줘야한다. 해당 로직을 어디에 구현할까 고민하다, 유저가 앱에 들어온 순간; SceneDelegate의 sceneDidBecomeActive() 시점에 실행하기로 했다. <br>
+<img width="937" alt="image" src="https://user-images.githubusercontent.com/126672733/235108115-bd5d56a2-97d7-4c5f-8ada-264c48abc483.png">
+<img width="974" alt="image" src="https://user-images.githubusercontent.com/126672733/235108642-e12e810c-668b-46b5-828f-bd5f152a7966.png">
+
+
 
 
 
