@@ -100,7 +100,7 @@
 <img width="453" alt="image" src="https://user-images.githubusercontent.com/126672733/235100308-7c4a2cd9-23ff-4ca9-8f75-6a4cd63c6f52.png"> <br>
 
 2. ShareVC의 didSelectPost() 함수 안에 String타입으로 변환된 url과, contentText를 UserDefaults에 저장하는 로직을 구현하여, post 버튼이 눌리면 해당 데이터를 우선 UserDefaults에 저장하도록 했다.
-<img width="1023" alt="image" src="https://user-images.githubusercontent.com/126672733/235104597-423793c8-fbe2-4ed3-85af-85206cff0791.png">
+<img width="977" alt="image" src="https://user-images.githubusercontent.com/126672733/235118982-3dbc6101-4072-430a-beb6-1e642a3c33f2.png">
 
 3. UserDefaults에 저장된 URL을 Realm 데이터베이스에 옮겨줘야한다. 해당 로직을 어디에 구현할까 고민하다, 유저가 앱에 들어온 순간; SceneDelegate의 sceneDidBecomeActive() 시점에 실행하기로 했다. <br>
 <img width="937" alt="image" src="https://user-images.githubusercontent.com/126672733/235108115-bd5d56a2-97d7-4c5f-8ada-264c48abc483.png">
