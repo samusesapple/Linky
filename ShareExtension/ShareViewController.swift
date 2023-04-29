@@ -11,15 +11,49 @@ import UniformTypeIdentifiers
 
 let sharedUserDefaults = UserDefaultsFileManager.shared
 
-class ShareViewController: SLComposeServiceViewController {
+class ShareViewController: UIViewController {
     
-    override func isContentValid() -> Bool {
-        // Do validation of contentText and/or NSExtensionContext attachments here
-        placeholder = "(선택) 링크의 제목을 지어주세요. \n 해당 링크는 맨 첫번째 폴더에 저장됩니다."
-        return true
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presentAlert()
     }
     
-    override func didSelectPost() {
+    
+// MARK: - Helpers
+    
+    func presentAlert() {
+        let alert = UIAlertController(title: "첫번째 폴더에 링크를 저장합니다.", message: nil, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "확인", style: .default) { [weak self] action in
+            self?.saveURLAtUserDefaults()
+            self?.hideExtensionWithCompletionHandler(completion: { _ in
+                  self?.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+              })
+        }
+        
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { [weak self] action in
+            self?.hideExtensionWithCompletionHandler(completion: { _ in
+                  self?.extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+              })
+        }
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        if self.presentedViewController == nil {
+            self.present(alert, animated: true, completion: nil)
+            }
+        }
+    
+    
+    func hideExtensionWithCompletionHandler(completion: @escaping (Bool) -> Void) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.navigationController?.view.transform = CGAffineTransform(translationX: 0, y:self.navigationController!.view.frame.size.height)
+        }, completion: completion)
+    }
+    
+    
+    func saveURLAtUserDefaults() {
         if let inputItem = extensionContext?.inputItems.first as? NSExtensionItem {
             if let itemProvider = inputItem.attachments?.first {
                 // URL 타입 있는지 재차 확인 후, 해당 아이템 로딩하기
@@ -32,19 +66,10 @@ class ShareViewController: SLComposeServiceViewController {
                         // 해당 url의 absoluteString을 UserDefaults의 배열에 Append
                         SharedUserDefaults.urlArray.append(urlString)
                         print(SharedUserDefaults.urlArray)
-
                     }
                 }
             }
         }
-        
-        self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
-    }
-
-    //                        sharedUserDefaults?.set(self?.contentText, forKey: SharedUserDefaults.Keys.memo)
-    override func configurationItems() -> [Any]! {
-        // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
-        return []
     }
     
 }
