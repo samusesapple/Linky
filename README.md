@@ -113,8 +113,8 @@
 <img width="815" alt="image" src="https://user-images.githubusercontent.com/126672733/235277722-e3bffac4-bf56-428d-90be-7935a53a9618.png">
 
 6. Scene Delegate - 반복문 for문을 사용하여 배열이 있는 동안, 해당 배열을 append하도록 했다.
-<img width="795" alt="image" src="https://user-images.githubusercontent.com/126672733/235277824-87cc3cf5-2e17-413f-8500-2b0d47392560.png">
-<img width="730" alt="image" src="https://user-images.githubusercontent.com/126672733/235277861-290786c7-76e6-4c5e-8abf-a5e3321b46ab.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/126672733/235277966-93fa5bde-1d69-4667-90b8-c332ee7b77ac.png">
+<img width="769" alt="image" src="https://user-images.githubusercontent.com/126672733/235277993-e7931910-3e24-4d63-b310-e935e84cf01f.png">
 
 
 
