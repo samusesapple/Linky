@@ -65,11 +65,11 @@ class ShareViewController: UIViewController {
                         guard let urlString = url.absoluteString else { return }
                         // 해당 url의 absoluteString을 UserDefaults의 배열에 Append
                         SharedUserDefaults.urlArray.append(urlString)
-                        print(SharedUserDefaults.urlArray)
                     }
                 }
             }
         }
     }
+    
     
 }

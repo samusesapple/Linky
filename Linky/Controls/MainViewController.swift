@@ -8,18 +8,13 @@
 import UIKit
 import RealmSwift
 
-//protocol MainViewControllerDelegate: AnyObject {
-//    func didTapMenuButton()
-//}
 
 class MainViewController: UIViewController {
     
     // MARK: - Properties
     
     private var viewModel = MainViewViewModel()
-    
-//    weak var delegate: MainViewControllerDelegate?
-    
+        
     private let footerAddButton = AddLinkButton(type: .system)
     
     private let cellSize = CGSize(width: 190, height: 313)
@@ -67,6 +62,10 @@ class MainViewController: UIViewController {
         setDefaultMenu()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel.setSharedLinkData()
+        resetCollectionView()
+    }
     
     // MARK: - Actions
     @objc func addLinkButtonTapped() {

@@ -144,7 +144,7 @@ class AddLinkViewController: UIViewController {
         
         view.addSubview(buttonStack)
         buttonStack.centerX(inView: view)
-        buttonStack.anchor(bottom: view.bottomAnchor, paddingBottom: 100)
+        buttonStack.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 50)
         setButtonActions()
         
         hideKeyboardWhenTappedAround()

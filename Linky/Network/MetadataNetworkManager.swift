@@ -78,8 +78,8 @@ struct MetadataNetworkManager {
                 }
             }
             
-            guard let imageData = imageData else {
-                let iconData = metadata.iconProvider?.loadObject(ofClass: UIImage.self) { icon, error in
+            guard imageData != nil else {
+                _ = metadata.iconProvider?.loadObject(ofClass: UIImage.self) { icon, error in
                     let icon = icon as! UIImage?
                     guard let icon = icon else { return }
                     ImageCacheManager.shared.setObject(icon, forKey: cacheKey)
