@@ -106,7 +106,18 @@
 <img width="937" alt="image" src="https://user-images.githubusercontent.com/126672733/235108115-bd5d56a2-97d7-4c5f-8ada-264c48abc483.png">
 <img width="974" alt="image" src="https://user-images.githubusercontent.com/126672733/235108642-e12e810c-668b-46b5-828f-bd5f152a7966.png">
 
-4. UserDefaults를 이용한 상단의 로직을 테스트해보니, 1개의 키에 1개의 값만 저장할 수 있으므로 1개의 링크를 저장할 때마다 앱을 들어와야 저장이 되는 오류를 발견했다. (여러개 공유해놓으면 마지막에 공유된 링크로 키값이 변경되므로 마지막 링크만 저장됨) 해당 오류를 해결하기 위해 다른 로직을 고민하는 중이다 -- ing
+4. UserDefaults를 이용한 상단의 로직을 테스트해보니, 1개의 키에 1개의 값만 저장할 수 있으므로 1개의 링크를 저장할 때마다 앱을 들어와야 저장이 되는 오류를 발견했다. (여러개 공유해놓으면 마지막에 공유된 링크로 키값이 변경되므로 마지막 링크만 저장됨) 해당 오류를 해결하기 위해 UserDefaults의 url을 저장하는 타입을 String이 아닌 [String]으로 변경했다. 그리고 shared extension과 앱에서도 접근해야하기 때문에 타입 저장 속성으로 만들어서 데이터 영역에 해당 배열을 올렸다. 속성감시자 get set을 사용하여 키값으로 해당 배열에 접근해 url을 세팅할 수 있도록 만들었다.
+<img width="805" alt="image" src="https://user-images.githubusercontent.com/126672733/235277376-6b15c8b8-2d9e-43a0-8081-8b7e3a82e8ce.png">
+
+5. Share Extension - 유저가 post 버튼을 누르면 UserDefaults의 urlArray 배열에 새로운 String타입 url을 append 하도록 로직을 수정했다.
+<img width="815" alt="image" src="https://user-images.githubusercontent.com/126672733/235277722-e3bffac4-bf56-428d-90be-7935a53a9618.png">
+
+6. Scene Delegate - 반복문 for문을 사용하여 배열이 있는 동안, 해당 배열을 append하도록 했다.
+<img width="795" alt="image" src="https://user-images.githubusercontent.com/126672733/235277824-87cc3cf5-2e17-413f-8500-2b0d47392560.png">
+<img width="730" alt="image" src="https://user-images.githubusercontent.com/126672733/235277861-290786c7-76e6-4c5e-8abf-a5e3321b46ab.png">
+
+
+
 
 
 
