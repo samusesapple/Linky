@@ -228,6 +228,9 @@ extension MainViewController: FolderCellDelegate {
         cell.shake()
         let alert = UIAlertController(title: "폴더 삭제시, 해당되는 링크 또한 삭제됩니다.", message: nil, preferredStyle: .actionSheet)
         let delete = UIAlertAction(title: "폴더 삭제", style: .destructive) { [weak self] action in
+            guard (self?.viewModel.folderArray.count)! > 1 else {
+                cell.stopShaking(); self?.makeToast(message: "최소 1개 이상의 폴더가 필요합니다.\n\n*새로운 폴더를 만든 후, 기존 폴더를 삭제해주세요 :)")
+                return }
             guard let folderID = cell.viewModel?.folder?.folderID else { return }
             self?.viewModel.deleteFolder(folderID: folderID)
             DispatchQueue.main.async { [weak self] in

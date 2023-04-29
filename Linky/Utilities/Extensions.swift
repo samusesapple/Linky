@@ -75,7 +75,7 @@ extension UIView {
     }
     
     
-    public func centerInSuperview(size: CGSize = .zero) {
+    func centerInSuperview(size: CGSize = .zero) {
         translatesAutoresizingMaskIntoConstraints = false
         if let superviewCenterXAnchor = superview?.centerXAnchor {
             centerXAnchor.constraint(equalTo: superviewCenterXAnchor).isActive = true
@@ -94,14 +94,14 @@ extension UIView {
         }
     }
     
-    public func setupShadow(opacity: Float = 0, radius: CGFloat = 0, offset: CGSize = .zero, color: UIColor = .black) {
+    func setupShadow(opacity: Float = 0, radius: CGFloat = 0, offset: CGSize = .zero, color: UIColor = .black) {
         layer.shadowOpacity = opacity
         layer.shadowRadius = radius
         layer.shadowOffset = offset
         layer.shadowColor = color.cgColor
     }
     
-    public func addDashedBorder() {
+    func addDashedBorder() {
         let color = UIColor.gray.cgColor
         
         let shapeLayer: CAShapeLayer = CAShapeLayer()
@@ -119,6 +119,8 @@ extension UIView {
         
         self.layer.addSublayer(shapeLayer)
     }
+    
+    
 }
 
 extension UIViewController {
@@ -156,4 +158,15 @@ extension UICollectionViewCell {
         let layer: CALayer = self.layer
         layer.removeAnimation(forKey: "shaking")
     }
+}
+
+extension UIViewController {
+    func makeToast(message: String) {
+        view.makeToast(message, duration: 1.5,
+                               point: CGPoint(x: 187, y: 200),
+                               title: nil,
+                               image: nil,
+                       style: .init(), completion: nil)
+    }
+    
 }

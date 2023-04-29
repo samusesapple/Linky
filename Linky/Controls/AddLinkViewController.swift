@@ -238,13 +238,7 @@ class AddLinkViewController: UIViewController {
         }
     }
     
-    func makeToast(message: String) {
-        view.makeToast(message, duration: 1.5,
-                               point: CGPoint(x: 187, y: 200),
-                               title: nil,
-                               image: nil,
-                       style: .init(), completion: nil)
-    }
+   
     
 }
 
