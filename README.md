@@ -112,8 +112,8 @@
 5. Share Extension - 유저가 post 버튼을 누르면 UserDefaults의 urlArray 배열에 새로운 String타입 url을 append 하도록 로직을 수정했다.
 <img width="815" alt="image" src="https://user-images.githubusercontent.com/126672733/235277722-e3bffac4-bf56-428d-90be-7935a53a9618.png">
 
-6. Scene Delegate - 반복문 for문을 사용하여 배열이 있는 동안, 해당 배열을 append하도록 했다.
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/126672733/235277966-93fa5bde-1d69-4667-90b8-c332ee7b77ac.png">
+6. Scene Delegate - 반복문 for문을 사용하여 배열이 있는 동안, 해당 배열을 append하도록 했다. 또한, 화면이 활성화 된 순간 네트워킹을 진행하면 viewModel에 데이터가 바로 반영되지 않는 문제점을 발견했다. 또한 url 데이터를 공유하는 작업은, 사파리나 크롬과 같은 외부 앱에서 하는 작업이므로 앱이 백그라운드에 진입할 수 밖에 없음을 고려하여 시점을 sceneWillEnterForeground()으로 변경했다.
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/126672733/235280539-67273488-8930-4df4-854e-99e30085258d.png">
 <img width="769" alt="image" src="https://user-images.githubusercontent.com/126672733/235277993-e7931910-3e24-4d63-b310-e935e84cf01f.png">
 
 
