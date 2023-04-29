@@ -106,6 +106,7 @@
 <img width="937" alt="image" src="https://user-images.githubusercontent.com/126672733/235108115-bd5d56a2-97d7-4c5f-8ada-264c48abc483.png">
 <img width="974" alt="image" src="https://user-images.githubusercontent.com/126672733/235108642-e12e810c-668b-46b5-828f-bd5f152a7966.png">
 
+4. UserDefaults를 이용한 상단의 로직을 테스트해보니, 1개의 키에 1개의 값만 저장할 수 있으므로 1개의 링크를 저장할 때마다 앱을 들어와야 저장이 되는 오류를 발견했다. (여러개 공유해놓으면 마지막에 공유된 링크로 키값이 변경되므로 마지막 링크만 저장됨) 해당 오류를 해결하기 위해 다른 로직을 고민하는 중이다 -- ing
 
 
 
