@@ -8,9 +8,9 @@
 import UIKit
 import RealmSwift
 
-protocol MainViewControllerDelegate: AnyObject {
-    func didTapMenuButton()
-}
+//protocol MainViewControllerDelegate: AnyObject {
+//    func didTapMenuButton()
+//}
 
 class MainViewController: UIViewController {
     
@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     
     private var viewModel = MainViewViewModel()
     
-    weak var delegate: MainViewControllerDelegate?
+//    weak var delegate: MainViewControllerDelegate?
     
     private let footerAddButton = AddLinkButton(type: .system)
     
@@ -66,7 +66,7 @@ class MainViewController: UIViewController {
         footerAddButton.addTarget(self, action: #selector(addLinkButtonTapped), for: .touchUpInside)
         setDefaultMenu()
     }
-
+    
     
     // MARK: - Actions
     @objc func addLinkButtonTapped() {
@@ -75,9 +75,6 @@ class MainViewController: UIViewController {
         present(addVC, animated: true)
     }
     
-    @objc func menuButtonTapped() {
-        
-    }
     
     
     // MARK: - Helpers
