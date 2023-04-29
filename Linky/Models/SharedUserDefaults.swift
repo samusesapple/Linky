@@ -11,8 +11,17 @@ struct SharedUserDefaults {
     static let suiteName = "group.com.samSung.Linky"
     
     struct Keys {
-        static let urlString: String = "urlString"
+        static let urlArray: String = "urlArray"
         static let memo: String = "memo"
+    }
+    
+    static var urlArray: [String] {
+        get {
+            return UserDefaultsFileManager.shared?.array(forKey: "urlArray") as? [String] ?? []
+        }
+        set {
+            UserDefaultsFileManager.shared?.set(newValue, forKey: "urlArray")
+        }
     }
     
     

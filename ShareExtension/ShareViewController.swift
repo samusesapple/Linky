@@ -25,13 +25,14 @@ class ShareViewController: SLComposeServiceViewController {
                 // URL 타입 있는지 재차 확인 후, 해당 아이템 로딩하기
                 if itemProvider.hasItemConformingToTypeIdentifier((UTType.url.identifier as CFString) as String) {
                     // 로딩되면 url을 String 타입으로 저장해야하므로 NSURL로 타입캐스팅
-                    itemProvider.loadItem(forTypeIdentifier: (UTType.url.identifier as CFString) as String) { [weak self] url, error in
+                    itemProvider.loadItem(forTypeIdentifier: (UTType.url.identifier as CFString) as String) { url, error in
                         guard error == nil else { return }
                         guard let url = url as? NSURL else { print("NSURL 전환 실패"); return }
                         guard let urlString = url.absoluteString else { return }
-                        // 해당 url의 absoluteString을 UserDefaults에 저장
-                        sharedUserDefaults?.set(urlString, forKey: SharedUserDefaults.Keys.urlString)
-                        sharedUserDefaults?.set(self?.contentText, forKey: SharedUserDefaults.Keys.memo)
+                        // 해당 url의 absoluteString을 UserDefaults의 배열에 Append
+                        SharedUserDefaults.urlArray.append(urlString)
+                        print(SharedUserDefaults.urlArray)
+
                     }
                 }
             }
@@ -39,7 +40,8 @@ class ShareViewController: SLComposeServiceViewController {
         
         self.extensionContext!.completeRequest(returningItems: [], completionHandler: nil)
     }
-    
+
+    //                        sharedUserDefaults?.set(self?.contentText, forKey: SharedUserDefaults.Keys.memo)
     override func configurationItems() -> [Any]! {
         // To add configuration options via table cells at the bottom of the sheet, return an array of SLComposeSheetConfigurationItem here.
         return []

@@ -38,9 +38,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-        guard let sharedURL = sharedUserDefaults?.string(forKey: SharedUserDefaults.Keys.urlString) else { return }
-        guard let sharedMemo = sharedUserDefaults?.string(forKey: SharedUserDefaults.Keys.memo) else { return }
-        sendFileToRealm(url: sharedURL, memo: sharedMemo)
+        guard let sharedURL = sharedUserDefaults?.array(forKey: SharedUserDefaults.Keys.urlArray) else { return }
+        
+        for url in sharedURL {
+            sendFileToRealm(url: url as! String)
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
@@ -60,27 +62,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     // MARK: - send url data to realm
-    func sendFileToRealm(url: String, memo: String) {
-        sharedUserDefaults?.set(url, forKey: SharedUserDefaults.Keys.urlString)
-        guard let urlString = sharedUserDefaults?.string(forKey: SharedUserDefaults.Keys.urlString) else { return }
+    func sendFileToRealm(url: String) {
         let newLink = Link()
 
         newLink.folderID = RealmNetworkManager.shared.getFolders()[0].folderID
         newLink.date = Date()
-        newLink.memo = memo
-        newLink.urlString = urlString
+        newLink.urlString = url
         
         // 중복되는 데이터가 있는지 확인 후, 있는 경우 저장 x
         if RealmNetworkManager.shared.getLinks().filter({ link in
             link.urlString == newLink.urlString
         }).count > 0 { print("이미 존재하는 url"); return } else {
-            // 저장이 완료된 후, UserDefault에 저장된 해당 키값을 지우기
+            // 저장이 완료된 후, UserDefault에 저장된 배열값 초기화
             RealmNetworkManager.shared.createLink(newLink: newLink)
-            sharedUserDefaults?.removeObject(forKey: SharedUserDefaults.Keys.urlString)
-            sharedUserDefaults?.removeObject(forKey: SharedUserDefaults.Keys.memo)
+            sharedUserDefaults?.removeObject(forKey: SharedUserDefaults.Keys.urlArray)
         }
         
     }
     
 }
-
