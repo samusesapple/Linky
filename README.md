@@ -27,6 +27,7 @@
 #### 사용 기술 및 오픈소스 라이브러리
 * Database: Realm, UserDefaults
 * Toast-Swift
+* JGProgressHUD
 * LinkPresentation
 
 <br>
@@ -115,7 +116,10 @@
 6. Scene Delegate - 반복문 for문을 사용하여 배열이 있는 동안, 해당 배열을 append하도록 했다. 또한, 화면이 활성화 된 순간 네트워킹을 진행하면 viewModel에 데이터가 바로 반영되지 않는 문제점을 발견했다. 또한 url 데이터를 공유하는 작업은, 사파리나 크롬과 같은 외부 앱에서 하는 작업이므로 앱이 백그라운드에 진입할 수 밖에 없음을 고려하여 시점을 sceneWillEnterForeground()으로 변경했다.
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/126672733/235280539-67273488-8930-4df4-854e-99e30085258d.png">
 <img width="769" alt="image" src="https://user-images.githubusercontent.com/126672733/235277993-e7931910-3e24-4d63-b310-e935e84cf01f.png">
-
+>> Scene Delegate에 실행시킨 결과, 자동적으로 메타데이터를 통해 제목을 지어주는 로직을 구현하여 realm에 데이터를 저장하는 것에 한계가 있었다. 따라서 mainVC의 viewWIllAppear에 해당 로직을 반영시키기로 했다.
+* 해결 : MainViewViewModel에 해당 로직을 만들었으며, @escaping 키워드를 활용하여 네트워킹이 완료된 후, collectionView를 업데이트 하도록 구현했다.
+<img width="560" alt="image" src="https://user-images.githubusercontent.com/126672733/235332569-1180554c-867d-4913-a1d9-4f05a4958cb6.png">
+<img width="783" alt="image" src="https://user-images.githubusercontent.com/126672733/235332528-9af38caa-cc7f-499e-9993-d32f3a0df5c6.png">
 
 
 
