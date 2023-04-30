@@ -27,11 +27,12 @@ final class RealmNetworkManager {
         } catch { print("Create Folder Failed") }
     }
     
-    func createLink(newLink: Link) {
+    func createLink(newLink: Link, completion: @escaping () -> Void) {
         do {
             try realm.write {
                 realm.add(newLink) }
         } catch { print("Create Link Failed") }
+        completion()
     }
     
 // MARK: - [READ]

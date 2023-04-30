@@ -174,10 +174,15 @@ class AddLinkViewController: UIViewController {
         
         if linkData.urlString == viewModel.linkData?.urlString {
             viewModel.updateLink(link: linkData)
-        } else { viewModel.createLink(link: linkData) }
+            delegate?.updateLink(link: linkData)
+            self.dismiss(animated: true)
+            return
+        }
+        viewModel.createLink(link: linkData) { [weak self] in
+            self?.delegate?.updateLink(link: linkData)
+            self?.dismiss(animated: true)
+        }
         
-        delegate?.updateLink(link: linkData)
-        self.dismiss(animated: true)
     }
     
     @objc func linkShareButtonTapped() {

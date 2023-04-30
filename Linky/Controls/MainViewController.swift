@@ -63,8 +63,10 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.setSharedLinkData()
-        resetCollectionView()
+        viewModel.setSharedLinkData { [weak self] in
+            self?.resetCollectionView()
+        }
+        
     }
     
     // MARK: - Actions
@@ -286,8 +288,8 @@ extension MainViewController: AddLinkViewControllerDelegate {
 
 extension MainViewController: FolderViewControllerDelegate {
     func needsToUpdate() {
-        print(#function)
         resetCollectionView()
+        print("MainVC - resetCollectionView")
     }
     
 }

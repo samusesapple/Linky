@@ -19,16 +19,21 @@ struct AddLinkViewModel {
         return folderArray.map { $0.title! }
     }
     
-    func createLink(link: Link) {
+    func createLink(link: Link, completion: @escaping () -> Void) {
         guard let url = link.urlString else { return }
         guard let memo = link.memo else { return }
         if memo.count > 0 {
             // 제목 정하지 않으면, 자동으로 링크에 대한 제목 만들기
-            RealmNetworkManager.shared.createLink(newLink: link)
+            RealmNetworkManager.shared.createLink(newLink: link) {
+                completion()
+            }
         } else {
             MetadataNetworkManager.shared.getMetaDataTitle(urlString: url) { data in
                 link.memo = data
-                RealmNetworkManager.shared.createLink(newLink: link)
+                RealmNetworkManager.shared.createLink(newLink: link) {
+                    completion()
+                }
+                print("AddLinkVM - create link")
             }
         }
     }

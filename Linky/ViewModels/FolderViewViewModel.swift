@@ -34,6 +34,7 @@ struct FolderViewViewModel {
     mutating func setLinks() {
         guard let folderID = folderID else { return }
         self.links = RealmNetworkManager.shared.getLinks(with: folderID)
+        print("FolderVM - setLinks")
     }
     
     mutating func sortLinkCurrentLast(link: [Link]) {
