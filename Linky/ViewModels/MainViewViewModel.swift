@@ -30,13 +30,13 @@ struct MainViewViewModel {
         guard let sharedURL = sharedUserDefaults?.array(forKey: SharedUserDefaults.Keys.urlArray) else { return }
         
         for url in sharedURL {
-            sendFileToRealm(url: url as! String) {
+            sendLinkToRealm(url: url as! String) {
                 completion()
             }
         }
     }
     
-    private func sendFileToRealm(url: String, completion: @escaping () -> Void) {
+    private func sendLinkToRealm(url: String, completion: @escaping () -> Void) {
         let newLink = Link()
         newLink.folderID = RealmNetworkManager.shared.getFolders()[0].folderID
         newLink.date = Date()
@@ -57,35 +57,6 @@ struct MainViewViewModel {
            }
        })
         
-
-        
-    }
-}
-
-struct FolderCellViewModel {
-    var isEmpty: Bool? = false
-    
-    let folder: Folder?
-    let icon: String?
-    let title: String?
-    
-    init(folder: Folder) {
-        self.isEmpty = false
-        self.folder = folder
-        self.icon = folder.icon
-        self.title = folder.title
-    }
-    
-    init() {
-        self.isEmpty = true
-        self.icon = nil
-        self.title = nil
-        self.folder = nil
-    }
-    
-    var linkCountString: String {
-        let links = RealmNetworkManager.shared.getLinks(with: folder?.folderID ?? "ID없음")
-        return "링크 \(links.count)개"
     }
     
 }

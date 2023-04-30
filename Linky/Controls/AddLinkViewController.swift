@@ -178,7 +178,7 @@ class AddLinkViewController: UIViewController {
             self.dismiss(animated: true)
             return
         }
-        viewModel.createLink(link: linkData) { [weak self] in
+        viewModel.createLink(controller: self, link: linkData) { [weak self] in
             self?.delegate?.updateLink(link: linkData)
             self?.dismiss(animated: true)
         }

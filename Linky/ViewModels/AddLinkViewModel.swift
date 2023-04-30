@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import JGProgressHUD
 
 struct AddLinkViewModel {
     var folderArray: [Folder] = RealmNetworkManager.shared.getFolders()
@@ -19,9 +20,11 @@ struct AddLinkViewModel {
         return folderArray.map { $0.title! }
     }
     
-    func createLink(link: Link, completion: @escaping () -> Void) {
+    func createLink(controller: UIViewController, link: Link, completion: @escaping () -> Void) {
+        let hud = JGProgressHUD(style: .dark)
         guard let url = link.urlString else { return }
         guard let memo = link.memo else { return }
+        hud.show(in: controller.view, animated: true)
         if memo.count > 0 {
             // 제목 정하지 않으면, 자동으로 링크에 대한 제목 만들기
             RealmNetworkManager.shared.createLink(newLink: link) {
@@ -34,6 +37,7 @@ struct AddLinkViewModel {
                     completion()
                 }
                 print("AddLinkVM - create link")
+                hud.dismiss(animated: true)
             }
         }
     }

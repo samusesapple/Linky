@@ -75,7 +75,7 @@ class FolderViewController: UIViewController {
         setTableView()
     }
     
-    
+
     // MARK: - Actions
     @objc func alignmentButtonTapped() {
         guard let link = viewModel.links else { return }

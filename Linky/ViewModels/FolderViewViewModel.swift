@@ -81,4 +81,6 @@ struct FolderViewViewModel {
         
         self.links = result.filter { $0.folderID == folder }
     }
+    
+   
 }

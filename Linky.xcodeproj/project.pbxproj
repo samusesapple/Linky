@@ -13,6 +13,7 @@
 		F11EFE4729F126110036A479 /* LinkCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11EFE4629F126110036A479 /* LinkCellViewModel.swift */; };
 		F12A8BCB29EE98B30047F0A7 /* RealmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BCA29EE98B30047F0A7 /* RealmData.swift */; };
 		F12A8BD129EEA2590047F0A7 /* RealmNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A8BD029EEA2590047F0A7 /* RealmNetworkManager.swift */; };
+		F137B78429FDFF8D00D1F08D /* FolderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F137B78329FDFF8D00D1F08D /* FolderCellViewModel.swift */; };
 		F142B0CA29EBBDCB00E41F22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */; };
 		F142B0CC29EBBDCB00E41F22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */; };
 		F142B0CE29EBBDCB00E41F22 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142B0CD29EBBDCB00E41F22 /* MainViewController.swift */; };
@@ -74,6 +75,7 @@
 		F11EFE4629F126110036A479 /* LinkCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkCellViewModel.swift; sourceTree = "<group>"; };
 		F12A8BCA29EE98B30047F0A7 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
 		F12A8BD029EEA2590047F0A7 /* RealmNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNetworkManager.swift; sourceTree = "<group>"; };
+		F137B78329FDFF8D00D1F08D /* FolderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCellViewModel.swift; sourceTree = "<group>"; };
 		F142B0C629EBBDCB00E41F22 /* Linky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F18C7F1E29EFA502003E85B0 /* MainViewViewModel.swift */,
+				F137B78329FDFF8D00D1F08D /* FolderCellViewModel.swift */,
 				F18C7F2029EFC310003E85B0 /* FolderViewViewModel.swift */,
 				F18C7F2229F0CB13003E85B0 /* AddLinkViewModel.swift */,
 				F11EFE4629F126110036A479 /* LinkCellViewModel.swift */,
@@ -418,6 +421,7 @@
 				F12A8BD129EEA2590047F0A7 /* RealmNetworkManager.swift in Sources */,
 				F18C7F2329F0CB13003E85B0 /* AddLinkViewModel.swift in Sources */,
 				F142B0E929EBCCA400E41F22 /* Extensions.swift in Sources */,
+				F137B78429FDFF8D00D1F08D /* FolderCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
