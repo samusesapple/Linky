@@ -119,9 +119,14 @@
 * 해결 : MainViewViewModel에 해당 로직을 만들었으며, @escaping 키워드를 활용하여 네트워킹이 완료된 후, collectionView를 업데이트 하도록 구현했다.
 <img width="560" alt="image" src="https://user-images.githubusercontent.com/126672733/235332569-1180554c-867d-4913-a1d9-4f05a4958cb6.png">
 <img width="783" alt="image" src="https://user-images.githubusercontent.com/126672733/235332528-9af38caa-cc7f-499e-9993-d32f3a0df5c6.png">
+<br>
+<br>
 
 
-
+### 심사과정
+---
+* 2023.04.30 리젝 없이 심사 통과하여 출시 되었습니다.
+<img width="1102" alt="image" src="https://user-images.githubusercontent.com/126672733/235353400-883b4450-dd66-4441-9170-fe858482b08f.png">
 
 
 
