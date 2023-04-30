@@ -142,6 +142,11 @@
 ![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 17 51](https://user-images.githubusercontent.com/126672733/235354967-1affd818-cd27-437d-a882-47f84a746809.gif)
 ![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 18 49](https://user-images.githubusercontent.com/126672733/235354993-03550171-e3a3-44d9-b93c-925873978c49.gif)
 ![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 20 07](https://user-images.githubusercontent.com/126672733/235355054-49275528-b683-4252-99ac-98948dfa07a6.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 22 47](https://user-images.githubusercontent.com/126672733/235355191-abdbadc5-423f-42a9-8f17-7e3179d6e1d3.gif)
+
+
+
+
 <br>
 <br>
 
