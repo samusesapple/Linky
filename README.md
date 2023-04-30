@@ -25,11 +25,10 @@
 #### 디자인 패턴
 * MVVM 패턴
 #### 사용 기술 및 오픈소스 라이브러리
-* Database: Realm, UserDefaults
-* Toast-Swift
-* JGProgressHUD
-* LinkPresentation
-
+* Database: Realm (https://github.com/realm/realm-swift), UserDefaults (https://developer.apple.com/documentation/foundation/userdefaults)
+* Toast-Swift (https://github.com/scalessec/Toast-Swift)
+* JGProgressHUD (https://github.com/JonasGessner/JGProgressHUD)
+* LinkPresentation (https://developer.apple.com/documentation/linkpresentation) 
 <br>
 <br>
 
