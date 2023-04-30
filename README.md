@@ -123,14 +123,30 @@
 <br>
 <br>
 
+### 구현 기능
+---
+- 저장된 링크 사진 눌러서 해당 링크로 이동 가능
+- 앱 내부에서 외부로 링크 공유 가능
+- 링크의 유효성 검사
+- 외부에서 앱 내부로 링크 공유 가능
+- 웹사이트 제목으로 자동 이름 지어주기
+- 링크 검색 및 범위별 검색 가능
+- 최신순, 과거순, 가나다순 정렬 
+<br>
+<br>
+
+### 시연 영상
+---
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 16 13](https://user-images.githubusercontent.com/126672733/235354871-7f361675-4267-4dff-a643-a09ac1b7b44b.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 16 54](https://user-images.githubusercontent.com/126672733/235354963-22459fbb-139b-4a16-b80e-5b40afede501.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 17 51](https://user-images.githubusercontent.com/126672733/235354967-1affd818-cd27-437d-a882-47f84a746809.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 18 49](https://user-images.githubusercontent.com/126672733/235354993-03550171-e3a3-44d9-b93c-925873978c49.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 20 07](https://user-images.githubusercontent.com/126672733/235355054-49275528-b683-4252-99ac-98948dfa07a6.gif)
+<br>
+<br>
 
 ### 심사과정
 ---
 * 2023.04.30 리젝 없이 심사 통과하여 출시 되었습니다.
+
 <img width="1102" alt="image" src="https://user-images.githubusercontent.com/126672733/235353400-883b4450-dd66-4441-9170-fe858482b08f.png">
-
-
-
-
-
-
