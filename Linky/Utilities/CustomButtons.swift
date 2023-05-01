@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomButton: UIButton {
+final class CustomButton: UIButton {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -24,7 +24,7 @@ class CustomButton: UIButton {
 
 }
 
-class AddLinkButton: UIButton {
+final class AddLinkButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)

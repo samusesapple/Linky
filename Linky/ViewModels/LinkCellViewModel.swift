@@ -23,7 +23,7 @@ struct LinkCellViewModel {
         return URL(string: linkURLString!)!
     }
     
-    func setMetadataOnlyImage(urlString: String, sender: UIButton) {
+    func setMetadataImage(urlString: String, sender: UIButton) {
         MetadataNetworkManager.shared.getMetaDataOnlyImage(urlString: urlString) { image in
             sender.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
         }

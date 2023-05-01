@@ -7,7 +7,7 @@
 
 import Foundation
 
-class UserDefaultsFileManager {
+final class UserDefaultsFileManager {
     
     static let shared = UserDefaults(suiteName: SharedUserDefaults.suiteName)
     

@@ -11,7 +11,7 @@ protocol FolderViewControllerDelegate: AnyObject {
     func needsToUpdate()
 }
 
-class FolderViewController: UIViewController {
+final class FolderViewController: UIViewController {
 
     // MARK: - Properties
     private var viewModel = FolderViewViewModel()
@@ -62,6 +62,7 @@ class FolderViewController: UIViewController {
         searchController.hideKeyboardWhenTappedAround()
         searchController.searchResultsUpdater = self
         
+        
         view.addSubview(tableView)
         tableView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor,paddingTop: 50, paddingLeft: 25, paddingBottom: 25, paddingRight: 25)
 
@@ -96,6 +97,7 @@ class FolderViewController: UIViewController {
     @objc func addLinkButtonTapped() {
         let addVC = AddLinkViewController()
         addVC.delegate = self
+        addVC.viewModel.folderTitle = viewModel.folderTitle
         present(addVC, animated: true)
     }
     

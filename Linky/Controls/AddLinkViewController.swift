@@ -11,7 +11,7 @@ protocol AddLinkViewControllerDelegate: AnyObject {
     func updateLink(link: Link)
 }
 
-class AddLinkViewController: UIViewController {
+final class AddLinkViewController: UIViewController {
     
     // MARK: - Properties
     var viewModel = AddLinkViewModel() {
@@ -117,7 +117,9 @@ class AddLinkViewController: UIViewController {
         linkTextView.delegate = self
         memoTextField.delegate = self
         
-        folderButton.setTitle(viewModel.folderNameArray[0], for: .normal)
+        if let folderTitle = viewModel.folderTitle { folderButton.setTitle(folderTitle, for: .normal) }
+        else { folderButton.setTitle(viewModel.folderNameArray[0], for: .normal) }
+
         view.addSubview(folderButton)
         folderButton.anchor(top: viewTitleLabel.bottomAnchor, paddingTop: 40)
         folderButton.centerX(inView: view)
@@ -232,7 +234,7 @@ class AddLinkViewController: UIViewController {
         let itemsToShare = [item]
         let shareSheet = UIActivityViewController(activityItems: itemsToShare as [Any], applicationActivities: nil)
         shareSheet.popoverPresentationController?.sourceView = self.view
-        shareSheet.excludedActivityTypes = [.copyToPasteboard]
+        shareSheet.excludedActivityTypes = [.copyToPasteboard, .saveToCameraRoll]
         let linkTextView = linkInputTextView.subviews[0] as! UITextView
         UIPasteboard.general.string = linkTextView.text
         

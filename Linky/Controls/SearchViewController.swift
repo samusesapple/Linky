@@ -11,7 +11,7 @@ protocol SearchResultViewControllerDelegate: AnyObject {
     func resetCollectionView()
 }
 
-class SearchResultViewController: UISearchController {
+final class SearchResultViewController: UISearchController {
     
     var viewModel = FolderViewViewModel() {
         didSet {

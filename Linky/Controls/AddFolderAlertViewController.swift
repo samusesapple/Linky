@@ -12,7 +12,7 @@ protocol AddFolderAlertControllerDelegate: AnyObject {
     func createNewFolder(newFolder: Folder)
 }
 
-class AddFolderAlertController: UIViewController {
+final class AddFolderAlertController: UIViewController {
     
     // MARK: - Properties
     

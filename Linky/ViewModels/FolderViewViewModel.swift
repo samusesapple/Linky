@@ -58,13 +58,7 @@ struct FolderViewViewModel {
             guard let memo = link.memo?.lowercased() else { return false }
             return memo.contains(text)
         }
-        
-        let urlResult = RealmNetworkManager.shared.getLinks().filter { link in
-            guard let url = link.urlString?.lowercased() else { return false }
-            return url.contains(text)
-        }
-        
-        self.links = memoResult + urlResult
+        self.links = memoResult
     }
     
     mutating func getLinks(in folder: String, with text: String) {
@@ -73,11 +67,7 @@ struct FolderViewViewModel {
             return memo.contains(text)
         }
         
-        let urlResult = RealmNetworkManager.shared.getLinks().filter { link in
-            guard let url = link.urlString?.lowercased() else { return false }
-            return url.contains(text)
-        }
-        let result = memoResult + urlResult
+        let result = memoResult
         
         self.links = result.filter { $0.folderID == folder }
     }

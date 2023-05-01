@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
     // MARK: - Properties
     
