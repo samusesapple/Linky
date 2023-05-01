@@ -12,7 +12,8 @@
 
 ### 프로젝트 기간
 ---
-2023.04.16 ~ 진행 중
+2023.04.16 ~ 4.30 (출시 완료) <br>
+앱스토어 링크 : https://apps.apple.com/kr/app/linky-%EB%A7%81%ED%82%A4/id6448656359
 <br>
 <br>
 
@@ -25,10 +26,10 @@
 #### 디자인 패턴
 * MVVM 패턴
 #### 사용 기술 및 오픈소스 라이브러리
-* Database: Realm, UserDefaults
-* Toast-Swift
-* LinkPresentation
-
+* Database: Realm (https://github.com/realm/realm-swift), UserDefaults (https://developer.apple.com/documentation/foundation/userdefaults)
+* Toast-Swift (https://github.com/scalessec/Toast-Swift)
+* JGProgressHUD (https://github.com/JonasGessner/JGProgressHUD)
+* LinkPresentation (https://developer.apple.com/documentation/linkpresentation) 
 <br>
 <br>
 
@@ -115,13 +116,38 @@
 6. Scene Delegate - 반복문 for문을 사용하여 배열이 있는 동안, 해당 배열을 append하도록 했다. 또한, 화면이 활성화 된 순간 네트워킹을 진행하면 viewModel에 데이터가 바로 반영되지 않는 문제점을 발견했다. 또한 url 데이터를 공유하는 작업은, 사파리나 크롬과 같은 외부 앱에서 하는 작업이므로 앱이 백그라운드에 진입할 수 밖에 없음을 고려하여 시점을 sceneWillEnterForeground()으로 변경했다.
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/126672733/235280539-67273488-8930-4df4-854e-99e30085258d.png">
 <img width="769" alt="image" src="https://user-images.githubusercontent.com/126672733/235277993-e7931910-3e24-4d63-b310-e935e84cf01f.png">
+>> Scene Delegate에 실행시킨 결과, 자동적으로 메타데이터를 통해 제목을 지어주는 로직을 구현하여 realm에 데이터를 저장하는 것에 한계가 있었다. 따라서 mainVC의 viewWIllAppear에 해당 로직을 반영시키기로 했다.
+* 해결 : MainViewViewModel에 해당 로직을 만들었으며, @escaping 키워드를 활용하여 네트워킹이 완료된 후, collectionView를 업데이트 하도록 구현했다.
+<img width="560" alt="image" src="https://user-images.githubusercontent.com/126672733/235332569-1180554c-867d-4913-a1d9-4f05a4958cb6.png">
+<img width="783" alt="image" src="https://user-images.githubusercontent.com/126672733/235332528-9af38caa-cc7f-499e-9993-d32f3a0df5c6.png">
+<br>
+<br>
 
+### 구현 기능
+---
+- 저장된 링크 사진 눌러서 해당 링크로 이동 가능
+- 앱 내부에서 외부로 링크 공유 가능
+- 링크의 유효성 검사
+- 외부에서 앱 내부로 링크 공유 가능
+- 웹사이트 제목으로 자동 이름 지어주기
+- 링크 검색 및 범위별 검색 가능
+- 최신순, 과거순, 가나다순 정렬 
+<br>
+<br>
 
+### 시연 영상
+---
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 16 13](https://user-images.githubusercontent.com/126672733/235354871-7f361675-4267-4dff-a643-a09ac1b7b44b.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 16 54](https://user-images.githubusercontent.com/126672733/235354963-22459fbb-139b-4a16-b80e-5b40afede501.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 17 51](https://user-images.githubusercontent.com/126672733/235354967-1affd818-cd27-437d-a882-47f84a746809.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 18 49](https://user-images.githubusercontent.com/126672733/235354993-03550171-e3a3-44d9-b93c-925873978c49.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 20 07](https://user-images.githubusercontent.com/126672733/235355054-49275528-b683-4252-99ac-98948dfa07a6.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-04-30 at 22 22 47](https://user-images.githubusercontent.com/126672733/235355191-abdbadc5-423f-42a9-8f17-7e3179d6e1d3.gif)
+<br>
+<br>
 
+### 심사과정
+---
+* 2023.04.30 리젝 없이 심사 통과하여 출시 되었습니다.
 
-
-
-
-
-
-
+<img width="1102" alt="image" src="https://user-images.githubusercontent.com/126672733/235353400-883b4450-dd66-4441-9170-fe858482b08f.png">
