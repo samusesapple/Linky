@@ -76,6 +76,8 @@
 		F12A8BCA29EE98B30047F0A7 /* RealmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmData.swift; sourceTree = "<group>"; };
 		F12A8BD029EEA2590047F0A7 /* RealmNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmNetworkManager.swift; sourceTree = "<group>"; };
 		F137B78329FDFF8D00D1F08D /* FolderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCellViewModel.swift; sourceTree = "<group>"; };
+		F137B7852A0094FB00D1F08D /* LinkyRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LinkyRelease.entitlements; sourceTree = "<group>"; };
+		F137B7862A00950C00D1F08D /* ShareExtensionRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtensionRelease.entitlements; sourceTree = "<group>"; };
 		F142B0C629EBBDCB00E41F22 /* Linky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Linky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		F142B0C829EBBDCB00E41F22 /* Linky */ = {
 			isa = PBXGroup;
 			children = (
+				F137B7852A0094FB00D1F08D /* LinkyRelease.entitlements */,
 				F19DCC4C29FB851100F7E3C8 /* LinkyDebug.entitlements */,
 				F142B0C929EBBDCB00E41F22 /* AppDelegate.swift */,
 				F142B0CB29EBBDCB00E41F22 /* SceneDelegate.swift */,
@@ -246,6 +249,7 @@
 		F19DCC3929FB82C300F7E3C8 /* ShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				F137B7862A00950C00D1F08D /* ShareExtensionRelease.entitlements */,
 				F19DCC4D29FB857300F7E3C8 /* ShareExtensionDebug.entitlements */,
 				F19DCC3A29FB82C300F7E3C8 /* ShareViewController.swift */,
 				F19DCC3C29FB82C300F7E3C8 /* MainInterface.storyboard */,
@@ -608,7 +612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samSung.Linky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -628,6 +632,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_ENTITLEMENTS = Linky/LinkyRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY9QH7G8BB;
@@ -644,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.samSung.Linky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -685,6 +690,7 @@
 		F19DCC4529FB82C300F7E3C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtensionRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JY9QH7G8BB;
