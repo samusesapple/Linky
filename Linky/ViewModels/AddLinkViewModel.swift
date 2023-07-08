@@ -7,8 +7,9 @@
 
 import Foundation
 import JGProgressHUD
+import RxSwift
 
-struct AddLinkViewModel {
+class AddLinkViewModel {
     var folderArray: [Folder] = RealmNetworkManager.shared.getFolders()
     var linkData: Link?
     var folderTitle: String?
@@ -26,19 +27,20 @@ struct AddLinkViewModel {
         guard let memo = link.memo else { return }
         hud.show(in: controller.view, animated: true)
         if memo.count > 0 {
-            // 제목 정하지 않으면, 자동으로 링크에 대한 제목 만들기
             RealmNetworkManager.shared.createLink(newLink: link) {
                 completion()
             }
         } else {
-            MetadataNetworkManager.shared.getMetaDataTitle(urlString: url) { data in
-                link.memo = data
-                RealmNetworkManager.shared.createLink(newLink: link) {
-                    completion()
+            // 제목 정하지 않으면, 자동으로 링크에 대한 제목 만들기
+            MetadataNetworkManager.shared.getMetadataTitleObservable(url)
+                .observe(on: MainScheduler.asyncInstance)
+                .subscribe { metadataTitle in
+                    link.memo = metadataTitle
+                    RealmNetworkManager.shared.createLink(newLink: link) {
+                        completion()
+                        hud.dismiss()
+                    }
                 }
-                print("AddLinkVM - create link")
-                hud.dismiss(animated: true)
-            }
         }
     }
     

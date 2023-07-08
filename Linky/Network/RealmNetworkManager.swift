@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import RxSwift
 
 final class RealmNetworkManager {
     private let realm = try! Realm()
@@ -18,7 +19,7 @@ final class RealmNetworkManager {
     private var linkArray: [Link] = []
     private var certainLinkArray: [Link] = []
     
-// MARK: - [CREATE]
+    // MARK: - [CREATE]
     
     func createFolder(newFolder: Folder) {
         do {
@@ -35,13 +36,27 @@ final class RealmNetworkManager {
         completion()
     }
     
-// MARK: - [READ]
+    func createLinkObservable(newLink: Link) -> Observable<Link> {
+        return Observable.create { [weak self] emitter in
+            do {
+                try self?.realm.write {
+                    self?.realm.add(newLink)
+                    emitter.onNext(newLink)
+                }
+            } catch {
+                emitter.onError(error)
+            }
+            return Disposables.create()
+        }
+    }
+    
+    // MARK: - [READ]
     
     func getFolders() -> [Folder] {
         folderArray = realm.objects(Folder.self).map { $0 as Folder }
         return folderArray
     }
-
+    
     func getLinks() -> [Link] {
         linkArray = realm.objects(Link.self).map { $0 as Link }
         return linkArray
@@ -53,7 +68,7 @@ final class RealmNetworkManager {
         return array
     }
     
-// MARK: - [UPDATAE]
+    // MARK: - [UPDATAE]
     
     func updateLinkData(to newLink: Link) {
         let previousData = realm.objects(Link.self).filter{ $0.urlString == newLink.urlString }.first
@@ -65,7 +80,7 @@ final class RealmNetworkManager {
         
     }
     
-// MARK: - [DELETE]
+    // MARK: - [DELETE]
     
     func deleteFolder(with folderID: String) {
         let folder = realm.objects(Folder.self).filter { $0.folderID == folderID }

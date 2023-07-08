@@ -63,10 +63,10 @@ final class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.setSharedLinkData { [weak self] in
-            self?.resetCollectionView()
-        }
-        
+//        viewModel.setSharedLinkData { [weak self] in
+//            self?.resetCollectionView()
+//        }
+        viewModel.setSharedLinkData()
     }
     
     // MARK: - Actions
